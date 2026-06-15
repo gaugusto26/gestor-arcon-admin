@@ -4,7 +4,7 @@ require_once '../../includes/header.php';
 require_once '../../includes/menu.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: /newsoftware/cliente/modules/sistemas/index.php');
+    header('Location: /cliente/modules/sistemas/index.php');
     exit;
 }
 
@@ -33,7 +33,7 @@ $stmt->execute();
 $sistema = $stmt->get_result()->fetch_assoc();
 
 if (!$sistema) {
-    header('Location: /newsoftware/cliente/modules/sistemas/index.php');
+    header('Location: /cliente/modules/sistemas/index.php');
     exit;
 }
 
@@ -650,10 +650,10 @@ $st = $status_labels[$status_real] ?? ['label' => ucfirst($status_real), 'class'
                 <span class="user-btn-n"><?php echo htmlspecialchars(explode(' ', $cliente['nome'])[0]); ?></span>
                 <i class="fas fa-chevron-down user-chevron"></i>
                 <div class="ddrop" id="userDrop">
-                    <a href="/newsoftware/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
-                    <a href="/newsoftware/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
+                    <a href="/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
+                    <a href="/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
                     <hr>
-                    <a href="/newsoftware/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a href="/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
                 </div>
             </div>
         </div>
@@ -663,7 +663,7 @@ $st = $status_labels[$status_real] ?? ['label' => ucfirst($status_real), 'class'
         <div class="detalhes-container">
 
             <div class="action-buttons">
-                <a href="/newsoftware/cliente/modules/sistemas/index.php" class="btn btn-outline">
+                <a href="/cliente/modules/sistemas/index.php" class="btn btn-outline">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
                 <a href="javascript:window.print()" class="btn btn-outline">
@@ -788,7 +788,7 @@ $st = $status_labels[$status_real] ?? ['label' => ucfirst($status_real), 'class'
             <div class="contrato-card">
                 <div class="contrato-header">
                     <h3><i class="fas fa-file-contract"></i> Detalhes do Contrato</h3>
-                    <a href="/newsoftware/cliente/modules/contratos/visualizar.php?id=<?php echo $sistema['id']; ?>" class="contrato-link">
+                    <a href="/cliente/modules/contratos/visualizar.php?id=<?php echo $sistema['id']; ?>" class="contrato-link">
                         <i class="fas fa-eye"></i> Ver Contrato
                     </a>
                 </div>
@@ -871,7 +871,7 @@ $st = $status_labels[$status_real] ?? ['label' => ucfirst($status_real), 'class'
     const notifBtn = document.getElementById('notifBtn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
-            window.location.href = '/newsoftware/cliente/modules/faturas/index.php';
+            window.location.href = '/cliente/modules/faturas/index.php';
         });
     }
 

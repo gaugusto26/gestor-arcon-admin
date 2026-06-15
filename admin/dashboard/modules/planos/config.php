@@ -1,7 +1,7 @@
 <?php
 // Configurações específicas do módulo de planos
 define('PLANOS_PATH', dirname(__FILE__));
-define('PLANOS_URL', '/newsoftware/admin/modules/planos/');
+define('PLANOS_URL', '/admin/modules/planos/');
 
 // Funções auxiliares (usam a variável $conn do config principal)
 function getCategorias() {

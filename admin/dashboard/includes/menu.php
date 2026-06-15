@@ -1,12 +1,12 @@
 <?php
 // Menu do painel admin
-require_once $_SERVER['DOCUMENT_ROOT'] . '/newsoftware/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 $current_url = $_SERVER['REQUEST_URI'];
 
 $result_planos = $conn->query("SELECT COUNT(*) as total FROM planos WHERE ativo = 1");
 $total_planos = $result_planos->fetch_assoc()['total'];
 
-$admin_base = '/newsoftware/admin/dashboard/';
+$admin_base = '/admin/dashboard/';
 
 $menu_items = [
     'site' => [
@@ -221,7 +221,7 @@ $menu_items = [
                 if($item['link'] != '#') {
                     $current_path = parse_url($current_url, PHP_URL_PATH);
 
-                    if(strpos($current_path, '/admin/index.php') !== false || $current_path == '/newsoftware/admin/') {
+                    if(strpos($current_path, '/admin/index.php') !== false || $current_path == '/admin/') {
                         if($item['nome'] == 'Dashboard') $is_active = 'active';
                     }
                     elseif(strpos($current_path, '/admin/modules/planos/') !== false) {

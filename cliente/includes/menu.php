@@ -3,7 +3,7 @@ $current_url = $_SERVER['REQUEST_URI'];
 $modulo_atual = isset($_GET['mod']) ? $_GET['mod'] : 'dashboard';
 
 // Define a BASE_URL do cliente
-$cliente_base = '/newsoftware/cliente/';
+$cliente_base = '/cliente/';
 
 // Busca faturas pendentes para o badge
 global $conn;

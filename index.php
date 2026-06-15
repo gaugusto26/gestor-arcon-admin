@@ -23,10 +23,10 @@ echo "<script>var visitas = $visitas;</script>";
 
 <?php
 // Conectar ao banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "msg";
+$servername = getenv('MYSQL_HOST') ?: 'localhost';
+$username   = getenv('MYSQL_USER') ?: 'root';
+$password   = getenv('MYSQL_PASSWORD') ?: '';
+$dbname     = getenv('MSG_DB_NAME') ?: 'msg';
 
 // Cria a conexão
 $conn = new mysqli($servername, $username, $password, $dbname);

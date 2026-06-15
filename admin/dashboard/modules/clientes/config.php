@@ -43,7 +43,7 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
     $remetente_email = 'sistemasntw@gmail.com';
     $remetente_nome = 'NTW - New Software';
     
-    $site_url = 'http://localhost/newsoftware';
+    $site_url = 'http://localhost';
     $logo_url = $site_url . '/assets/image/logo.gif';
     $ano = date('Y');
     
@@ -283,7 +283,7 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
         <div class="container">
             <!-- Header -->
             <div class="header">
-                <img src="http://localhost/newsoftware/assets/image/logo.gif" alt="NTW">
+                <img src="/assets/image/logo.gif" alt="NTW">
                 <h1>Bem-vindo à NTW!</h1>
                 <p>Olá, ' . $cliente['nome'] . '! Sua conta foi criada com sucesso.</p>
             </div>
@@ -445,7 +445,7 @@ function enviarEmailNovaSenha($email, $nome, $nova_senha) {
     $remetente_email = 'sistemasntw@gmail.com';
     $remetente_nome = 'NTW - New Software';
     
-    $site_url = 'http://localhost/newsoftware';
+    $site_url = 'http://localhost';
     
     $assunto = "Sua senha foi resetada - NTW";
     

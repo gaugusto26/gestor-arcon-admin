@@ -3,7 +3,7 @@ session_start();
 require_once '../../config.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: /newsoftware/cliente/modules/contratos/index.php');
+    header('Location: /cliente/modules/contratos/index.php');
     exit;
 }
 
@@ -14,7 +14,7 @@ $contrato_id = (int)$_GET['id'];
 $contrato = getContrato($contrato_id, $cid);
 
 if (!$contrato) {
-    header('Location: /newsoftware/cliente/modules/contratos/index.php');
+    header('Location: /cliente/modules/contratos/index.php');
     exit;
 }
 
@@ -27,7 +27,7 @@ $check->close();
 
 if ($ja_assinado) {
     $_SESSION['msg'] = ['tipo' => 'erro', 'texto' => 'Este contrato já foi assinado.'];
-    header("Location: /newsoftware/cliente/modules/contratos/visualizar.php?id=$contrato_id");
+    header("Location: /cliente/modules/contratos/visualizar.php?id=$contrato_id");
     exit;
 }
 
@@ -40,7 +40,7 @@ $stmt_ass->close();
 
 if (!$assinatura) {
     $_SESSION['msg'] = ['tipo' => 'erro', 'texto' => 'Você precisa criar uma assinatura digital primeiro.'];
-    header("Location: /newsoftware/cliente/modules/assinatura/index.php");
+    header("Location: /cliente/modules/assinatura/index.php");
     exit;
 }
 
@@ -89,6 +89,6 @@ if ($stmt->execute()) {
 }
 
 $stmt->close();
-header("Location: /newsoftware/cliente/modules/contratos/visualizar.php?id=$contrato_id");
+header("Location: /cliente/modules/contratos/visualizar.php?id=$contrato_id");
 exit;
 ?>

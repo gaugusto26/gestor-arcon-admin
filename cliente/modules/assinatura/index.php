@@ -441,10 +441,10 @@ canvas {
                 <span class="user-btn-n"><?php echo htmlspecialchars(explode(' ', $cliente['nome'])[0]); ?></span>
                 <i class="fas fa-chevron-down user-chevron"></i>
                 <div class="ddrop" id="userDrop">
-                    <a href="/newsoftware/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
-                    <a href="/newsoftware/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
+                    <a href="/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
+                    <a href="/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
                     <hr>
-                    <a href="/newsoftware/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a href="/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
                 </div>
             </div>
         </div>
@@ -522,7 +522,7 @@ canvas {
                         <a href="#" class="btn btn-outline" onclick="abrirModalEditar()">
                             <i class="fas fa-edit"></i> Editar Assinatura
                         </a>
-                        <a href="/newsoftware/cliente/modules/contratos/index.php" class="btn btn-primary">
+                        <a href="/cliente/modules/contratos/index.php" class="btn btn-primary">
                             <i class="fas fa-file-contract"></i> Assinar Documentos
                         </a>
                     </div>
@@ -768,7 +768,7 @@ function salvarAssinatura() {
     const assinaturaDataURL = canvas.toDataURL('image/png');
     
     // Enviar para o servidor
-    fetch('/newsoftware/cliente/modules/assinatura/salvar.php', {
+    fetch('/cliente/modules/assinatura/salvar.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -885,7 +885,7 @@ function atualizarAssinatura() {
     const nome = document.getElementById('nomeAssinaturaEdit').value || 'Minha Assinatura';
     const assinaturaDataURL = canvasEdit.toDataURL('image/png');
     
-    fetch('/newsoftware/cliente/modules/assinatura/atualizar.php', {
+    fetch('/cliente/modules/assinatura/atualizar.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -928,7 +928,7 @@ function atualizarAssinatura() {
     const notifBtn = document.getElementById('notifBtn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
-            window.location.href = '/newsoftware/cliente/modules/faturas/index.php';
+            window.location.href = '/cliente/modules/faturas/index.php';
         });
     }
 

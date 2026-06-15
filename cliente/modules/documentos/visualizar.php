@@ -5,7 +5,7 @@ require_once '../../includes/menu.php';
 require_once 'config.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: /newsoftware/cliente/modules/documentos/index.php');
+    header('Location: /cliente/modules/documentos/index.php');
     exit;
 }
 
@@ -15,7 +15,7 @@ $doc_id = (int)$_GET['id'];
 $doc = getDocumentoDetalhes($doc_id, $cid);
 
 if (!$doc) {
-    header('Location: /newsoftware/cliente/modules/documentos/index.php');
+    header('Location: /cliente/modules/documentos/index.php');
     exit;
 }
 
@@ -255,10 +255,10 @@ if ($doc['data_vencimento']) {
                 <span class="user-btn-n"><?php echo htmlspecialchars(explode(' ', $cliente['nome'])[0]); ?></span>
                 <i class="fas fa-chevron-down user-chevron"></i>
                 <div class="ddrop" id="userDrop">
-                    <a href="/newsoftware/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
-                    <a href="/newsoftware/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
+                    <a href="/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
+                    <a href="/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
                     <hr>
-                    <a href="/newsoftware/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a href="/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
                 </div>
             </div>
         </div>
@@ -269,7 +269,7 @@ if ($doc['data_vencimento']) {
 
             <!-- Botão Voltar -->
             <div style="margin-bottom: 20px;">
-                <a href="/newsoftware/cliente/modules/documentos/index.php" class="btn btn-outline">
+                <a href="/cliente/modules/documentos/index.php" class="btn btn-outline">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
             </div>
@@ -342,7 +342,7 @@ if ($doc['data_vencimento']) {
                     
                     <?php if ($doc['tipo'] == 'contrato' && $doc['referencia_id']): ?>
                     <div style="margin-top: 15px;">
-                        <a href="/newsoftware/cliente/modules/contratos/visualizar.php?id=<?php echo $doc['referencia_id']; ?>" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                        <a href="/cliente/modules/contratos/visualizar.php?id=<?php echo $doc['referencia_id']; ?>" class="btn btn-outline" style="width: 100%; justify-content: center;">
                             <i class="fas fa-file-contract"></i> Ver Contrato
                         </a>
                     </div>
@@ -350,7 +350,7 @@ if ($doc['data_vencimento']) {
                     
                     <?php if ($doc['tipo'] == 'fatura' && $doc['referencia_id']): ?>
                     <div style="margin-top: 15px;">
-                        <a href="/newsoftware/cliente/modules/faturas/visualizar.php?id=<?php echo $doc['referencia_id']; ?>" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                        <a href="/cliente/modules/faturas/visualizar.php?id=<?php echo $doc['referencia_id']; ?>" class="btn btn-outline" style="width: 100%; justify-content: center;">
                             <i class="fas fa-file-invoice-dollar"></i> Ver Fatura
                         </a>
                     </div>
@@ -374,10 +374,10 @@ if ($doc['data_vencimento']) {
                 <div class="preview-name"><?php echo htmlspecialchars($doc['arquivo_nome']); ?></div>
                 
                 <div class="preview-actions">
-                    <a href="/newsoftware/cliente/uploads/<?php echo $doc['arquivo_path']; ?>" class="btn btn-primary" target="_blank">
+                    <a href="/cliente/uploads/<?php echo $doc['arquivo_path']; ?>" class="btn btn-primary" target="_blank">
                         <i class="fas fa-eye"></i> Visualizar
                     </a>
-                    <a href="/newsoftware/cliente/uploads/<?php echo $doc['arquivo_path']; ?>" class="btn btn-outline" download>
+                    <a href="/cliente/uploads/<?php echo $doc['arquivo_path']; ?>" class="btn btn-outline" download>
                         <i class="fas fa-download"></i> Download
                     </a>
                 </div>
@@ -406,7 +406,7 @@ if ($doc['data_vencimento']) {
     const notifBtn = document.getElementById('notifBtn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
-            window.location.href = '/newsoftware/cliente/modules/faturas/index.php';
+            window.location.href = '/cliente/modules/faturas/index.php';
         });
     }
 

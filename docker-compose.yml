@@ -1,0 +1,60 @@
+services:
+  gestor-arcon-admin:
+    build: .
+    container_name: gestor-arcon-admin
+    restart: unless-stopped
+    depends_on:
+      gestor-arcon-db:
+        condition: service_healthy
+    environment:
+      MYSQL_HOST: gestor-arcon-db
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-newsoftware}
+      MYSQL_USER: ${MYSQL_USER:-arcon_admin}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MSG_DB_NAME: ${MSG_DB_NAME:-msg}
+      SITE_URL: ${SITE_URL:-https://admin.arcon.digitalfive.com.br}
+      SITE_NAME: ${SITE_NAME:-Gestor Arcon Admin}
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_NAME: ${ADMIN_NAME:-Administrador Arcon}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@arcon.local}
+    networks:
+      - gestor-internal
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gestor-arcon-admin.rule=Host(`${GESTOR_HOST:-admin.arcon.digitalfive.com.br}`)"
+      - "traefik.http.routers.gestor-arcon-admin.entrypoints=websecure"
+      - "traefik.http.routers.gestor-arcon-admin.tls.certresolver=le"
+      - "traefik.http.services.gestor-arcon-admin.loadbalancer.server.port=80"
+      - "traefik.http.routers.gestor-arcon-admin-http.rule=Host(`${GESTOR_HOST:-admin.arcon.digitalfive.com.br}`)"
+      - "traefik.http.routers.gestor-arcon-admin-http.entrypoints=web"
+      - "traefik.http.routers.gestor-arcon-admin-http.middlewares=redirect-https@docker"
+
+  gestor-arcon-db:
+    image: mariadb:10.11
+    container_name: gestor-arcon-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MYSQL_DATABASE:-newsoftware}
+      MARIADB_USER: ${MYSQL_USER:-arcon_admin}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - gestor-arcon-db-data:/var/lib/mysql
+    networks:
+      - gestor-internal
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  gestor-arcon-db-data:
+
+networks:
+  gestor-internal:
+  web:
+    external: true

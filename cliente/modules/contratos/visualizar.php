@@ -4,7 +4,7 @@ require_once '../../includes/header.php';
 require_once '../../includes/menu.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: /newsoftware/cliente/modules/contratos/index.php');
+    header('Location: /cliente/modules/contratos/index.php');
     exit;
 }
 
@@ -38,7 +38,7 @@ $stmt->execute();
 $contrato = $stmt->get_result()->fetch_assoc();
 
 if (!$contrato) {
-    header('Location: /newsoftware/cliente/modules/contratos/index.php');
+    header('Location: /cliente/modules/contratos/index.php');
     exit;
 }
 
@@ -552,10 +552,10 @@ $status_label = match($contrato['status']) {
                 <span class="user-btn-n"><?php echo htmlspecialchars(explode(' ',$cliente['nome'])[0]); ?></span>
                 <i class="fas fa-chevron-down user-chevron"></i>
                 <div class="ddrop" id="userDrop">
-                    <a href="/newsoftware/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
-                    <a href="/newsoftware/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
+                    <a href="/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
+                    <a href="/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
                     <hr>
-                    <a href="/newsoftware/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a href="/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
                 </div>
             </div>
         </div>
@@ -566,12 +566,12 @@ $status_label = match($contrato['status']) {
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <a href="/newsoftware/cliente/modules/contratos/index.php" class="btn btn-outline">
+                <a href="/cliente/modules/contratos/index.php" class="btn btn-outline">
                     <i class="fas fa-arrow-left"></i> Voltar
                 </a>
                 
                 <?php if ($contrato['status'] == 'enviado' && !$ja_assinado && $assinatura): ?>
-                <a href="/newsoftware/cliente/modules/contratos/assinar.php?id=<?php echo $contrato['id']; ?>" class="btn btn-success">
+                <a href="/cliente/modules/contratos/assinar.php?id=<?php echo $contrato['id']; ?>" class="btn btn-success">
                     <i class="fas fa-pen-fancy"></i> Assinar Contrato
                 </a>
                 <?php endif; ?>
@@ -581,7 +581,7 @@ $status_label = match($contrato['status']) {
                 </a>
                 
                 <?php if ($ja_assinado): ?>
-                <a href="/newsoftware/cliente/modules/contratos/pdf.php?id=<?php echo $contrato['id']; ?>" class="btn btn-primary" target="_blank">
+                <a href="/cliente/modules/contratos/pdf.php?id=<?php echo $contrato['id']; ?>" class="btn btn-primary" target="_blank">
                     <i class="fas fa-file-pdf"></i> Baixar PDF
                 </a>
                 <?php endif; ?>
@@ -735,7 +735,7 @@ $status_label = match($contrato['status']) {
                         <p style="color: var(--tx3); font-size: 0.8rem; margin-bottom: 14px; font-style: italic;">
                             Clique para assinar com sua assinatura digital
                         </p>
-                        <a href="/newsoftware/cliente/modules/contratos/assinar.php?id=<?php echo $contrato['id']; ?>" 
+                        <a href="/cliente/modules/contratos/assinar.php?id=<?php echo $contrato['id']; ?>" 
                            class="btn btn-success" 
                            style="padding: 10px 22px; font-size: 0.9rem;">
                             <i class="fas fa-pen-fancy"></i> Assinar Contrato
@@ -755,7 +755,7 @@ $status_label = match($contrato['status']) {
                         <p style="color: #f59e0b; font-size: 0.8rem; margin-bottom: 12px;">
                             <i class="fas fa-exclamation-triangle"></i> Você precisa criar sua assinatura antes de assinar
                         </p>
-                        <a href="/newsoftware/cliente/modules/assinatura/index.php" 
+                        <a href="/cliente/modules/assinatura/index.php" 
                            class="btn btn-primary" 
                            style="padding: 8px 18px; font-size: 0.85rem;">
                             <i class="fas fa-pen"></i> Criar Assinatura
@@ -815,11 +815,11 @@ $status_label = match($contrato['status']) {
                         Utilize sua assinatura digital para assinar este documento.
                     </p>
                     <?php if (!$assinatura): ?>
-                        <a href="/newsoftware/cliente/modules/assinatura/index.php" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">
+                        <a href="/cliente/modules/assinatura/index.php" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">
                             <i class="fas fa-pen"></i> Criar Assinatura
                         </a>
                     <?php else: ?>
-                        <a href="/newsoftware/cliente/modules/contratos/assinar.php?id=<?php echo $contrato['id']; ?>" class="btn btn-success" style="padding: 8px 16px; font-size: 0.8rem;">
+                        <a href="/cliente/modules/contratos/assinar.php?id=<?php echo $contrato['id']; ?>" class="btn btn-success" style="padding: 8px 16px; font-size: 0.8rem;">
                             <i class="fas fa-pen-fancy"></i> Assinar Agora
                         </a>
                     <?php endif; ?>
@@ -866,7 +866,7 @@ $status_label = match($contrato['status']) {
     const notifBtn = document.getElementById('notifBtn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
-            window.location.href = '/newsoftware/cliente/modules/faturas/index.php';
+            window.location.href = '/cliente/modules/faturas/index.php';
         });
     }
 

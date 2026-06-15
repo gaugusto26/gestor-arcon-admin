@@ -613,10 +613,10 @@ $stats = estatisticasFaturasCliente($cid, $conn);
                 <span class="user-btn-n"><?php echo htmlspecialchars(explode(' ', $cliente['nome'])[0]); ?></span>
                 <i class="fas fa-chevron-down user-chevron"></i>
                 <div class="ddrop" id="userDrop">
-                    <a href="/newsoftware/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
-                    <a href="/newsoftware/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
+                    <a href="/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
+                    <a href="/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
                     <hr>
-                    <a href="/newsoftware/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a href="/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
                 </div>
             </div>
         </div>
@@ -724,7 +724,7 @@ $stats = estatisticasFaturasCliente($cid, $conn);
                     <button type="submit" class="btn-filtro">
                         <i class="fas fa-filter"></i> Filtrar
                     </button>
-                    <a href="/newsoftware/cliente/modules/faturas/index.php" class="btn-filtro btn-limpar">
+                    <a href="/cliente/modules/faturas/index.php" class="btn-filtro btn-limpar">
                         <i class="fas fa-times"></i> Limpar
                     </a>
                 </div>
@@ -867,7 +867,7 @@ $stats = estatisticasFaturasCliente($cid, $conn);
     const notifBtn = document.getElementById('notifBtn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
-            window.location.href = '/newsoftware/cliente/modules/faturas/index.php?status=pendente';
+            window.location.href = '/cliente/modules/faturas/index.php?status=pendente';
         });
     }
 

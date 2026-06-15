@@ -665,10 +665,10 @@ $busca = isset($_GET['busca']) ? limparInput($_GET['busca']) : '';
                 <span class="user-btn-n"><?php echo htmlspecialchars(explode(' ', $cliente['nome'])[0]); ?></span>
                 <i class="fas fa-chevron-down user-chevron"></i>
                 <div class="ddrop" id="userDrop">
-                    <a href="/newsoftware/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
-                    <a href="/newsoftware/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
+                    <a href="/cliente/modules/perfil/index.php"><i class="fas fa-user-cog"></i> Meu Perfil</a>
+                    <a href="/cliente/modules/assinatura/index.php"><i class="fas fa-pen-fancy"></i> Assinatura</a>
                     <hr>
-                    <a href="/newsoftware/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a href="/cliente/logout.php" class="dd-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
                 </div>
             </div>
         </div>
@@ -734,7 +734,7 @@ $busca = isset($_GET['busca']) ? limparInput($_GET['busca']) : '';
                     <button type="submit" class="btn-filtro">
                         <i class="fas fa-filter"></i> Filtrar
                     </button>
-                    <a href="/newsoftware/cliente/modules/sistemas/index.php" class="btn-filtro btn-limpar">
+                    <a href="/cliente/modules/sistemas/index.php" class="btn-filtro btn-limpar">
                         <i class="fas fa-times"></i> Limpar
                     </a>
                 </div>
@@ -747,7 +747,7 @@ $busca = isset($_GET['busca']) ? limparInput($_GET['busca']) : '';
             <i class="fas fa-cubes"></i>
             <h2>Nenhum sistema em desenvolvimento</h2>
             <p>Os sistemas aparecerão aqui após você assinar os contratos.</p>
-            <a href="/newsoftware/cliente/modules/contratos/index.php" class="btn">
+            <a href="/cliente/modules/contratos/index.php" class="btn">
                 <i class="fas fa-file-contract"></i> Ver Meus Contratos
             </a>
         </div>
@@ -852,7 +852,7 @@ $st = $status_labels[$s['status']] ?? ['label' => ucfirst($s['status']), 'class'
                         R$ <?php echo number_format($s['valor_total'] ?? 0, 2, ',', '.'); ?>
                         <small>total</small>
                     </div>
-                    <a href="/newsoftware/cliente/modules/sistemas/visualizar.php?id=<?php echo $s['contrato_id']; ?>" class="btn-sm">
+                    <a href="/cliente/modules/sistemas/visualizar.php?id=<?php echo $s['contrato_id']; ?>" class="btn-sm">
                         <i class="fas fa-eye"></i> Detalhes
                     </a>
                 </div>
@@ -883,7 +883,7 @@ $st = $status_labels[$s['status']] ?? ['label' => ucfirst($s['status']), 'class'
     const notifBtn = document.getElementById('notifBtn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
-            window.location.href = '/newsoftware/cliente/modules/faturas/index.php';
+            window.location.href = '/cliente/modules/faturas/index.php';
         });
     }
 

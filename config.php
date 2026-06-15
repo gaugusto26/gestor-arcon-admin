@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "newsoftware";
+$servername = getenv('MYSQL_HOST') ?: 'localhost';
+$username   = getenv('MYSQL_USER') ?: 'root';
+$password   = getenv('MYSQL_PASSWORD') ?: '';
+$dbname     = getenv('MYSQL_DATABASE') ?: 'newsoftware';
 
 // Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,8 +15,8 @@ if ($conn->connect_error) {
 }
 
 
-define('SITE_URL', 'http://localhost/newsoftware'); // ADICIONE ESTA LINHA
-define('SITE_NAME', 'NTW - New Software'); // Opcional
+define('SITE_URL', rtrim(getenv('SITE_URL') ?: 'http://localhost', '/'));
+define('SITE_NAME', getenv('SITE_NAME') ?: 'Gestor Arcon Admin');
 
 // Definir charset
 $conn->set_charset("utf8mb4");
