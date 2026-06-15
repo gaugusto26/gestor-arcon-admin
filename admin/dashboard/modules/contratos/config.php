@@ -3,7 +3,7 @@ function gerarNumeroContrato() {
     $ano = date('Y');
     $mes = date('m');
     $sequencia = mt_rand(1000, 9999);
-    return "NTW-{$ano}{$mes}-{$sequencia}";
+    return "Arcon-{$ano}{$mes}-{$sequencia}";
 }
 
 function formatarValorExtenso($valor) {

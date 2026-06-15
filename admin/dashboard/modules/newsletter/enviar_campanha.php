@@ -88,7 +88,7 @@ if(isset($_POST['iniciar_envio'])) {
                 <!-- Header -->
                 <div style='background:linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); padding:30px; text-align:center;'>
                     <img src='{$config['logo_url']}' style='max-width:150px; margin-bottom:10px;'>
-                    <h1 style='color:white; margin:0; font-size:24px;'>NTW - New Software</h1>
+                    <h1 style='color:white; margin:0; font-size:24px;'>Gestor Arcon Admin</h1>
                 </div>
                 
                 <!-- Content -->
@@ -102,7 +102,7 @@ if(isset($_POST['iniciar_envio'])) {
                         <a href='{$config['instagram_url']}' style='color:#0d47a1; text-decoration:none; margin:0 10px;'>Instagram</a> |
                         <a href='https://wa.me/{$config['whatsapp_numero']}' style='color:#0d47a1; text-decoration:none; margin:0 10px;'>WhatsApp</a>
                     </p>
-                    <p style='margin:0;'>&copy; " . date('Y') . " NTW - New Software. Todos os direitos reservados.</p>
+                    <p style='margin:0;'>&copy; " . date('Y') . " Gestor Arcon Admin. Todos os direitos reservados.</p>
                     <p style='margin:5px 0 0;'>
                         <a href='" . SITE_URL . "/newsletter/desinscrever.php?token={$inscrito['token']}' style='color:#999; text-decoration:underline;'>Cancelar inscrição</a>
                     </p>

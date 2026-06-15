@@ -105,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comentario'])) {
 $whatsapp = getWhatsAppConfig($conn);
 
 // Meta tags para SEO
-$meta_title = $post['meta_title'] ?: $post['titulo'] . ' | NTW Blog';
+$meta_title = $post['meta_title'] ?: $post['titulo'] . ' | Arcon Blog';
 $meta_description = $post['meta_description'] ?: $post['resumo'] ?: substr(strip_tags($post['conteudo']), 0, 160);
 $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image/logo2.png';
 ?>
@@ -1268,8 +1268,8 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
     <!-- Navbar -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="../assets/image/logo2.png" alt="NTW - New Software">
-            <span>NTW SOFTWARE</span>
+            <img src="../assets/image/logo2.png" alt="Gestor Arcon Admin">
+            <span>ARCON ADMIN</span>
         </div>
         <div class="navbar-menu" id="navbarMenu">
             <a href="../index.php">Home</a>
@@ -1526,8 +1526,8 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../assets/image/logo.png" alt="NTW">
-                    <h3>New Software</h3>
+                    <img src="../assets/image/logo.png" alt="Arcon">
+                    <h3>Gestor Arcon Admin</h3>
                     <p style="color:var(--text-tertiary);">A tecnologia é a nossa paixão. Junte-se a nós e revolucione seu negócio!</p>
                 </div>
                 <div class="footer-links">
@@ -1553,14 +1553,14 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
                 <div class="footer-links">
                     <h4>Redes Sociais</h4>
                     <div class="social-links">
-                        <a href="https://instagram.com/newsoftwarebr" target="_blank" class="social-link">
+                        <a href="https://instagram.com/arcon.digitalfive" target="_blank" class="social-link">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Copyright &copy; 2025 NTW - New Software. Todos os direitos reservados.</p>
+                <p>Copyright &copy; 2025 Gestor Arcon Admin. Todos os direitos reservados.</p>
                 <p style="margin-top:10px;">Founded By Renan.</p>
             </div>
         </div>

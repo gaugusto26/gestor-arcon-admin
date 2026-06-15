@@ -137,11 +137,11 @@ if (strpos($conteudo_processado, 'assinaturas') === false) {
                 <div style="border-top: 2px solid #000; width: 100%; margin: 30px 0 10px;"></div>
                 <p style="font-weight: bold; margin: 0;">____________________________</p>
                 <p style="margin: 5px 0 0;"><strong>CONTRATADA</strong></p>
-                <p style="font-size: 0.85rem; color: #666;">NTW - NEW SOFTWARE</p>
+                <p style="font-size: 0.85rem; color: #666;">GESTOR ARCON ADMIN</p>
             </div>
         </div>
         <p style="text-align: center; margin-top: 50px; font-style: italic; color: #666;">
-            © - NTW NEW SOFTWARE, ' . date('d') . ' de ' . 
+            © - GESTOR ARCON ADMIN, ' . date('d') . ' de ' . 
             ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'][date('n')-1] . 
             ' de ' . date('Y') . '
         </p>
@@ -779,7 +779,7 @@ $status_label = match($contrato['status']) {
         <div class="assinatura-col">
             <div class="assinatura-linha"></div>
             <div class="assinatura-placeholder">(assinatura da contratada)</div>
-            <div class="assinatura-nome">NTW - NEW SOFTWARE</div>
+            <div class="assinatura-nome">GESTOR ARCON ADMIN</div>
             <div class="assinatura-data">Documento gerado eletronicamente</div>
         </div>
 
@@ -788,7 +788,7 @@ $status_label = match($contrato['status']) {
 
                     
                     <p style="text-align: center; margin-top: 30px; font-style: italic; color: var(--tx3); font-size: 0.8rem;">
-                        © - NTW NEW SOFTWARE, <?php echo date('d') . ' de ' . 
+                        © - GESTOR ARCON ADMIN, <?php echo date('d') . ' de ' . 
                             ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'][date('n')-1] . 
                             ' de ' . date('Y'); ?>
                     </p>

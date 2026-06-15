@@ -594,14 +594,14 @@ $meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto'
                         <div class="assinatura-col">
                             <div class="linha-ass" style="margin-top: <?php echo !empty($contrato['assinatura_base64']) ? '100px' : '10px'; ?>;"></div>
                             <p class="ass-nome">CONTRATADA</p>
-                            <p class="ass-sub">NTW - NEW SOFTWARE</p>
+                            <p class="ass-sub">GESTOR ARCON ADMIN</p>
                             <p class="ass-data">Documento gerado eletronicamente</p>
                         </div>
 
                     </div>
 
                     <p class="ass-rodape">
-                        © - NTW NEW SOFTWARE, <?php 
+                        © - GESTOR ARCON ADMIN, <?php 
                             echo date('d') . ' de ' . $meses[date('n')-1] . ' de ' . date('Y'); 
                         ?>
                     </p>

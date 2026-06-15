@@ -41,14 +41,14 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
     $smtp_pass = 'dcvj lezc qwoc yvim'; 
     $smtp_secure = 'tls';
     $remetente_email = 'sistemasntw@gmail.com';
-    $remetente_nome = 'NTW - New Software';
+    $remetente_nome = 'Gestor Arcon Admin';
     
     $site_url = 'http://localhost';
     $logo_url = $site_url . '/assets/image/logo.gif';
     $ano = date('Y');
     
     // Template de e-mail moderno
-    $assunto = "Bem-vindo à NTW - New Software!";
+    $assunto = "Bem-vindo à Gestor Arcon Admin!";
     
     $mensagem = '
     <!DOCTYPE html>
@@ -57,7 +57,7 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-        <title>Bem-vindo à NTW</title>
+        <title>Bem-vindo à Arcon</title>
         <style>
             body {
                 margin: 0;
@@ -283,8 +283,8 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
         <div class="container">
             <!-- Header -->
             <div class="header">
-                <img src="/assets/image/logo.gif" alt="NTW">
-                <h1>Bem-vindo à NTW!</h1>
+                <img src="/assets/image/logo.gif" alt="Arcon">
+                <h1>Bem-vindo à Arcon!</h1>
                 <p>Olá, ' . $cliente['nome'] . '! Sua conta foi criada com sucesso.</p>
             </div>
             
@@ -379,7 +379,7 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
             <!-- Footer -->
             <div class="footer">
                 <div class="social-links">
-                    <a href="https://instagram.com/newsoftwarebr" class="social-link" target="_blank">
+                    <a href="https://instagram.com/arcon.digitalfive" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://wa.me/5519987111656" class="social-link" target="_blank">
@@ -390,7 +390,7 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
                     </a>
                 </div>
                 
-                <p>© ' . $ano . ' NTW - New Software. Todos os direitos reservados.</p>
+                <p>© ' . $ano . ' Gestor Arcon Admin. Todos os direitos reservados.</p>
                 <p>
                     <a href="' . $site_url . '/politica.php">Política de Privacidade</a> | 
                     <a href="' . $site_url . '/termos.php">Termos de Uso</a>
@@ -443,11 +443,11 @@ function enviarEmailNovaSenha($email, $nome, $nova_senha) {
     $smtp_pass = 'dcvj lezc qwoc yvim'; // COLOQUE A SENHA DO SEU E-MAIL AQUI
     $smtp_secure = 'tls';
     $remetente_email = 'sistemasntw@gmail.com';
-    $remetente_nome = 'NTW - New Software';
+    $remetente_nome = 'Gestor Arcon Admin';
     
     $site_url = 'http://localhost';
     
-    $assunto = "Sua senha foi resetada - NTW";
+    $assunto = "Sua senha foi resetada - Arcon";
     
     $mensagem = '
     <!DOCTYPE html>
@@ -455,7 +455,7 @@ function enviarEmailNovaSenha($email, $nome, $nova_senha) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nova Senha - NTW</title>
+        <title>Nova Senha - Arcon</title>
         <style>
             body {
                 margin: 0;
@@ -552,7 +552,7 @@ function enviarEmailNovaSenha($email, $nome, $nova_senha) {
                 <p style="color: #666; font-size: 14px;">Se você não solicitou esta alteração, entre em contato com nosso suporte imediatamente.</p>
             </div>
             <div class="footer">
-                <p>© ' . date('Y') . ' NTW - New Software</p>
+                <p>© ' . date('Y') . ' Gestor Arcon Admin</p>
             </div>
         </div>
     </body>

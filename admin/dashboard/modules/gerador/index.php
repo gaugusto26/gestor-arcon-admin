@@ -833,7 +833,7 @@ textarea.form-control {
                                 <label><i class="fas fa-user"></i> Responsável pelo Cancelamento</label>
                                 <select class="form-control" id="cancelamento_responsavel" onchange="calcularMultaCancelamento()">
                                     <option value="cliente">Cliente</option>
-                                    <option value="ntw">NTW</option>
+                                    <option value="ntw">Arcon</option>
                                     <option value="mutuo">Mútuo Acordo</option>
                                 </select>
                             </div>
@@ -995,7 +995,7 @@ function gerarPDF(previewId) {
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>Contrato NTW</title>
+            <title>Contrato Arcon</title>
             ${estiloPDF}
         </head>
         <body>
@@ -1089,7 +1089,7 @@ function gerarPreviewAdesao() {
     const prazoPrimeiraParcela = parseInt(document.getElementById('adesao_prazo_primeira_parcela').value) || 30;
     
     const multa = (valorPlano * percentualMulta) / 100;
-    const numeroContrato = 'NTW-' + new Date().getFullYear() + ('0' + (new Date().getMonth()+1)).slice(-2) + '-' + Math.floor(1000 + Math.random() * 9000);
+    const numeroContrato = 'Arcon-' + new Date().getFullYear() + ('0' + (new Date().getMonth()+1)).slice(-2) + '-' + Math.floor(1000 + Math.random() * 9000);
     
     // Calcula datas
     const dataInicio = new Date(document.getElementById('adesao_data_inicio').value);
@@ -1143,7 +1143,7 @@ function gerarPreviewAdesao() {
         
         <p><strong>CONTRATANTE:</strong> ${clienteNome}, inscrito no CPF/CNPJ sob nº ${documento}, com endereço ${endereco}.</p>
         
-        <p><strong>CONTRATADA:</strong> NTW - NEW SOFTWARE, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
+        <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
         
         <p>As partes acima identificadas têm, entre si, justo e acordado o presente Contrato de Prestação de Serviços de Tecnologia, que se regerá pelas cláusulas seguintes e pelas condições descritas no presente instrumento.</p>
         
@@ -1156,12 +1156,12 @@ function gerarPreviewAdesao() {
             </div>
             <div class="assinatura-bloco">
                 <div class="linha-assinatura"></div>
-                <p><strong>CONTRATADA</strong><br>NTW - NEW SOFTWARE</p>
+                <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN</p>
             </div>
         </div>
         
         <div class="data-local">
-            © - NTW NEW SOFTWARE, ${dataAtual.getDate()} de ${meses[dataAtual.getMonth()]} de ${dataAtual.getFullYear()}
+            © - GESTOR ARCON ADMIN, ${dataAtual.getDate()} de ${meses[dataAtual.getMonth()]} de ${dataAtual.getFullYear()}
         </div>
     `;
     
@@ -1323,7 +1323,7 @@ function gerarPreviewRenovacao() {
         
         <p><strong>CONTRATANTE:</strong> ${clienteNome}, já qualificado no contrato original firmado em ${dataOriginal.toLocaleDateString('pt-BR')}.</p>
         
-        <p><strong>CONTRATADA:</strong> NTW - NEW SOFTWARE, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
+        <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
         
         <p>As partes acima identificadas resolvem, de comum acordo, RENOVAR o contrato originalmente firmado, mediante as seguintes condições:</p>
         
@@ -1338,12 +1338,12 @@ function gerarPreviewRenovacao() {
             </div>
             <div class="assinatura-bloco">
                 <div class="linha-assinatura"></div>
-                <p><strong>CONTRATADA</strong><br>NTW - NEW SOFTWARE</p>
+                <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN</p>
             </div>
         </div>
         
         <div class="data-local">
-            [© - NTW NEW SOFTWARE], ${dataObj.getDate()} de ${meses[dataObj.getMonth()]} de ${dataObj.getFullYear()}
+            [© - GESTOR ARCON ADMIN], ${dataObj.getDate()} de ${meses[dataObj.getMonth()]} de ${dataObj.getFullYear()}
         </div>
     `;
     
@@ -1411,7 +1411,7 @@ function calcularMultaCancelamento() {
         detalhe = `Período de fidelidade já cumprido (${mesesCumpridos} meses). Isento de multa.`;
     } else if(responsavel == 'ntw') {
         multaFinal = 0;
-        detalhe = 'Cancelamento por iniciativa da NTW. Isento de multa.';
+        detalhe = 'Cancelamento por iniciativa da Arcon. Isento de multa.';
     } else if(responsavel == 'mutuo') {
         multaFinal = 0;
         detalhe = 'Cancelamento por mútuo acordo. Isento de multa.';
@@ -1474,7 +1474,7 @@ function gerarPreviewCancelamento() {
         
         <p><strong>CONTRATANTE:</strong> ${clienteNome}, já qualificado no contrato original firmado em ${dataOriginal.toLocaleDateString('pt-BR')}.</p>
         
-        <p><strong>CONTRATADA:</strong> NTW - NEW SOFTWARE, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
+        <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
         
         <p>As partes acima identificadas resolvem, de comum acordo, CANCELAR o contrato originalmente firmado ${responsavelTexto}, mediante as seguintes condições:</p>
         
@@ -1487,12 +1487,12 @@ function gerarPreviewCancelamento() {
             </div>
             <div class="assinatura-bloco">
                 <div class="linha-assinatura"></div>
-                <p><strong>CONTRATADA</strong><br>NTW - NEW SOFTWARE</p>
+                <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN</p>
             </div>
         </div>
         
         <div class="data-local">
-            [© - NTW NEW SOFTWARE], ${dataCancelamento.getDate()} de ${meses[dataCancelamento.getMonth()]} de ${dataCancelamento.getFullYear()}
+            [© - GESTOR ARCON ADMIN], ${dataCancelamento.getDate()} de ${meses[dataCancelamento.getMonth()]} de ${dataCancelamento.getFullYear()}
         </div>
     `;
     

@@ -102,8 +102,8 @@ if($categoria_filtro > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <link rel="shortcut icon" href="../assets/image/logo2.png" type="image/x-icon">
-    <meta name="description" content="Blog da NTW - New Software | Artigos sobre tecnologia, programação, marketing digital e negócios">
-    <title>Blog | NTW - New Software</title>
+    <meta name="description" content="Blog da Gestor Arcon Admin | Artigos sobre tecnologia, programação, marketing digital e negócios">
+    <title>Blog | Gestor Arcon Admin</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1257,8 +1257,8 @@ if($categoria_filtro > 0) {
     <!-- Navbar -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="../assets/image/logo2.png" alt="NTW - New Software">
-            <span>NTW SOFTWARE</span>
+            <img src="../assets/image/logo2.png" alt="Gestor Arcon Admin">
+            <span>ARCON ADMIN</span>
         </div>
 
         <div class="navbar-menu" id="navbarMenu">
@@ -1285,7 +1285,7 @@ if($categoria_filtro > 0) {
         <!-- Hero do Blog -->
         <section class="blog-hero">
             <div class="container">
-                <h1 class="gradient-text">Blog da NTW</h1>
+                <h1 class="gradient-text">Blog da Arcon</h1>
                 <p>Fique por dentro das últimas tendências em tecnologia, programação, marketing digital e negócios. Artigos escritos por quem entende do assunto.</p>
 
                 <?php if($categoria_filtro > 0 && $cat_nome_filtro): ?>
@@ -1563,8 +1563,8 @@ if($categoria_filtro > 0) {
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../assets/image/logo.png" alt="NTW">
-                    <h3>New Software</h3>
+                    <img src="../assets/image/logo.png" alt="Arcon">
+                    <h3>Gestor Arcon Admin</h3>
                     <p>A tecnologia é a nossa paixão. Junte-se a nós e revolucione seu negócio!</p>
                 </div>
                 <div class="footer-links">
@@ -1590,7 +1590,7 @@ if($categoria_filtro > 0) {
                 <div class="footer-links">
                     <h4>Redes Sociais</h4>
                     <div class="social-links" style="display:flex; justify-content:center;">
-                <a href="https://instagram.com/newsoftwarebr" target="_blank"
+                <a href="https://instagram.com/arcon.digitalfive" target="_blank"
                    style="
                         width:50px;
                         height:50px;
@@ -1611,7 +1611,7 @@ if($categoria_filtro > 0) {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Copyright &copy; <?php echo date('Y'); ?> NTW - New Software. Todos os direitos reservados.</p>
+                <p>Copyright &copy; <?php echo date('Y'); ?> Gestor Arcon Admin. Todos os direitos reservados.</p>
                 <p style="margin-top: 10px;">Founded By Renan.</p>
             </div>
         </div>

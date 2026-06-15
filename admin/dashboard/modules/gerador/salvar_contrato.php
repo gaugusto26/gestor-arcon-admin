@@ -77,7 +77,7 @@ $stmt_plano->close();
 $ano       = date('Y');
 $mes       = date('m');
 $sequencia = mt_rand(1000, 9999);
-$numero_contrato = "NTW-{$ano}{$mes}-{$sequencia}";
+$numero_contrato = "Arcon-{$ano}{$mes}-{$sequencia}";
 
 // ── 3. Salva o contrato vinculado ao plano_contratado_id ───────────────────
 $sql = "INSERT INTO contratos (

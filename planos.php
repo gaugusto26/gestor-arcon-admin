@@ -83,8 +83,8 @@ $whatsapp = getWhatsAppConfig($conn);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <link rel="shortcut icon" href="assets/image/logo2.webp" type="image/x-icon">
-    <meta name="description" content="NTW - New Software | Planos e soluções digitais para microempreendedores e empresas.">
-    <title>Planos | NTW - New Software</title>
+    <meta name="description" content="Gestor Arcon Admin | Planos de assinatura do SaaS Arcon para profissionais e empresas de climatização.">
+    <title>Planos | Gestor Arcon Admin</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -992,7 +992,7 @@ $whatsapp = getWhatsAppConfig($conn);
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div class="splash-content">
-            <img src="assets/image/logo.png" alt="NTW" class="splash-logo">
+            <img src="assets/image/logo.png" alt="Arcon" class="splash-logo">
             <div class="typing-container">
                 <span class="typing-text" id="typing-text"></span>
             </div>
@@ -1035,8 +1035,8 @@ $whatsapp = getWhatsAppConfig($conn);
     <!-- Navbar -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="assets/image/logo2.png" alt="NTW - New Software">
-            <span>NTW SOFTWARE</span>
+            <img src="assets/image/logo2.png" alt="Gestor Arcon Admin">
+            <span>ARCON ADMIN</span>
         </div>
         <div class="navbar-menu" id="navbarMenu">
             <a href="index.php">Home</a>
@@ -1090,8 +1090,8 @@ $whatsapp = getWhatsAppConfig($conn);
         <!-- Hero -->
         <section class="plans-hero">
             <div class="container">
-                <h1 class="gradient-text">Planos & Soluções</h1>
-                <p>Escolha o plano ideal para o seu negócio. Soluções digitais que entregam resultados reais.</p>
+                <h1 class="gradient-text">Planos Arcon</h1>
+                <p>Escolha o plano ideal para operar clientes, equipamentos, ordens de serviço e equipe técnica no Arcon.</p>
 
                 <!-- Profile switcher -->
                 <div class="profile-switcher">
@@ -1236,7 +1236,7 @@ $whatsapp = getWhatsAppConfig($conn);
             <div class="container">
                 <div class="section-header">
                     <h2 class="gradient-text">Fale Conosco</h2>
-                    <p>Estamos prontos para transformar suas ideias em soluções digitais reais.</p>
+                    <p>Estamos prontos para ajudar você a escolher e ativar o melhor plano do Arcon.</p>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
                     <div class="form-modern">
@@ -1281,7 +1281,7 @@ $whatsapp = getWhatsAppConfig($conn);
                             <p style="color: var(--accent-primary); margin-bottom: 15px; font-weight:600;">
                                 <i class="fas fa-share-alt" style="margin-right:8px;"></i> Redes Sociais
                             </p>
-                            <a href="https://instagram.com/newsoftwarebr" target="_blank" style="width:50px; height:50px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7); text-decoration:none; transition:0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <a href="https://instagram.com/arcon.digitalfive" target="_blank" style="width:50px; height:50px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7); text-decoration:none; transition:0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                                 <i class="fa-brands fa-instagram" style="color:white; font-size:22px;"></i>
                             </a>
                         </div>
@@ -1297,8 +1297,8 @@ $whatsapp = getWhatsAppConfig($conn);
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="assets/image/logo.png" alt="NTW">
-                    <h3>New Software</h3>
+                    <img src="assets/image/logo.png" alt="Arcon">
+                    <h3>Gestor Arcon Admin</h3>
                     <p style="color: var(--text-tertiary);">A tecnologia é a nossa paixão. Junte-se a nós e vamos revolucionar o mundo digital!</p>
                 </div>
                 
@@ -1335,7 +1335,7 @@ $whatsapp = getWhatsAppConfig($conn);
 
     <div class="social-links" style="margin-top: 20px; display: flex; justify-content: center;">
         
-        <a href="https://instagram.com/newsoftwarebr" target="_blank"
+        <a href="https://instagram.com/arcon.digitalfive" target="_blank"
            style="
                 width: 55px;
                 height: 55px;
@@ -1358,7 +1358,7 @@ $whatsapp = getWhatsAppConfig($conn);
             </div>
             
             <div class="footer-bottom">
-                <p>Copyright © 2025 NTW - New Software. Todos os direitos reservados.</p>
+                <p>Copyright © 2025 Gestor Arcon Admin. Todos os direitos reservados.</p>
                 <p style="margin-top: 10px;">Founded By Renan.</p>
             </div>
         </div>
@@ -1419,7 +1419,7 @@ $whatsapp = getWhatsAppConfig($conn);
         const progressContainer = document.getElementById('progress-container');
         const splashProgress = document.getElementById('splash-progress');
 
-        const fullText = "PLANOS NTW";
+        const fullText = "PLANOS ARCON";
         let i = 0;
         let progress = 0;
 

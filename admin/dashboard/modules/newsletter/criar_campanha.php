@@ -243,7 +243,7 @@ textarea.form-control {
                     <textarea name="conteudo" class="form-control" id="conteudo" required><?php 
                         echo $_POST['conteudo'] ?? '<h1>Olá {nome}!</h1>
                         
-<p>Fique por dentro das novidades da NTW:</p>
+<p>Fique por dentro das novidades da Arcon:</p>
 
 <h2>Últimos posts do blog:</h2>
 <ul>
@@ -316,7 +316,7 @@ function previewTemplate() {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
             <div style="text-align: center; margin-bottom: 30px;">
                 <img src="<?php echo $config['logo_url']; ?>" style="max-width: 150px;">
-                <h1 style="color: #0d47a1; margin-top: 10px;">NTW - New Software</h1>
+                <h1 style="color: #0d47a1; margin-top: 10px;">Gestor Arcon Admin</h1>
             </div>
             
             ${preview}
@@ -326,7 +326,7 @@ function previewTemplate() {
                     <a href="<?php echo $config['instagram_url']; ?>" style="color: #0d47a1; text-decoration: none; margin: 0 10px;">Instagram</a> |
                     <a href="https://wa.me/<?php echo $config['whatsapp_numero']; ?>" style="color: #0d47a1; text-decoration: none; margin: 0 10px;">WhatsApp</a>
                 </p>
-                <p>&copy; <?php echo date('Y'); ?> NTW - New Software. Todos os direitos reservados.</p>
+                <p>&copy; <?php echo date('Y'); ?> Gestor Arcon Admin. Todos os direitos reservados.</p>
             </div>
         </div>
     `;

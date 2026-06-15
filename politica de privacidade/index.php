@@ -19,7 +19,7 @@ if(!$politica) {
 }
 
 // Meta tags
-$meta_title = $politica['meta_title'] ?: 'Política de Privacidade | NTW - New Software';
+$meta_title = $politica['meta_title'] ?: 'Política de Privacidade | Gestor Arcon Admin';
 $meta_description = $politica['meta_description'] ?: 'Conheça nossa política de privacidade e saiba como protegemos seus dados.';
 ?>
 
@@ -422,8 +422,8 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
     <!-- Navbar -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="../assets/image/logo2.png" alt="NTW - New Software">
-            <span>NTW SOFTWARE</span>
+            <img src="../assets/image/logo2.png" alt="Gestor Arcon Admin">
+            <span>ARCON ADMIN</span>
         </div>
         
         <div class="navbar-menu" id="navbarMenu">
@@ -473,8 +473,8 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../assets/image/logo.png" alt="NTW">
-                    <h3>New Software</h3>
+                    <img src="../assets/image/logo.png" alt="Arcon">
+                    <h3>Gestor Arcon Admin</h3>
                     <p style="color: var(--text-tertiary);">A tecnologia é a nossa paixão. Junte-se a nós e vamos revolucionar o mundo digital!</p>
                 </div>
                 
@@ -511,7 +511,7 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
 
     <div class="social-links" style="margin-top: 20px; display: flex; justify-content: center;">
         
-        <a href="https://instagram.com/newsoftwarebr" target="_blank"
+        <a href="https://instagram.com/arcon.digitalfive" target="_blank"
            style="
                 width: 55px;
                 height: 55px;
@@ -534,7 +534,7 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
             </div>
             
             <div class="footer-bottom">
-                <p>Copyright © 2025 NTW - New Software. Todos os direitos reservados.</p>
+                <p>Copyright © 2025 Gestor Arcon Admin. Todos os direitos reservados.</p>
                 <p style="margin-top: 10px;">Founded By Renan.</p>
             </div>
         </div>

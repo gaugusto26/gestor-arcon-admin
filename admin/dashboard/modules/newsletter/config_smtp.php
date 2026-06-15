@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mail->addAddress($_SESSION['admin_email'] ?? 'universepett@gmail.com');
             
             $mail->isHTML(true);
-            $mail->Subject = 'Teste de Configuração SMTP - NTW Newsletter';
+            $mail->Subject = 'Teste de Configuração SMTP - Arcon Newsletter';
             $mail->Body    = '<h1>Teste de Conexão SMTP</h1><p>Se você está vendo este e-mail, suas configurações SMTP estão funcionando corretamente!</p>';
             
             $mail->send();

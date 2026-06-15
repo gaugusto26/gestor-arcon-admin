@@ -316,7 +316,7 @@ textarea.form-control {
                     
                     <div class="form-group">
                         <label><i class="fab fa-whatsapp"></i> Mensagem</label>
-                        <textarea name="mensagem_whatsapp" class="form-control" id="mensagem"><?php echo $config['mensagem_whatsapp'] ?? 'Olá! Gostaria de indicar a NTW para você. Use meu código {codigo} e ganhe {desconto}% de desconto! Acesse: {site_url}'; ?></textarea>
+                        <textarea name="mensagem_whatsapp" class="form-control" id="mensagem"><?php echo $config['mensagem_whatsapp'] ?? 'Olá! Gostaria de indicar a Arcon para você. Use meu código {codigo} e ganhe {desconto}% de desconto! Acesse: {site_url}'; ?></textarea>
                     </div>
                 </div>
 

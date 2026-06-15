@@ -54,7 +54,7 @@ $templates = [
     
     <!-- Footer minimalista -->
     <div style="background: #f8faff; padding: 30px; text-align: center; border-top: 1px solid #eef2f6;">
-        <p style="color: #999; font-size: 13px; margin: 0;">© {ano} NTW - New Software. Todos os direitos reservados.</p>
+        <p style="color: #999; font-size: 13px; margin: 0;">© {ano} Gestor Arcon Admin. Todos os direitos reservados.</p>
         <p style="margin-top: 15px;">
             <a href="{desinscrever_link}" style="color: #999; font-size: 13px; text-decoration: underline;">Cancelar inscrição</a>
         </p>
@@ -118,7 +118,7 @@ $templates = [
     
     <!-- Footer -->
     <div style="background: #f8faff; padding: 30px; text-align: center; border-top: 1px solid #eef2f6;">
-        <p style="color: #999; font-size: 13px;">Recebeu este e-mail porque se inscreveu no blog da NTW</p>
+        <p style="color: #999; font-size: 13px;">Recebeu este e-mail porque se inscreveu no blog da Arcon</p>
         <p style="margin-top: 10px;">
             <a href="{desinscrever_link}" style="color: #999; font-size: 13px; text-decoration: underline;">Cancelar inscrição</a>
         </p>
@@ -180,7 +180,7 @@ $templates = [
     
     <!-- Footer -->
     <div style="background: #f8faff; padding: 30px; text-align: center; border-top: 1px solid #eef2f6;">
-        <p style="color: #999; font-size: 13px;">© {ano} NTW - New Software</p>
+        <p style="color: #999; font-size: 13px;">© {ano} Gestor Arcon Admin</p>
         <p style="margin-top: 5px;">
             <a href="{desinscrever_link}" style="color: #999; font-size: 13px;">Cancelar inscrição</a>
         </p>
@@ -348,7 +348,7 @@ $templates = [
     
     <!-- Footer -->
     <div style="background: #f8faff; padding: 30px; text-align: center;">
-        <p style="color: #999; font-size: 12px;">Realização: NTW - New Software</p>
+        <p style="color: #999; font-size: 12px;">Realização: Gestor Arcon Admin</p>
         <p style="margin-top: 10px;">
             <a href="{desinscrever_link}" style="color: #999; font-size: 12px;">Cancelar inscrição</a>
         </p>
@@ -424,7 +424,7 @@ if(isset($_GET['preview'])) {
                 <!-- Header -->
                 <div style="background:linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); padding:30px; text-align:center;">
                     <img src="' . SITE_URL . '/assets/image/logo.gif" style="max-width:150px; margin-bottom:10px; border-radius:12px;">
-                    <h1 style="color:white; margin:0; font-size:24px;">NTW - New Software</h1>
+                    <h1 style="color:white; margin:0; font-size:24px;">Gestor Arcon Admin</h1>
                 </div>
                 
                 <!-- Content -->
@@ -438,7 +438,7 @@ if(isset($_GET['preview'])) {
                         <a href="' . ($config['instagram_url'] ?? '#') . '" style="color:#0d47a1; text-decoration:none; margin:0 10px;">Instagram</a> |
                         <a href="https://wa.me/' . ($config['whatsapp_numero'] ?? '5519987111656') . '" style="color:#0d47a1; text-decoration:none; margin:0 10px;">WhatsApp</a>
                     </p>
-                    <p style="margin:0;">&copy; ' . date('Y') . ' NTW - New Software. Todos os direitos reservados.</p>
+                    <p style="margin:0;">&copy; ' . date('Y') . ' Gestor Arcon Admin. Todos os direitos reservados.</p>
                     <p style="margin:5px 0 0;">
                         <a href="#" style="color:#999; text-decoration:underline;">Cancelar inscrição</a>
                     </p>
@@ -480,11 +480,11 @@ if(isset($_GET['preview_custom'])) {
             <div style="max-width:600px; margin:20px auto; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
                 <div style="background:linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); padding:30px; text-align:center;">
                     <img src="' . SITE_URL . '/assets/image/logo.png" style="max-width:150px; margin-bottom:10px;">
-                    <h1 style="color:white; margin:0; font-size:24px;">NTW - New Software</h1>
+                    <h1 style="color:white; margin:0; font-size:24px;">Gestor Arcon Admin</h1>
                 </div>
                 <div style="padding:30px;">' . $preview . '</div>
                 <div style="background:#f8f8f8; padding:20px; text-align:center; font-size:12px; color:#666;">
-                    <p>&copy; ' . date('Y') . ' NTW - New Software</p>
+                    <p>&copy; ' . date('Y') . ' Gestor Arcon Admin</p>
                 </div>
             </div>
         </body>

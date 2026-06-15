@@ -1,10 +1,10 @@
 <?php
 /**
- * FUNÇÕES DE PAGAMENTO - NTW SYSTEM
+ * FUNÇÕES DE PAGAMENTO - Arcon SYSTEM
  * Suporte: Mercado Pago e PagBank
  */
 /**
- * NTW - NEW SOFTWARE
+ * GESTOR ARCON ADMIN
  * Criar pagamento PIX baseado no gateway configurado
  */
 function criarPix($fatura_id, $conn) {

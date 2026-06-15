@@ -1127,7 +1127,7 @@ function visualizarModelo(tipo) {
         conteudo = `
             <div class="contrato-documento">
                 <div class="numero-contrato">
-                    <strong>Contrato nº:</strong> NTW-${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2,'0')}-${Math.floor(1000 + Math.random() * 9000)}
+                    <strong>Contrato nº:</strong> Arcon-${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2,'0')}-${Math.floor(1000 + Math.random() * 9000)}
                 </div>
                 
                 <h1>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE TECNOLOGIA</h1>
@@ -1135,7 +1135,7 @@ function visualizarModelo(tipo) {
                 <div class="partes">
                     <p><strong>CONTRATANTE:</strong> [NOME DO CLIENTE], inscrito no CPF/CNPJ sob nº [DOCUMENTO], residente e domiciliado à [ENDEREÇO COMPLETO], doravante denominado simplesmente CONTRATANTE.</p>
                     
-                    <p><strong>CONTRATADA:</strong> NTW - NEW SOFTWARE, pessoa jurídica de direito privado, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA], neste ato representada por seu representante legal, doravante denominada simplesmente CONTRATADA.</p>
+                    <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, pessoa jurídica de direito privado, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA], neste ato representada por seu representante legal, doravante denominada simplesmente CONTRATADA.</p>
                 </div>
                 
                 <p>As partes acima identificadas têm, entre si, justo e acordado o presente <strong>Contrato de Prestação de Serviços de Tecnologia</strong>, que se regerá pelas cláusulas seguintes e pelas condições descritas no presente instrumento.</p>
@@ -1231,7 +1231,7 @@ function visualizarModelo(tipo) {
                     </div>
                     <div class="assinatura-bloco">
                         <div class="linha-assinatura"></div>
-                        <p><strong>CONTRATADA</strong><br>NTW - NEW SOFTWARE<br>Representante: _________________</p>
+                        <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN<br>Representante: _________________</p>
                     </div>
                 </div>
                 
@@ -1249,7 +1249,7 @@ function visualizarModelo(tipo) {
         conteudo = `
             <div class="contrato-documento">
                 <div class="numero-contrato">
-                    <strong>Contrato Original nº:</strong> NTW-2025-01-1234
+                    <strong>Contrato Original nº:</strong> Arcon-2025-01-1234
                 </div>
                 
                 <h1>TERMO DE RENOVAÇÃO CONTRATUAL</h1>
@@ -1257,7 +1257,7 @@ function visualizarModelo(tipo) {
                 <div class="partes">
                     <p><strong>CONTRATANTE:</strong> [NOME DO CLIENTE], já qualificado no contrato original firmado em 15 de janeiro de 2025.</p>
                     
-                    <p><strong>CONTRATADA:</strong> NTW - NEW SOFTWARE, já qualificada.</p>
+                    <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, já qualificada.</p>
                 </div>
                 
                 <p>As partes acima identificadas resolvem, de comum acordo, <strong>RENOVAR</strong> o contrato originalmente firmado em <strong>15 de janeiro de 2025</strong>, mediante as seguintes condições:</p>
@@ -1326,7 +1326,7 @@ function visualizarModelo(tipo) {
         conteudo = `
             <div class="contrato-documento">
                 <div class="numero-contrato">
-                    <strong>Contrato Original nº:</strong> NTW-2025-01-1234
+                    <strong>Contrato Original nº:</strong> Arcon-2025-01-1234
                 </div>
                 
                 <h1>TERMO DE CANCELAMENTO CONTRATUAL</h1>
@@ -1334,7 +1334,7 @@ function visualizarModelo(tipo) {
                 <div class="partes">
                     <p><strong>CONTRATANTE:</strong> [NOME DO CLIENTE], já qualificado no contrato original.</p>
                     
-                    <p><strong>CONTRATADA:</strong> NTW - NEW SOFTWARE.</p>
+                    <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN.</p>
                 </div>
                 
                 <p>As partes acima identificadas resolvem, de comum acordo, <strong>CANCELAR</strong> o contrato firmado em <strong>15 de janeiro de 2025</strong>, mediante as seguintes condições:</p>

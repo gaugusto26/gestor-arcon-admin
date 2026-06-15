@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $smtp_pass = 'dcvj lezc qwoc yvim';
         $smtp_secure = 'tls';
         $remetente_email = 'sistemasntw@gmail.com';
-        $remetente_nome = 'NTW - New Software';
+        $remetente_nome = 'Gestor Arcon Admin';
         
         
         
@@ -343,15 +343,15 @@ function carregarTemplate(tipo) {
     let mensagem = '';
     
     if(tipo == 'boasvindas') {
-        assunto = 'Bem-vindo à NTW - New Software!';
+        assunto = 'Bem-vindo à Gestor Arcon Admin!';
         mensagem = `<h1 style="color: #4361ee;">Olá {{nome}}!</h1>
-<p>É com grande satisfação que damos as boas-vindas à NTW - New Software.</p>
+<p>É com grande satisfação que damos as boas-vindas à Gestor Arcon Admin.</p>
 <p>Estamos muito felizes em ter você conosco. Em breve você receberá mais informações sobre nossos serviços e como acessar sua área do cliente.</p>
 <p>Qualquer dúvida, estamos à disposição!</p>
-<p>Atenciosamente,<br>Equipe NTW</p>`;
+<p>Atenciosamente,<br>Equipe Arcon</p>`;
     }
     else if(tipo == 'cobranca') {
-        assunto = 'Lembrete de Pagamento - NTW';
+        assunto = 'Lembrete de Pagamento - Arcon';
         mensagem = `<h1 style="color: #4361ee;">Olá {{nome}}!</h1>
 <p>Este é um lembrete amigável sobre o pagamento da sua mensalidade.</p>
 <p><strong>Data de vencimento:</strong> 10/03/2026</p>
@@ -360,7 +360,7 @@ function carregarTemplate(tipo) {
 <p>Qualquer dúvida, estamos à disposição!</p>`;
     }
     else if(tipo == 'lembrete') {
-        assunto = 'Lembrete Importante - NTW';
+        assunto = 'Lembrete Importante - Arcon';
         mensagem = `<h1 style="color: #4361ee;">Olá {{nome}}!</h1>
 <p>Gostaríamos de lembrar que sua reunião de acompanhamento está agendada para:</p>
 <p><strong>Data:</strong> 15/03/2026</p>
@@ -369,9 +369,9 @@ function carregarTemplate(tipo) {
 <p>Confirme sua presença respondendo a este e-mail.</p>`;
     }
     else if(tipo == 'promocao') {
-        assunto = 'Oferta Especial para você! - NTW';
+        assunto = 'Oferta Especial para você! - Arcon';
         mensagem = `<h1 style="color: #4361ee;">Olá {{nome}}!</h1>
-<p>Preparamos uma oferta especial para você, cliente NTW:</p>
+<p>Preparamos uma oferta especial para você, cliente Arcon:</p>
 <div style="background: #f8faff; padding: 20px; border-radius: 10px;">
     <h2 style="color: #f97316;">20% OFF</h2>
     <p>na próxima atualização do seu sistema</p>

@@ -73,8 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <link rel="shortcut icon" href="assets/image/logo2.png" type="image/x-icon">
-    <meta name="description" content="NTW - New Software | Soluções inteligentes em desenvolvimento web, sistemas personalizados e bots com IA para transformar seu negócio.">
-    <title>NTW - New Software | Inovação Digital</title>
+    <meta name="description" content="Gestor Arcon Admin | Administração de assinaturas, contratos, clientes e pagamentos do SaaS Arcon.">
+    <title>Gestor Arcon Admin | Assinaturas do Arcon</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1200,7 +1200,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Splash Screen com Animação Gelatinha -->
     <div id="splash-screen">
         <div class="splash-content">
-            <img src="assets/image/logo.png" widht="400" alt="NTW Software" class="splash-logo">
+            <img src="assets/image/logo.png" widht="400" alt="Arcon Software" class="splash-logo">
             <div class="typing-container">
                 <span class="typing-text" id="typing-text"></span>
             </div>
@@ -1219,8 +1219,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Navbar Moderna -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="assets/image/logo2.png" alt="NTW - New Software">
-            <span>NTW SOFTWARE</span>
+            <img src="assets/image/logo2.png" alt="Gestor Arcon Admin">
+            <span>ARCON ADMIN</span>
         </div>
         
         <div class="navbar-menu" id="navbarMenu">
@@ -1266,18 +1266,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="container">
                 <div class="grid-2" style="align-items: center;">
                     <div>
-                        <h1 class="gradient-text" style="font-size: 4.5rem; margin-bottom: 20px;">Inovação Digital</h1>
-                        <p style="font-size: 1.3rem; margin-bottom: 30px;">Transforme sua presença online com soluções criativas e inovadoras. Vamos juntos revolucionar seu negócio!</p>
+                        <h1 class="gradient-text" style="font-size: 4.5rem; margin-bottom: 20px;">Gestor Arcon Admin</h1>
+                        <p style="font-size: 1.3rem; margin-bottom: 30px;">Controle assinaturas, contratos, faturas e clientes do SaaS Arcon em um painel administrativo dedicado.</p>
                         <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                            <a href="#planos" class="btn btn-primary">Explore Agora</a>
-                            <a href="#sobre-nos" class="btn btn-outline">Conheça Nossa História</a>
+                            <a href="#planos" class="btn btn-primary">Ver Planos</a>
+                            <a href="admin/" class="btn btn-outline">Acessar Admin</a>
                         </div>
                     </div>
                     <div>
                         <div class="card-modern" style="border-radius: 30px; padding: 40px;">
                             <div style="font-size: 3rem; color: var(--accent-primary); margin-bottom: 20px;">✓</div>
-                            <h4 style="margin-bottom: 15px;">Soluções que funcionam</h4>
-                            <p style="color: var(--text-secondary);">A New Software é sua parceira ideal para criar sites incríveis e bots inteligentes que vão revolucionar seu negócio.</p>
+                            <h4 style="margin-bottom: 15px;">Administração do SaaS</h4>
+                            <p style="color: var(--text-secondary);">O Gestor Arcon Admin concentra contratos, planos, pagamentos e portal do cliente, separado do aplicativo operacional Arcon.</p>
                         </div>
                     </div>
                 </div>
@@ -1321,7 +1321,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="grid-2" style="align-items: center; gap: 50px;">
                     <div>
                         <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 30px;" id="sobre-nos">O Que Fazemos</h2>
-                        <p style="font-size: 1.2rem; margin-bottom: 30px;">Desenvolvemos experiências digitais que encantam, engajam e geram resultados reais para o seu negócio. Nossos sites, sistemas e bots com inteligência artificial podem transformar sua empresa, aumentando a eficiência em até <strong style="color: var(--accent-primary);">90% a 100%.</strong></p>
+                        <p style="font-size: 1.2rem; margin-bottom: 30px;">Centralize o ciclo comercial do Arcon: planos, clientes, contratos, cobranças, faturas e acesso ao portal do cliente em um ambiente separado do app operacional.</p>
                     </div>
                     <div>
                         <img src="assets/image/computadores.jpg" alt="Tecnologia" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px var(--shadow-color);">
@@ -1337,7 +1337,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 70% 30%, var(--accent-primary) 0%, transparent 70%); opacity: 0.1;"></div>
                     <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 20px; position: relative;">Conheça Nossos Planos</h2>
                     <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; position: relative;">Soluções digitais sob medida para acelerar o crescimento da sua empresa com tecnologia de ponta.</p>
-                    <p style="max-width: 800px; margin: 0 auto 40px; color: var(--text-secondary); position: relative;">Desenvolvemos sites profissionais, sistemas inteligentes e bots com inteligência artificial para transformar a operação da sua empresa. Nossas soluções aumentam a performance do seu negócio em até <strong style="color: var(--accent-primary);">90% a 100%</strong>, com foco em inovação, segurança e crescimento real.</p>
+                    <p style="max-width: 800px; margin: 0 auto 40px; color: var(--text-secondary); position: relative;">O Gestor Arcon Admin organiza a gestão comercial do SaaS: cadastro de clientes, planos contratados, contratos digitais, pagamentos e acompanhamento de inadimplência.</p>
                     <a href="planos.php" class="btn btn-primary" style="position: relative; padding: 16px 48px; font-size: 1.2rem;">Saiba mais</a>
                 </div>
             </div>
@@ -1355,7 +1355,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <img src="assets/image/robo.jpg" alt="Sobre Nós" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px var(--shadow-color);">
                     </div>
                     <div>
-                        <p style="font-size: 1.1rem; margin-bottom: 30px;">Na New Software, transformamos suas ideias em realidade digital. Desenvolvemos soluções completas, como automações, sistemas personalizados e sites inovadores, projetados para otimizar processos e proporcionar uma experiência única aos seus usuários.</p>
+                        <p style="font-size: 1.1rem; margin-bottom: 30px;">No Gestor Arcon Admin, a operação comercial fica separada do Arcon de campo. Assim o SaaS mantém cobrança, contratos e assinaturas em um painel próprio.</p>
                         <a href="#" class="btn btn-primary">Saiba Mais</a>
                     </div>
                 </div>
@@ -1367,10 +1367,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="container">
                 <div style="text-align: center; max-width: 900px; margin: 0 auto;">
                     <h2 class="gradient-text" style="font-size: 3rem; margin-bottom: 30px;">Por Que Escolher Nossa Empresa?</h2>
-                    <p style="font-size: 1.2rem; margin-bottom: 40px;">Somos uma equipe altamente especializada, focada em tecnologia e inovação. Com um compromisso constante em oferecer soluções de excelência, estamos prontos para ajudar sua empresa a alcançar novos patamares.</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 40px;">O painel foi preparado para administrar assinaturas do Arcon com clareza: clientes, contratos, planos, faturas, pagamentos e suporte ao assinante.</p>
                     <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
                         <img src="assets/image/logo.png" alt="Equipe" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-primary);">
-                        <span style="font-weight: 600;">NTW - NEW SOFTWARE</span>
+                        <span style="font-weight: 600;">GESTOR ARCON ADMIN</span>
                     </div>
                 </div>
             </div>
@@ -1405,7 +1405,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <h2 class="gradient-text" style="font-size: 3rem;">Novidades Recentes</h2>
                     </div>
                     <div>
-                        <p style="font-size: 1.2rem;">Fique por dentro das últimas inovações e lançamentos da New Software!</p>
+                        <p style="font-size: 1.2rem;">Acompanhe novidades, comunicados e melhorias da plataforma Arcon.</p>
                     </div>
                 </div>
                 
@@ -1459,7 +1459,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span>+</span>
                         </div>
                         <div class="accordion-content">
-                            <p>Oferecemos soluções completas em sistemas personalizados, bots inteligentes (IA) e criação de sites responsivos. Nossas soluções são desenvolvidas sob medida para atender às necessidades específicas de cada cliente.</p>
+                            <p>Gerencie planos, contratos, pagamentos e clientes em um painel dedicado ao controle comercial do SaaS Arcon.</p>
                         </div>
                     </div>
                     
@@ -1544,7 +1544,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="service-content">
                             <p class="service-tag">Bots</p>
                             <h3>Inteligência Artificial</h3>
-                            <p>Criamos bots inteligentes que automatizam processos, proporcionando mais eficiência e permitindo foco no que realmente importa.</p>
+                            <p>Automatize acompanhamento de assinaturas, vencimentos, contratos e status comercial dos clientes Arcon.</p>
                         </div>
                     </div>
 
@@ -1568,7 +1568,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div style="position: relative; z-index: 2; padding: 100px 0; text-align: center;">
                 <div class="container">
                     <h2 style="font-size: 4rem; margin-bottom: 20px;" class="gradient-text">Transforme Seu Mundo Digital</h2>
-                    <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 40px;">Na New Software, a inovação é o nosso lema. Venha descobrir o futuro dos serviços web!</p>
+                    <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 40px;">Use o Gestor Arcon Admin para cuidar da assinatura; use o Arcon para a operação em campo.</p>
                     <a href="#contato" class="btn btn-primary" style="padding: 16px 48px; font-size: 1.2rem;">Comece Agora</a>
                 </div>
             </div>
@@ -1581,7 +1581,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div>
                         <div style="text-align: left; margin-bottom: 40px;">
                             <h2 class="gradient-text" style="font-size: 3rem;" id="mensagem">Fale Conosco</h2>
-                            <p style="font-size: 1.2rem;">Estamos prontos para ouvir suas ideias e transformar em soluções digitais. Entre em contato e vamos conversar!</p>
+                            <p style="font-size: 1.2rem;">Fale com o suporte para dúvidas sobre contratação, assinatura, pagamento ou acesso ao Arcon.</p>
                         </div>
                         
                         <div class="form-modern">
@@ -1643,7 +1643,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </p>
 
             <div class="social-links" style="display:flex; justify-content:center;">
-                <a href="https://instagram.com/newsoftwarebr" target="_blank"
+                <a href="https://instagram.com/arcon.digitalfive" target="_blank"
                    style="
                         width:50px;
                         height:50px;
@@ -1676,8 +1676,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="assets/image/logo.png" alt="NTW">
-                    <h3>New Software</h3>
+                    <img src="assets/image/logo.png" alt="Arcon">
+                    <h3>Gestor Arcon Admin</h3>
                     <p style="color: var(--text-tertiary);">A tecnologia é a nossa paixão. Junte-se a nós e vamos revolucionar o mundo digital!</p>
                 </div>
                 
@@ -1714,7 +1714,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="social-links" style="margin-top: 20px; display: flex; justify-content: center;">
         
-        <a href="https://instagram.com/newsoftwarebr" target="_blank"
+        <a href="https://instagram.com/arcon.digitalfive" target="_blank"
            style="
                 width: 55px;
                 height: 55px;
@@ -1737,7 +1737,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <div class="footer-bottom">
-                <p>Copyright © 2025 NTW - New Software. Todos os direitos reservados.</p>
+                <p>Copyright © 2025 Gestor Arcon Admin. Todos os direitos reservados.</p>
                 <p style="margin-top: 10px;">Founded By Renan.</p>
             </div>
         </div>

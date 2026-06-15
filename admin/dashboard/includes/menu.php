@@ -38,7 +38,7 @@ $menu_items = [
         ]
     ],
     'others' => [
-        'titulo' => 'Others',
+        'titulo' => 'Outros',
         'itens' => [
             ['nome' => 'Total de usuarios newsletter','icone' => 'fa-users',         'link' => '#', 'badge' => '1.2k'],
             ['nome' => 'Relatório dos usuarios',      'icone' => 'fa-chart-pie',     'link' => '#', 'badge' => ''],
@@ -194,8 +194,8 @@ $menu_items = [
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="logo-area">
-            <div class="logo">N</div>
-            <span class="logo-text">NTW Admin</span>
+            <div class="logo">A</div>
+            <span class="logo-text">Arcon Admin</span>
         </div>
     </div>
 

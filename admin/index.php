@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin | NTW</title>
+    <title>Login Admin | Arcon</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -364,9 +364,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="login-card">
             <!-- Header -->
             <div class="login-header">
-                <img src="../assets/image/logo.png" alt="NTW" class="logo">
+                <img src="../assets/image/logo.png" alt="Arcon" class="logo">
                 <h1>Acesso Administrativo</h1>
-                <p>NTW - New Software</p>
+                <p>Gestor Arcon Admin</p>
             </div>
 
             <!-- IP Info -->
