@@ -95,9 +95,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login do Cliente | Arcon</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Login do Cliente | Digital Five</title>
+    <link rel="icon" type="image/png" href="/assets/image/logo_quadrada.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
@@ -108,8 +108,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #66aaea 0%, #4b74a2 100%);
+            font-family: 'Inter', 'Manrope', 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #081b3a 0%, #0b5cff 52%, #6c5ce7 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -149,18 +149,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         .logo {
             width: 100px;
             height: 100px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #66baea 0%, #4b67a2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 28px;
             margin: 0 auto 20px;
-            box-shadow: 0 15px 30px rgba(102,126,234,0.3);
-        }
-
-        .logo i {
-            font-size: 50px;
-            color: white;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 15px 30px rgba(11,92,255,0.2);
         }
 
         .logo-area h1 {
@@ -211,7 +204,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .form-group label i {
-            color: #667eea;
+            color: #0b5cff;
             margin-right: 8px;
             width: 20px;
         }
@@ -237,7 +230,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .input-group .toggle-password:hover {
-            color: #667eea;
+            color: #0b5cff;
         }
 
         .form-control {
@@ -253,13 +246,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         .form-control:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #0b5cff;
             background: #ffffff;
             box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
         }
 
         .form-control:focus + i {
-            color: #667eea;
+            color: #0b5cff;
         }
 
         .form-options {
@@ -280,7 +273,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 18px;
             height: 18px;
             cursor: pointer;
-            accent-color: #667eea;
+            accent-color: #0b5cff;
         }
 
         .remember-me span {
@@ -289,7 +282,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .forgot-password {
-            color: #667eea;
+            color: #0b5cff;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
@@ -304,7 +297,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         .btn-login {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #669fea 0%, #4b71a2 100%);
+            background: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             color: white;
             border: none;
             border-radius: 16px;
@@ -338,7 +331,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .register-link a {
-            color: #667eea;
+            color: #0b5cff;
             text-decoration: none;
             font-weight: 600;
             margin-left: 5px;
@@ -380,7 +373,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             align-items: center;
             justify-content: center;
             margin: 0 auto 10px;
-            color: #667eea;
+            color: #0b5cff;
             font-size: 18px;
         }
 
@@ -401,16 +394,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/arcon-identity.css">
 </head>
 <body>
     <div class="login-container">
         <div class="login-card">
             <div class="logo-area">
-                <div class="logo">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
+                <img src="/assets/image/logo_quadrada.png" alt="Digital Five" class="logo">
                 <h1>Área do Cliente</h1>
-                <p>Faça login para acessar sua conta</p>
+                <p>Digital Five</p>
             </div>
             
             <?php if($erro): ?>
@@ -471,17 +463,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <span>Suporte</span>
                 </div>
-            </div>
-            <div class="feature-item">
+                <div class="feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-desktop"></i>
                     </div>
-                    <center><span>Sistemas</span></center>
+                    <span>Sistemas</span>
                 </div>
-            
+            </div>
+
             <div class="register-link">
                 Ainda não tem conta?
-                <a href="contato.php">Solicite um orçamento</a>
+                <a href="https://wa.me/5517992347622?text=Ol%C3%A1%2C%20quero%20come%C3%A7ar%20a%20usar%20o%20ARCON!" target="_blank">Começar grátis</a>
+            </div>
+
+            <div style="display:flex; gap:10px; justify-content:center; margin-top:20px; padding-top:18px; border-top:1px solid #e2e8f0;">
+                <a href="https://digitalfive.com.br" style="color:#64748b; font-size:13px; text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s;" onmouseover="this.style.color='#0b5cff'" onmouseout="this.style.color='#64748b'">
+                    <i class="fas fa-arrow-left"></i> Voltar ao site
+                </a>
+                <span style="color:#e2e8f0;">|</span>
+                <a href="/admin/" style="color:#64748b; font-size:13px; text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s;" onmouseover="this.style.color='#0b5cff'" onmouseout="this.style.color='#64748b'">
+                    <i class="fas fa-shield-alt"></i> Acesso Admin
+                </a>
             </div>
         </div>
     </div>

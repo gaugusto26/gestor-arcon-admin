@@ -245,7 +245,7 @@ textarea.conteudo-editor {
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #0a4fe0;
     transform: translateY(-2px);
 }
 
@@ -392,7 +392,7 @@ textarea.conteudo-editor {
                 <div class="form-grid">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Autor</label>
-                        <input type="text" name="autor" class="form-control" value="<?php echo $_POST['autor'] ?? 'Renan'; ?>">
+                        <input type="text" name="autor" class="form-control" value="<?php echo $_POST['autor'] ?? 'Guilherme'; ?>">
                     </div>
                     
                     <div class="form-group">

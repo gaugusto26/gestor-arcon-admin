@@ -1,0 +1,159 @@
+/* Identidade visual ARCON / Digital Five, alinhada com a LP em React. */
+:root {
+    --arcon-primary: #0b5cff;
+    --arcon-navy: #081b3a;
+    --arcon-purple: #6c5ce7;
+    --arcon-success: #25d366;
+    --arcon-surface: #f8fafd;
+    --arcon-muted: #64748b;
+    --arcon-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
+    --arcon-soft-gradient: linear-gradient(135deg, rgba(11, 92, 255, .10) 0%, rgba(108, 92, 231, .08) 100%);
+    --arcon-page-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafd 58%, #eef4ff 100%);
+    --arcon-dark-gradient: linear-gradient(135deg, #081b3a 0%, #0d2447 58%, #122f5b 100%);
+    --arcon-border: rgba(8, 27, 58, .10);
+    --arcon-shadow: 0 16px 42px rgba(8, 27, 58, .10);
+
+    --bg-primary: var(--arcon-surface);
+    --bg-secondary: #ffffff;
+    --text-primary: var(--arcon-navy);
+    --text-secondary: #31506f;
+    --text-tertiary: #64748b;
+    --text-muted: var(--arcon-muted);
+    --accent: var(--arcon-primary);
+    --accent-primary: var(--arcon-primary);
+    --accent-secondary: var(--arcon-purple);
+    --accent-gradient: var(--arcon-gradient);
+    --accent-light: #e8f0ff;
+    --card-bg: rgba(255, 255, 255, .96);
+    --card-border: var(--arcon-border);
+    --card-hover-border: rgba(11, 92, 255, .25);
+    --navbar-bg: rgba(255, 255, 255, .95);
+    --navbar-border: var(--arcon-border);
+    --footer-bg: rgba(255, 255, 255, .95);
+    --footer-border: var(--arcon-border);
+    --input-focus-border: var(--arcon-primary);
+    --shadow-color: rgba(8, 27, 58, .10);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #081b3a;
+    --bg-secondary: #0d2447;
+    --text-primary: #ffffff;
+    --text-secondary: #c8d8ed;
+    --text-tertiary: #89a4c4;
+    --text-muted: #91a3bd;
+    --accent: #0b5cff;
+    --accent-primary: #0b5cff;
+    --accent-secondary: #6c5ce7;
+    --accent-gradient: var(--arcon-gradient);
+    --accent-light: rgba(11, 92, 255, .18);
+    --card-bg: rgba(15, 26, 43, .92);
+    --card-border: rgba(255, 255, 255, .10);
+    --card-hover-border: rgba(11, 92, 255, .45);
+    --navbar-bg: rgba(8, 27, 58, .94);
+    --navbar-border: rgba(255, 255, 255, .10);
+    --footer-bg: rgba(8, 27, 58, .96);
+    --footer-border: rgba(255, 255, 255, .10);
+    --shadow-color: rgba(0, 0, 0, .30);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Manrope', 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+}
+
+img[alt="Digital Five"] {
+    object-fit: cover;
+}
+
+.logo-text,
+.sb-brand,
+.brand span,
+.nav-brand span,
+.navbar-brand span {
+    color: var(--arcon-navy);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+[data-theme="dark"] .logo-text,
+[data-theme="dark"] .sb-brand,
+[data-theme="dark"] .brand span,
+[data-theme="dark"] .nav-brand span,
+[data-theme="dark"] .navbar-brand span {
+    color: #ffffff;
+}
+
+.btn,
+.btn-primary,
+.btn-filtro,
+.submit-btn,
+.login-btn,
+.cta-button,
+.whatsapp-btn,
+button[type="submit"] {
+    background: var(--arcon-gradient);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 12px 26px rgba(11, 92, 255, .18);
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-filtro:hover,
+.submit-btn:hover,
+.login-btn:hover,
+.cta-button:hover,
+.whatsapp-btn:hover,
+button[type="submit"]:hover {
+    filter: brightness(1.03);
+    box-shadow: 0 16px 32px rgba(11, 92, 255, .24);
+}
+
+.card,
+.stat-card,
+.chart-card,
+.post-card,
+.sidebar-card,
+.filtros-box,
+.table-container,
+.form-card,
+.content-card,
+.login-card {
+    border-color: var(--card-border);
+    box-shadow: var(--arcon-shadow);
+}
+
+.theme-toggle i,
+.theme-tog i,
+.menu-item.active,
+.sb-link.active,
+.page-title i,
+.section-title i {
+    color: var(--arcon-primary);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--arcon-primary);
+    box-shadow: 0 0 0 3px rgba(11, 92, 255, .10);
+    outline: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0b5cff, #6c5ce7);
+}
+
+* {
+    scrollbar-color: #0b5cff transparent;
+}

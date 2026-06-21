@@ -973,7 +973,7 @@ function visualizarModelo(tipo) {
             }
             
             .contrato-documento strong {
-                color: #0d47a1;
+                color: #0b5cff;
                 font-weight: 700;
             }
             
@@ -1095,7 +1095,7 @@ function visualizarModelo(tipo) {
             
             .contrato-documento .quadro-valores td:last-child {
                 text-align: right;
-                color: #0d47a1;
+                color: #0b5cff;
                 font-weight: bold;
             }
             

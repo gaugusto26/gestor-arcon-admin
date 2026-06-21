@@ -1,14 +1,13 @@
 <?php
-$page_title = 'Editar Post';
-require_once '../../includes/header.php';
-require_once '../../includes/menu.php';
-require_once 'config.php';
-
-// Verifica ID
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
     exit;
 }
+
+$page_title = 'Editar Post';
+require_once '../../includes/header.php';
+require_once '../../includes/menu.php';
+require_once 'config.php';
 
 $id = $_GET['id'];
 
@@ -251,7 +250,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="form-grid">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Autor</label>
-                        <input type="text" name="autor" class="form-control" value="<?php echo $post['autor'] ?? 'Renan'; ?>">
+                        <input type="text" name="autor" class="form-control" value="<?php echo $post['autor'] ?? 'Guilherme'; ?>">
                     </div>
                     
                     <div class="form-group">

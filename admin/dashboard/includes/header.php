@@ -10,8 +10,9 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $page_title ?? 'Dashboard'; ?> | Arcon Admin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title><?php echo $page_title ?? 'Dashboard'; ?> | Digital Five</title>
+    <link rel="icon" type="image/png" href="/assets/image/logo_quadrada.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
@@ -27,8 +28,10 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
             --text-primary: #1e293b;
             --text-secondary: #64748b;
             --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-light: #dbeafe;
+            --accent: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
+            --accent-light: #e8f0ff;
             --border: #e2e8f0;
             --hover: #f1f5f9;
             --card-bg: #ffffff;
@@ -43,7 +46,9 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
-            --accent: #3b82f6;
+            --accent: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --accent-light: #1e293b;
             --border: #334155;
             --hover: #2d3a4f;
@@ -53,7 +58,7 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Manrope', 'Plus Jakarta Sans', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             transition: background-color 0.3s ease;
@@ -102,13 +107,8 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
+            object-fit: cover;
+            flex-shrink: 0;
         }
 
         .logo-text {
@@ -161,7 +161,7 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            background: var(--accent-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -381,6 +381,7 @@ $tema = $_COOKIE['admin_theme'] ?? 'light';
             }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/arcon-identity.css">
 </head>
 <body data-theme="<?php echo $tema; ?>">
     <div class="dashboard">

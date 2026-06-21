@@ -41,14 +41,14 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
     $smtp_pass = 'dcvj lezc qwoc yvim'; 
     $smtp_secure = 'tls';
     $remetente_email = 'sistemasntw@gmail.com';
-    $remetente_nome = 'Gestor Arcon Admin';
+    $remetente_nome = 'Digital Five';
     
     $site_url = 'http://localhost';
     $logo_url = $site_url . '/assets/image/logo.gif';
     $ano = date('Y');
     
     // Template de e-mail moderno
-    $assunto = "Bem-vindo à Gestor Arcon Admin!";
+    $assunto = "Bem-vindo à Digital Five!";
     
     $mensagem = '
     <!DOCTYPE html>
@@ -390,7 +390,7 @@ function enviarEmailBoasVindas($cliente_id, $senha_original) {
                     </a>
                 </div>
                 
-                <p>© ' . $ano . ' Gestor Arcon Admin. Todos os direitos reservados.</p>
+                <p>© ' . $ano . ' Digital Five. Todos os direitos reservados.</p>
                 <p>
                     <a href="' . $site_url . '/politica.php">Política de Privacidade</a> | 
                     <a href="' . $site_url . '/termos.php">Termos de Uso</a>
@@ -443,7 +443,7 @@ function enviarEmailNovaSenha($email, $nome, $nova_senha) {
     $smtp_pass = 'dcvj lezc qwoc yvim'; // COLOQUE A SENHA DO SEU E-MAIL AQUI
     $smtp_secure = 'tls';
     $remetente_email = 'sistemasntw@gmail.com';
-    $remetente_nome = 'Gestor Arcon Admin';
+    $remetente_nome = 'Digital Five';
     
     $site_url = 'http://localhost';
     
@@ -552,7 +552,7 @@ function enviarEmailNovaSenha($email, $nome, $nova_senha) {
                 <p style="color: #666; font-size: 14px;">Se você não solicitou esta alteração, entre em contato com nosso suporte imediatamente.</p>
             </div>
             <div class="footer">
-                <p>© ' . date('Y') . ' Gestor Arcon Admin</p>
+                <p>© ' . date('Y') . ' Digital Five</p>
             </div>
         </div>
     </body>

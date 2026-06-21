@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../config.php';
 
 if(isset($_SESSION['cliente_id'])) {
@@ -9,8 +8,31 @@ if(isset($_SESSION['cliente_id'])) {
     $log->execute();
 }
 
-// Destrói a sessão
-session_destroy();
+if (!empty($_SESSION['admin_impersonando_cliente'])) {
+    $return_url = $_SESSION['admin_return_url'] ?? '/admin/dashboard/modules/clientes/gerenciar.php';
+
+    unset(
+        $_SESSION['cliente_id'],
+        $_SESSION['cliente_nome'],
+        $_SESSION['cliente_email'],
+        $_SESSION['cliente_username'],
+        $_SESSION['admin_impersonando_cliente'],
+        $_SESSION['admin_impersonador_id'],
+        $_SESSION['admin_impersonador_nome'],
+        $_SESSION['admin_impersonacao_started_at'],
+        $_SESSION['admin_return_url']
+    );
+
+    header('Location: ' . $return_url);
+    exit;
+}
+
+unset(
+    $_SESSION['cliente_id'],
+    $_SESSION['cliente_nome'],
+    $_SESSION['cliente_email'],
+    $_SESSION['cliente_username']
+);
 
 // Redireciona para o login
 header('Location: login.php');

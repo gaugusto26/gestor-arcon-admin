@@ -59,8 +59,8 @@ $menu_items = [
 <aside class="sidebar" id="sidebar">
 
     <div class="sb-head">
-        <div class="sb-mark">CP</div>
-        <span class="sb-brand">ClientPanel</span>
+        <img src="/assets/image/logo_quadrada.png" alt="Digital Five" class="sb-mark" style="width:37px;height:37px;border-radius:11px;object-fit:cover;flex-shrink:0;">
+        <span class="sb-brand">Digital Five</span>
     </div>
 
     <div class="sb-prof">

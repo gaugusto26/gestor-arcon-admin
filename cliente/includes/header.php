@@ -39,9 +39,9 @@ $faturas_pendentes = $conn->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title><?php echo htmlspecialchars($page_title ?? 'Dashboard'); ?> | Área do Cliente</title>
-
+    <link rel="icon" type="image/png" href="/assets/image/logo_quadrada.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -86,7 +86,7 @@ $faturas_pendentes = $conn->query("
         --sb-c:   66px;
         --top-h:  66px;
         /* type */
-        --font: 'Plus Jakarta Sans', sans-serif;
+        --font: 'Inter', 'Plus Jakarta Sans', sans-serif;
         --mono: 'DM Mono', monospace;
         --ease: cubic-bezier(.4,0,.2,1);
         --tr:   all .24s var(--ease);
@@ -347,6 +347,63 @@ $faturas_pendentes = $conn->query("
     .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:299; backdrop-filter:blur(3px); }
     .overlay.show { display:block; }
 
+    .admin-bridge-banner {
+        position: fixed;
+        top: 0;
+        left: var(--sb-w);
+        right: 0;
+        z-index: 700;
+        min-height: 48px;
+        padding: 10px 22px;
+        background: #081b3a;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid rgba(255,255,255,.14);
+        transition: left .26s var(--ease);
+    }
+
+    .admin-bridge-active .main {
+        padding-top: 48px;
+    }
+
+    .admin-bridge-banner strong {
+        font-weight: 800;
+    }
+
+    .admin-bridge-copy {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: .86rem;
+        line-height: 1.4;
+    }
+
+    .admin-bridge-copy i {
+        color: #8fb3ff;
+    }
+
+    .admin-bridge-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 13px;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #0b5cff;
+        font-size: .8rem;
+        font-weight: 800;
+        white-space: nowrap;
+        transition: var(--tr);
+    }
+
+    .admin-bridge-action:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+
     /* ══════════════════════════════════════════════════════════════════
        CONTENT AREA (shared classes reused by all pages)
     ══════════════════════════════════════════════════════════════════ */
@@ -484,6 +541,7 @@ $faturas_pendentes = $conn->query("
         .sidebar.mob-open { transform:translateX(0); box-shadow:var(--sh2); }
         .sb-tog  { left:0 !important; }
         .sidebar.mob-open ~ .sb-tog { left:var(--sb-w) !important; }
+        .admin-bridge-banner { left:0; flex-direction:column; align-items:flex-start; }
         .main    { margin-left:0 !important; }
         .content { padding:14px; }
         .topbar  { padding:0 14px; }
@@ -502,7 +560,23 @@ $faturas_pendentes = $conn->query("
         .stat-val     { font-size:1.3rem; }
     }
     </style>
+    <link rel="stylesheet" href="/assets/css/arcon-identity.css">
 </head>
-<body>
+<body class="<?php echo !empty($_SESSION['admin_impersonando_cliente']) ? 'admin-bridge-active' : ''; ?>">
 <div class="dash" id="app">
 <div class="overlay" id="overlay"></div>
+<?php if (!empty($_SESSION['admin_impersonando_cliente'])): ?>
+<div class="admin-bridge-banner">
+    <div class="admin-bridge-copy">
+        <i class="fas fa-user-shield"></i>
+        <span>
+            <strong>Visualização integrada Digital Five + ARCON:</strong>
+            você está acessando como <?php echo htmlspecialchars($cliente['nome'] ?? 'cliente'); ?>.
+        </span>
+    </div>
+    <a href="/cliente/logout.php" class="admin-bridge-action">
+        <i class="fas fa-arrow-left"></i>
+        Voltar ao admin
+    </a>
+</div>
+<?php endif; ?>

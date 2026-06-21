@@ -12,7 +12,17 @@
     const sbBtn   = document.getElementById('sbTogBtn');
     const main    = document.querySelector('.main');
     const overlay = document.getElementById('overlay');
+    const adminBanner = document.querySelector('.admin-bridge-banner');
     const isMob   = () => window.innerWidth <= 768;
+
+    function syncAdminBanner() {
+        if (!adminBanner || !sidebar) return;
+        if (isMob()) {
+            adminBanner.style.left = '0';
+            return;
+        }
+        adminBanner.style.left = sidebar.classList.contains('collapsed') ? 'var(--sb-c)' : 'var(--sb-w)';
+    }
 
     // ── Sidebar ───────────────────────────────────────────────────────
     function openMob() {
@@ -20,18 +30,21 @@
         overlay.classList.add('show');
         // shift toggle pill next to sidebar edge
         sbTog.style.left = 'var(--sb-w)';
+        syncAdminBanner();
     }
 
     function closeMob() {
         sidebar.classList.remove('mob-open');
         overlay.classList.remove('show');
         sbTog.style.left = '0';
+        syncAdminBanner();
     }
 
     function toggleDesktop() {
         const col = sidebar.classList.toggle('collapsed');
         if (main) main.classList.toggle('expanded', col);
         sbTog.classList.toggle('collapsed', col);
+        syncAdminBanner();
     }
 
     sbBtn.addEventListener('click', () => {
@@ -46,7 +59,10 @@
 
     window.addEventListener('resize', () => {
         if (!isMob()) closeMob();
+        syncAdminBanner();
     });
+
+    syncAdminBanner();
 
     // ── User dropdown ─────────────────────────────────────────────────
     const userBtn  = document.getElementById('userBtn');

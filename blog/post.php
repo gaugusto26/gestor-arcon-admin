@@ -107,7 +107,7 @@ $whatsapp = getWhatsAppConfig($conn);
 // Meta tags para SEO
 $meta_title = $post['meta_title'] ?: $post['titulo'] . ' | Arcon Blog';
 $meta_description = $post['meta_description'] ?: $post['resumo'] ?: substr(strip_tags($post['conteudo']), 0, 160);
-$meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image/logo2.png';
+$meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image/logo_quadrada.png';
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +139,7 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
     <meta property="twitter:description" content="<?php echo $meta_description; ?>">
     <meta property="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST']; ?>/<?php echo $meta_image; ?>">
     
-    <link rel="shortcut icon" href="../assets/image/logo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/image/logo_quadrada.png" type="image/x-icon">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -159,26 +159,26 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
 
         :root {
             --bg-primary: #ffffff;
-            --bg-secondary: #f0f7ff;
-            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f7ff 50%, #e3f2fd 100%);
-            --text-primary: #0d47a1;
-            --text-secondary: #1565c0;
-            --text-tertiary: #1976d2;
-            --accent-primary: #0d47a1;
-            --accent-secondary: #1976d2;
-            --accent-gradient: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            --bg-secondary: #f8fafd;
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafd 58%, #eef4ff 100%);
+            --text-primary: #081b3a;
+            --text-secondary: #31506f;
+            --text-tertiary: #64748b;
+            --accent-primary: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
-            --card-border: rgba(13, 71, 161, 0.1);
-            --card-hover-border: rgba(13, 71, 161, 0.3);
+            --card-border: rgba(8, 27, 58, 0.1);
+            --card-hover-border: rgba(11, 92, 255, 0.3);
             --navbar-bg: rgba(255, 255, 255, 0.95);
-            --navbar-border: rgba(13, 71, 161, 0.2);
+            --navbar-border: rgba(8, 27, 58, 0.1);
             --input-bg: #ffffff;
-            --input-border: rgba(13, 71, 161, 0.2);
-            --input-focus-border: #0d47a1;
+            --input-border: rgba(8, 27, 58, 0.14);
+            --input-focus-border: #0b5cff;
             --footer-bg: rgba(255, 255, 255, 0.95);
-            --footer-border: rgba(13, 71, 161, 0.2);
-            --shadow-color: rgba(13, 71, 161, 0.1);
-            --binary-color: rgba(13, 71, 161, 0.08);
+            --footer-border: rgba(8, 27, 58, 0.1);
+            --shadow-color: rgba(8, 27, 58, 0.1);
+            --binary-color: rgba(11, 92, 255, 0.05);
             --btn-text: #ffffff;
             --code-bg: #1e1e1e;
             --code-color: #d4d4d4;
@@ -190,22 +190,22 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
             --bg-gradient: linear-gradient(135deg, #0a0f1c 0%, #0f1a2b 50%, #1a2639 100%);
             --text-primary: #ffffff;
             --text-secondary: #90caf9;
-            --text-tertiary: #64b5f6;
-            --accent-primary: #42a5f5;
-            --accent-secondary: #64b5f6;
-            --accent-gradient: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%);
+            --text-tertiary: #6c5ce7;
+            --accent-primary: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --card-bg: rgba(15, 26, 43, 0.9);
-            --card-border: rgba(66, 165, 245, 0.2);
-            --card-hover-border: rgba(66, 165, 245, 0.5);
+            --card-border: rgba(11, 92, 255, 0.2);
+            --card-hover-border: rgba(11, 92, 255, 0.5);
             --navbar-bg: rgba(10, 15, 28, 0.95);
-            --navbar-border: rgba(66, 165, 245, 0.3);
+            --navbar-border: rgba(11, 92, 255, 0.3);
             --input-bg: rgba(15, 26, 43, 0.9);
-            --input-border: rgba(66, 165, 245, 0.2);
-            --input-focus-border: #42a5f5;
+            --input-border: rgba(11, 92, 255, 0.2);
+            --input-focus-border: #0b5cff;
             --footer-bg: rgba(10, 15, 28, 0.95);
-            --footer-border: rgba(66, 165, 245, 0.3);
+            --footer-border: rgba(11, 92, 255, 0.3);
             --shadow-color: rgba(0, 0, 0, 0.3);
-            --binary-color: rgba(66, 165, 245, 0.06);
+            --binary-color: rgba(11, 92, 255, 0.06);
             --btn-text: #ffffff;
             --code-bg: #2d2d2d;
             --code-color: #e6e6e6;
@@ -941,7 +941,7 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
         .form-control:focus {
             outline: none;
             border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+            box-shadow: 0 0 0 3px rgba(11, 92, 255, 0.1);
         }
 
         textarea.form-control {
@@ -1255,6 +1255,7 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
             .comentario-texto { margin-left: 0; }
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/arcon-identity.css">
 </head>
 <body data-theme="light">
 
@@ -1268,16 +1269,15 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
     <!-- Navbar -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="../assets/image/logo2.png" alt="Gestor Arcon Admin">
-            <span>ARCON ADMIN</span>
+            <img src="../assets/image/logo_quadrada.png" alt="Digital Five">
+            <span>DIGITAL FIVE</span>
         </div>
         <div class="navbar-menu" id="navbarMenu">
-            <a href="../index.php">Home</a>
-            <a href="../index.php#sobre-nos">Sobre Nós</a>
-            <a href="../index.php#servicos">Serviços</a>
-            <a href="../planos.php">Planos</a>
+            <a href="https://digitalfive.com.br/#produtos">Produtos</a>
+            <a href="https://digitalfive.com.br/#solucoes">Soluções</a>
+            <a href="https://digitalfive.com.br/#integracoes">Integrações</a>
+            <a href="../planos.php">Preços</a>
             <a href="../index.php#contato">Contato</a>
-            <a href="../index.php#faqs">FAQ</a>
             <a href="blog.php">Blog</a>
             <a href="../index.php#contato" class="btn btn-primary" style="padding: 10px 24px; color: #fff;">Começar</a>
         </div>
@@ -1526,42 +1526,13 @@ $meta_image = $post['imagem_og'] ?: $post['imagem_destaque'] ?: '../assets/image
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../assets/image/logo.png" alt="Arcon">
-                    <h3>Gestor Arcon Admin</h3>
-                    <p style="color:var(--text-tertiary);">A tecnologia é a nossa paixão. Junte-se a nós e revolucione seu negócio!</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="index.php#sobre-nos">Sobre Nós</a></li>
-                        <li><a href="index.php#servicos">Serviços</a></li>
-                        <li><a href="planos.php">Planos</a></li>
-                        <li><a href="blog.php">Blog</a></li>
-                        <li><a href="index.php#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="planos.php#sites">Sites Profissionais</a></li>
-                        <li><a href="planos.php#sistemas">Sistemas Personalizados</a></li>
-                        <li><a href="planos.php#bots">Bots com IA</a></li>
-                        <li><a href="#">Suporte Técnico</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Redes Sociais</h4>
-                    <div class="social-links">
-                        <a href="https://instagram.com/arcon.digitalfive" target="_blank" class="social-link">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div>
+                    <img src="/assets/image/logo_quadrada.png" alt="Digital Five">
+                    <h3>DIGITAL FIVE</h3>
+                    <p style="color:var(--text-tertiary);">O ecossistema SaaS completo para a sua empresa crescer sem bagunça.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Copyright &copy; 2025 Gestor Arcon Admin. Todos os direitos reservados.</p>
-                <p style="margin-top:10px;">Founded By Renan.</p>
+                <p>Copyright &copy; <?php echo date('Y'); ?> Digital Five. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

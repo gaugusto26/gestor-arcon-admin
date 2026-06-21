@@ -118,7 +118,7 @@ textarea.form-control {
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #0a4fe0;
     transform: translateY(-2px);
 }
 
@@ -316,17 +316,17 @@ function previewTemplate() {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
             <div style="text-align: center; margin-bottom: 30px;">
                 <img src="<?php echo $config['logo_url']; ?>" style="max-width: 150px;">
-                <h1 style="color: #0d47a1; margin-top: 10px;">Gestor Arcon Admin</h1>
+                <h1 style="color: #0b5cff; margin-top: 10px;">Digital Five</h1>
             </div>
             
             ${preview}
             
             <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #666; font-size: 12px;">
                 <p>
-                    <a href="<?php echo $config['instagram_url']; ?>" style="color: #0d47a1; text-decoration: none; margin: 0 10px;">Instagram</a> |
-                    <a href="https://wa.me/<?php echo $config['whatsapp_numero']; ?>" style="color: #0d47a1; text-decoration: none; margin: 0 10px;">WhatsApp</a>
+                    <a href="<?php echo $config['instagram_url']; ?>" style="color: #0b5cff; text-decoration: none; margin: 0 10px;">Instagram</a> |
+                    <a href="https://wa.me/<?php echo $config['whatsapp_numero']; ?>" style="color: #0b5cff; text-decoration: none; margin: 0 10px;">WhatsApp</a>
                 </p>
-                <p>&copy; <?php echo date('Y'); ?> Gestor Arcon Admin. Todos os direitos reservados.</p>
+                <p>&copy; <?php echo date('Y'); ?> Digital Five. Todos os direitos reservados.</p>
             </div>
         </div>
     `;

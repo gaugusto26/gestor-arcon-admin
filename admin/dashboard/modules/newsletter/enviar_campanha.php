@@ -86,9 +86,9 @@ if(isset($_POST['iniciar_envio'])) {
         <body style='margin:0; padding:0; background:#f4f4f4; font-family: Arial, sans-serif;'>
             <div style='max-width:600px; margin:20px auto; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);'>
                 <!-- Header -->
-                <div style='background:linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); padding:30px; text-align:center;'>
+                <div style='background:linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%); padding:30px; text-align:center;'>
                     <img src='{$config['logo_url']}' style='max-width:150px; margin-bottom:10px;'>
-                    <h1 style='color:white; margin:0; font-size:24px;'>Gestor Arcon Admin</h1>
+                    <h1 style='color:white; margin:0; font-size:24px;'>Digital Five</h1>
                 </div>
                 
                 <!-- Content -->
@@ -99,10 +99,10 @@ if(isset($_POST['iniciar_envio'])) {
                 <!-- Footer -->
                 <div style='background:#f8f8f8; padding:20px; text-align:center; font-size:12px; color:#666; border-top:1px solid #eee;'>
                     <p style='margin:0 0 10px;'>
-                        <a href='{$config['instagram_url']}' style='color:#0d47a1; text-decoration:none; margin:0 10px;'>Instagram</a> |
-                        <a href='https://wa.me/{$config['whatsapp_numero']}' style='color:#0d47a1; text-decoration:none; margin:0 10px;'>WhatsApp</a>
+                        <a href='{$config['instagram_url']}' style='color:#0b5cff; text-decoration:none; margin:0 10px;'>Instagram</a> |
+                        <a href='https://wa.me/{$config['whatsapp_numero']}' style='color:#0b5cff; text-decoration:none; margin:0 10px;'>WhatsApp</a>
                     </p>
-                    <p style='margin:0;'>&copy; " . date('Y') . " Gestor Arcon Admin. Todos os direitos reservados.</p>
+                    <p style='margin:0;'>&copy; " . date('Y') . " Digital Five. Todos os direitos reservados.</p>
                     <p style='margin:5px 0 0;'>
                         <a href='" . SITE_URL . "/newsletter/desinscrever.php?token={$inscrito['token']}' style='color:#999; text-decoration:underline;'>Cancelar inscrição</a>
                     </p>
@@ -248,7 +248,7 @@ if(isset($_POST['iniciar_envio'])) {
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #0a4fe0;
     transform: translateY(-2px);
 }
 </style>

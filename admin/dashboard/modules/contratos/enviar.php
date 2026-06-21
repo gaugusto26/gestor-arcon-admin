@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->Port       = 587;
         $mail->CharSet    = 'UTF-8';
         
-        $mail->setFrom('sistemasntw@gmail.com', 'Gestor Arcon Admin');
+        $mail->setFrom('sistemasntw@gmail.com', 'Digital Five');
         $mail->addAddress($contrato['cliente_email'], $contrato['cliente_nome']);
         
         $link = SITE_URL . '/cliente/contrato.php?token=' . base64_encode($contrato['id']);
@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class='container'>
                 <div class='header'>
                     <h1>📄 Contrato para Assinatura</h1>
-                    <p>Gestor Arcon Admin</p>
+                    <p>Digital Five</p>
                 </div>
                 <div class='content'>
                     <p>Olá, <strong>{$contrato['cliente_nome']}</strong>!</p>
@@ -88,10 +88,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p>Ou copie o link abaixo:</p>
                     <div class='link-box'>{$link}</div>
                     <p>Qualquer dúvida, nossa equipe está à disposição para ajudar.</p>
-                    <p>Atenciosamente,<br><strong>Equipe Gestor Arcon Admin</strong></p>
+                    <p>Atenciosamente,<br><strong>Equipe Digital Five</strong></p>
                 </div>
                 <div class='footer'>
-                    <p>© " . date('Y') . " Gestor Arcon Admin. Todos os direitos reservados.</p>
+                    <p>© " . date('Y') . " Digital Five. Todos os direitos reservados.</p>
                     <p>Este é um e-mail automático, por favor não responda.</p>
                 </div>
             </div>

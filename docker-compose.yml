@@ -3,12 +3,14 @@ services:
     build: .
     container_name: gestor-arcon-admin
     restart: unless-stopped
+    ports:
+      - "8080:80"
     depends_on:
       gestor-arcon-db:
         condition: service_healthy
     environment:
       MYSQL_HOST: gestor-arcon-db
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-newsoftware}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-digitalfive}
       MYSQL_USER: ${MYSQL_USER:-arcon_admin}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -24,6 +26,7 @@ services:
       - web
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=web"
       - "traefik.http.routers.gestor-arcon-admin.rule=Host(`${GESTOR_HOST:-admin.arcon.digitalfive.com.br}`)"
       - "traefik.http.routers.gestor-arcon-admin.entrypoints=websecure"
       - "traefik.http.routers.gestor-arcon-admin.tls.certresolver=le"
@@ -32,13 +35,29 @@ services:
       - "traefik.http.routers.gestor-arcon-admin-http.entrypoints=web"
       - "traefik.http.routers.gestor-arcon-admin-http.middlewares=redirect-https@docker"
 
+  landing:
+    build: ./landing
+    container_name: digitalfive-landing
+    restart: unless-stopped
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.landing.rule=Host(`digitalfive.com.br`)"
+      - "traefik.http.routers.landing.entrypoints=websecure"
+      - "traefik.http.routers.landing.tls.certresolver=le"
+      - "traefik.http.services.landing.loadbalancer.server.port=80"
+      - "traefik.http.routers.landing-http.rule=Host(`digitalfive.com.br`)"
+      - "traefik.http.routers.landing-http.entrypoints=web"
+      - "traefik.http.routers.landing-http.middlewares=redirect-https@docker"
+
   gestor-arcon-db:
     image: mariadb:10.11
     container_name: gestor-arcon-db
     restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MYSQL_DATABASE:-newsoftware}
+      MARIADB_DATABASE: ${MYSQL_DATABASE:-digitalfive}
       MARIADB_USER: ${MYSQL_USER:-arcon_admin}
       MARIADB_PASSWORD: ${MYSQL_PASSWORD}
     volumes:

@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 NEWSOFTWARE — Sistema de Gestão para Desenvolvimento de Software
+# 🚀 Digital Five — Sistema de Gestão para Desenvolvimento de Software
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-2.0.0-blue.svg"/>
@@ -26,7 +26,7 @@
 
 ## 📋 Sobre o Projeto
 
-A **NEWSOFTWARE** é uma plataforma SaaS desenvolvida para automatizar todo o ciclo de gestão de empresas de software:
+A **Digital Five** é uma plataforma SaaS desenvolvida para automatizar todo o ciclo de gestão de empresas de software:
 
 - Gestão de clientes
 - Contratos digitais
@@ -278,12 +278,12 @@ Veja o arquivo `LICENSE` para mais detalhes.
 </p>
 
 <p align="center">
-  <b>Feito com 💜 e ☕ por Renan Barbosa</b><br>
-  <i>Em desenvolvimento ativo — Versão 2.0.0</i>
+  <b>Feito por Guilherme Augusto</b><br>
+  <i>Em desenvolvimento — Versão 1.0.0</i>
 </p>
 
 <p align="center">
-  <a href="#-newsoftware--sistema-de-gestão-para-desenvolvimento-de-software">
+  <a href="#-digital-five--sistema-de-gestão-para-desenvolvimento-de-software">
     ⬆️ Voltar ao topo
   </a>
 </p>

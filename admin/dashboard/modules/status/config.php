@@ -12,7 +12,7 @@ function getTodosStatus() {
         ],
         'reuniao_inicial' => [
             'nome' => 'Reunião Inicial',
-            'cor' => '#3b82f6',
+            'cor' => '#0b5cff',
             'icone' => 'fa-users',
             'descricao' => 'Reunião de kick-off para alinhamento do projeto',
             'etapa' => 2,
@@ -44,7 +44,7 @@ function getTodosStatus() {
         ],
         'desenvolvimento' => [
             'nome' => 'Desenvolvimento',
-            'cor' => '#3b82f6',
+            'cor' => '#0b5cff',
             'icone' => 'fa-code',
             'descricao' => 'Desenvolvimento geral do sistema',
             'etapa' => 6,
@@ -108,7 +108,7 @@ function getTodosStatus() {
         ],
         'treinamento_cliente' => [
             'nome' => 'Treinamento do Cliente',
-            'cor' => '#3b82f6',
+            'cor' => '#0b5cff',
             'icone' => 'fa-chalkboard-teacher',
             'descricao' => 'Treinamento para utilização do sistema',
             'etapa' => 14,
@@ -132,7 +132,7 @@ function getTodosStatus() {
         ],
         'implantacao' => [
             'nome' => 'Implantação',
-            'cor' => '#3b82f6',
+            'cor' => '#0b5cff',
             'icone' => 'fa-rocket',
             'descricao' => 'Implantação em produção',
             'etapa' => 17,

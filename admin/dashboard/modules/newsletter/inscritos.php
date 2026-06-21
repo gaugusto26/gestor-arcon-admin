@@ -207,7 +207,7 @@ $origens = $conn->query("SELECT DISTINCT origem FROM newsletter_inscritos WHERE 
 }
 
 .btn-filtro:hover {
-    background: #2563eb;
+    background: #0a4fe0;
 }
 
 .btn-limpar {

@@ -636,11 +636,11 @@ tr:hover td {
             <div class="config-info">
                 <div class="config-item">
                     <i class="fas fa-envelope"></i>
-                    <span><?php echo $config['remetente_nome']; ?> &lt;<?php echo $config['remetente_email']; ?>&gt;</span>
+                    <span><?php echo $config['remetente_nome'] ?? 'Não configurado'; ?> &lt;<?php echo $config['remetente_email'] ?? '—'; ?>&gt;</span>
                 </div>
                 <div class="config-item">
                     <i class="fas fa-tachometer-alt"></i>
-                    <span><?php echo $config['limite_por_minuto']; ?>/min • <?php echo $config['limite_por_hora']; ?>/h</span>
+                    <span><?php echo $config['limite_por_minuto'] ?? '—'; ?>/min • <?php echo $config['limite_por_hora'] ?? '—'; ?>/h</span>
                 </div>
                 <div class="config-item">
                     <i class="fas fa-database"></i>

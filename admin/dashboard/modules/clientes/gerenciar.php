@@ -2,6 +2,7 @@
 // Primeiro processa todas as ações ANTES de qualquer saída HTML
 require_once 'config.php';
 require_once '../../../../config.php';
+precisaLogin();
 
 // Processa ações ANTES de qualquer header ou HTML
 if(isset($_GET['acao']) && isset($_GET['id'])) {
@@ -71,7 +72,7 @@ if(isset($_GET['acao']) && isset($_GET['id'])) {
 }
 
 // Só DEPOIS de processar as ações, inclui o header
-$page_title = 'Gerenciar Usuários';
+$page_title = 'Usuários';
 require_once '../../includes/header.php';
 require_once '../../includes/menu.php';
 
@@ -142,11 +143,58 @@ $usuarios = $stmt->get_result();
 
 // Estatísticas
 $stats = [
+    'total' => $conn->query("SELECT COUNT(*) as total FROM clientes")->fetch_assoc()['total'],
     'admins' => $conn->query("SELECT COUNT(*) as total FROM clientes WHERE tipo = 'admin'")->fetch_assoc()['total'],
     'clientes' => $conn->query("SELECT COUNT(*) as total FROM clientes WHERE tipo = 'cliente'")->fetch_assoc()['total'],
     'parceiros' => $conn->query("SELECT COUNT(*) as total FROM clientes WHERE tipo = 'parceiro'")->fetch_assoc()['total'],
     'ativos' => $conn->query("SELECT COUNT(*) as total FROM clientes WHERE status = 'ativo'")->fetch_assoc()['total'],
+    'inativos' => $conn->query("SELECT COUNT(*) as total FROM clientes WHERE status = 'inativo'")->fetch_assoc()['total'],
     'bloqueados' => $conn->query("SELECT COUNT(*) as total FROM clientes WHERE status = 'bloqueado'")->fetch_assoc()['total'],
+];
+
+$abas_usuarios = [
+    [
+        'label' => 'Todos',
+        'icone' => 'fa-layer-group',
+        'href' => 'gerenciar.php',
+        'count' => $stats['total'],
+        'active' => empty($filtro_tipo) && empty($filtro_status)
+    ],
+    [
+        'label' => 'Clientes',
+        'icone' => 'fa-users',
+        'href' => 'gerenciar.php?tipo=cliente',
+        'count' => $stats['clientes'],
+        'active' => $filtro_tipo === 'cliente'
+    ],
+    [
+        'label' => 'Administradores',
+        'icone' => 'fa-user-shield',
+        'href' => 'gerenciar.php?tipo=admin',
+        'count' => $stats['admins'],
+        'active' => $filtro_tipo === 'admin'
+    ],
+    [
+        'label' => 'Parceiros',
+        'icone' => 'fa-handshake',
+        'href' => 'gerenciar.php?tipo=parceiro',
+        'count' => $stats['parceiros'],
+        'active' => $filtro_tipo === 'parceiro'
+    ],
+    [
+        'label' => 'Bloqueados',
+        'icone' => 'fa-ban',
+        'href' => 'gerenciar.php?status=bloqueado',
+        'count' => $stats['bloqueados'],
+        'active' => $filtro_status === 'bloqueado'
+    ],
+    [
+        'label' => 'Inativos',
+        'icone' => 'fa-circle-minus',
+        'href' => 'gerenciar.php?status=inativo',
+        'count' => $stats['inativos'],
+        'active' => $filtro_status === 'inativo'
+    ],
 ];
 ?>
 
@@ -165,6 +213,64 @@ $stats = [
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     margin-bottom: 30px;
+}
+
+.user-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.user-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.user-tab:hover {
+    border-color: #4361ee;
+    color: #4361ee;
+    transform: translateY(-1px);
+}
+
+.user-tab.active {
+    background: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 12px 24px rgba(11, 92, 255, 0.2);
+}
+
+.user-tab-count {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+}
+
+.user-tab.active .user-tab-count {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
+
+.section-note {
+    color: var(--text-muted);
+    margin: -12px 0 22px;
+    line-height: 1.6;
 }
 
 .stat-card {
@@ -556,7 +662,7 @@ tr:hover td {
     <div class="top-bar">
         <h1 class="page-title">
             <i class="fas fa-user-cog" style="color: #4361ee; margin-right: 10px;"></i>
-            Gerenciar Usuários
+            Usuários
         </h1>
         
         <div class="top-bar-actions">
@@ -580,6 +686,10 @@ tr:hover td {
             ?>
         </div>
         <?php endif; ?>
+
+        <p class="section-note">
+            Gerencie os acessos do portal do cliente: clientes, parceiros e usuários administrativos do portal.
+        </p>
 
         <!-- Stats Cards -->
         <div class="stats-grid">
@@ -623,6 +733,16 @@ tr:hover td {
                 <div class="stat-label">Bloqueados</div>
             </div>
         </div>
+
+        <nav class="user-tabs" aria-label="Abas de usuários">
+            <?php foreach($abas_usuarios as $aba): ?>
+            <a href="<?php echo $aba['href']; ?>" class="user-tab <?php echo $aba['active'] ? 'active' : ''; ?>">
+                <i class="fas <?php echo $aba['icone']; ?>"></i>
+                <span><?php echo $aba['label']; ?></span>
+                <span class="user-tab-count"><?php echo number_format($aba['count']); ?></span>
+            </a>
+            <?php endforeach; ?>
+        </nav>
 
         <!-- Filtros -->
         <div class="filtros-box">
@@ -669,7 +789,7 @@ tr:hover td {
                 <i class="fas fa-user-plus"></i> Novo Usuário
             </a>
             <a href="index.php" class="btn-action secondary">
-                <i class="fas fa-users"></i> Ver Clientes
+                <i class="fas fa-address-book"></i> Cadastro detalhado
             </a>
             <a href="exportar.php?<?php echo http_build_query($_GET); ?>" class="btn-action secondary">
                 <i class="fas fa-file-export"></i> Exportar Lista
@@ -786,6 +906,12 @@ tr:hover td {
                                     <a href="visualizar.php?id=<?php echo $user['id']; ?>" class="btn-icon" title="Visualizar">
                                         <i class="fas fa-eye"></i>
                                     </a>
+
+                                    <?php if($user['status'] == 'ativo'): ?>
+                                    <a href="login-as.php?id=<?php echo $user['id']; ?>" class="btn-icon" title="Acessar ARCON como este cliente" style="color: #0b5cff;" onclick="return confirm('Acessar a área do cliente como <?php echo htmlspecialchars($user['nome'], ENT_QUOTES); ?>?')">
+                                        <i class="fas fa-right-to-bracket"></i>
+                                    </a>
+                                    <?php endif; ?>
                                     
                                     <a href="editar.php?id=<?php echo $user['id']; ?>" class="btn-icon" title="Editar">
                                         <i class="fas fa-edit"></i>

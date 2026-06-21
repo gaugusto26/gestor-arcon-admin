@@ -1,0 +1,400 @@
+<?php
+$page_title = 'Nova Termos de Uso';
+require_once '../../includes/header.php';
+require_once '../../includes/menu.php';
+require_once 'config.php';
+
+$erros = [];
+$sucesso = '';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $titulo = limparInput($_POST['titulo']);
+    $subtitulo = limparInput($_POST['subtitulo']);
+    $conteudo = $_POST['conteudo'];
+    $versao = limparInput($_POST['versao']);
+    $status = limparInput($_POST['status']);
+    $meta_title = limparInput($_POST['meta_title']);
+    $meta_description = limparInput($_POST['meta_description']);
+    $meta_keywords = limparInput($_POST['meta_keywords']);
+    
+    if(empty($titulo)) {
+        $erros[] = 'Título é obrigatório';
+    }
+    if(empty($conteudo)) {
+        $erros[] = 'Conteúdo é obrigatório';
+    }
+    
+    if(empty($erros)) {
+        $data_publicacao = ($status == 'publicado') ? date('Y-m-d H:i:s') : null;
+        
+        $stmt = $conn->prepare("
+            INSERT INTO termos_uso (
+                titulo, subtitulo, conteudo, versao, status, 
+                data_publicacao, meta_title, meta_description, meta_keywords,
+                atualizado_por
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        
+        $stmt->bind_param(
+            "sssssssssi",
+            $titulo,
+            $subtitulo,
+            $conteudo,
+            $versao,
+            $status,
+            $data_publicacao,
+            $meta_title,
+            $meta_description,
+            $meta_keywords,
+            $_SESSION['admin_id']
+        );
+        
+        if($stmt->execute()) {
+            $termos_id = $conn->insert_id;
+            
+            // Se for publicado, despublica outras versões
+            if($status == 'publicado') {
+                $conn->query("UPDATE termos_uso SET status = 'arquivado' WHERE id != $termos_id AND status = 'publicado'");
+            }
+            
+            $sucesso = 'Política criada com sucesso!';
+            echo "<script>setTimeout(() => { window.location.href = 'index.php'; }, 2000);</script>";
+        } else {
+            $erros[] = 'Erro ao criar política: ' . $conn->error;
+        }
+    }
+}
+?>
+
+<style>
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.form-group label i {
+    color: #4361ee;
+    margin-right: 8px;
+    width: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4361ee;
+    box-shadow: 0 0 0 3px rgba(67,97,238,0.1);
+}
+
+textarea.form-control {
+    min-height: 300px;
+    font-family: monospace;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid #10b981;
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102,126,234,0.2);
+}
+
+.btn-secondary {
+    background: #f8faff;
+    color: #4361ee;
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: #ffffff;
+    border-color: #4361ee;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.variables-box {
+    background: #f8faff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.variables-box h4 {
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.variable-tag {
+    display: inline-block;
+    background: #ffffff;
+    color: #4361ee;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    margin: 3px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.variable-tag:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+}
+</style>
+
+<div class="main-content" id="mainContent">
+    <div class="top-bar">
+        <h1 class="page-title">
+            <i class="fas fa-plus-circle" style="color: #4361ee; margin-right: 10px;"></i>
+            Nova Termos de Uso
+        </h1>
+    </div>
+
+    <div class="content-area">
+        <div class="form-container">
+            <?php if(!empty($erros)): ?>
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <?php foreach($erros as $erro): ?>
+                        <div><?php echo $erro; ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if($sucesso): ?>
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> <?php echo $sucesso; ?> Redirecionando...
+                </div>
+            <?php endif; ?>
+
+            <div class="form-card">
+                <form method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> Título *</label>
+                            <input type="text" name="titulo" class="form-control" required value="<?php echo $_POST['titulo'] ?? 'Termos de Uso'; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-code-branch"></i> Versão</label>
+                            <input type="text" name="versao" class="form-control" value="<?php echo $_POST['versao'] ?? '1.0'; ?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-quote-right"></i> Subtítulo</label>
+                        <input type="text" name="subtitulo" class="form-control" value="<?php echo $_POST['subtitulo'] ?? 'Saiba como coletamos, usamos e protegemos suas informações'; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-code"></i> Status</label>
+                        <select name="status" class="form-control">
+                            <option value="rascunho" <?php echo ($_POST['status'] ?? '') == 'rascunho' ? 'selected' : ''; ?>>Rascunho</option>
+                            <option value="publicado" <?php echo ($_POST['status'] ?? '') == 'publicado' ? 'selected' : ''; ?>>Publicar agora</option>
+                        </select>
+                    </div>
+
+                    <div class="variables-box">
+                        <h4><i class="fas fa-code"></i> Atalhos HTML</h4>
+                        <span class="variable-tag" onclick="inserirTag('&lt;h2&gt;&lt;/h2&gt;')">&lt;h2&gt;Título&lt;/h2&gt;</span>
+                        <span class="variable-tag" onclick="inserirTag('&lt;h3&gt;&lt;/h3&gt;')">&lt;h3&gt;Subtítulo&lt;/h3&gt;</span>
+                        <span class="variable-tag" onclick="inserirTag('&lt;p&gt;&lt;/p&gt;')">&lt;p&gt;Parágrafo&lt;/p&gt;</span>
+                        <span class="variable-tag" onclick="inserirTag('&lt;ul&gt;\n    &lt;li&gt;Item 1&lt;/li&gt;\n    &lt;li&gt;Item 2&lt;/li&gt;\n&lt;/ul&gt;')">Lista</span>
+                        <span class="variable-tag" onclick="inserirTag('&lt;strong&gt;&lt;/strong&gt;')">Negrito</span>
+                        <span class="variable-tag" onclick="inserirTag('&lt;em&gt;&lt;/em&gt;')">Itálico</span>
+                        <span class="variable-tag" onclick="inserirTag('&lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;')">Link</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-newspaper"></i> Conteúdo *</label>
+                        <textarea name="conteudo" class="form-control" required id="conteudo"><?php echo $_POST['conteudo'] ?? '<h2>1. Informações que coletamos</h2>
+<p>Coletamos informações pessoais que você nos fornece voluntariamente ao utilizar nossos serviços, como nome, e-mail, telefone e empresa.</p>
+
+<h2>2. Como usamos suas informações</h2>
+<p>Utilizamos suas informações para:</p>
+<ul>
+    <li>Fornecer e melhorar nossos serviços</li>
+    <li>Enviar comunicações importantes</li>
+    <li>Personalizar sua experiência</li>
+    <li>Cumprir obrigações legais</li>
+</ul>
+
+<h2>3. Compartilhamento de informações</h2>
+<p>Não vendemos, trocamos ou transferimos suas informações pessoais para terceiros sem seu consentimento, exceto quando necessário para fornecer os serviços solicitados ou por exigência legal.</p>
+
+<h2>4. Segurança dos dados</h2>
+<p>Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+
+<h2>5. Seus direitos</h2>
+<p>Você tem direito a acessar, corrigir, atualizar ou solicitar a exclusão de suas informações pessoais a qualquer momento.</p>
+
+<h2>6. Cookies e tecnologias semelhantes</h2>
+<p>Utilizamos cookies para melhorar sua experiência em nosso site, analisar tráfego e personalizar conteúdo.</p>
+
+<h2>7. Alterações nesta política</h2>
+<p>Podemos atualizar esta política periodicamente. Notificaremos sobre alterações significativas através de nosso site ou por e-mail.</p>
+
+<h2>8. Contato</h2>
+<p>Em caso de dúvidas sobre esta política, entre em contato através do e-mail: sistemasntw@gmail.com</p>'; ?></textarea>
+                        <small style="color: var(--text-muted);">Você pode usar HTML para formatar o conteúdo</small>
+                    </div>
+
+                    <h3 style="margin: 30px 0 20px; font-size: 1.2rem;">SEO (Opcional)</h3>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-heading"></i> Meta Title</label>
+                        <input type="text" name="meta_title" class="form-control" value="<?php echo $_POST['meta_title'] ?? 'Termos de Uso | Digital Five'; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-paragraph"></i> Meta Description</label>
+                        <textarea name="meta_description" class="form-control" rows="3"><?php echo $_POST['meta_description'] ?? 'Conheça nossa política de privacidade e saiba como protegemos seus dados na Digital Five.'; ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> Meta Keywords</label>
+                        <input type="text" name="meta_keywords" class="form-control" value="<?php echo $_POST['meta_keywords'] ?? 'privacidade, política de privacidade, proteção de dados, LGPD'; ?>">
+                        <small>Separe as palavras-chave por vírgula</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="index.php" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Salvar Política
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function inserirTag(tag) {
+    const textarea = document.getElementById('conteudo');
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+    
+    textarea.value = text.substring(0, start) + tag + text.substring(end);
+    textarea.focus();
+    textarea.setSelectionRange(start + tag.length, start + tag.length);
+}
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const body = document.body;
+
+if(themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        document.cookie = `admin_theme=${newTheme}; path=/`;
+        
+        themeIcon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    });
+}
+</script>
+
+<?php require_once '../../includes/footer.php'; ?>

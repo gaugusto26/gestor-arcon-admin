@@ -1,13 +1,13 @@
 <?php
-$page_title = 'Visualizar Post';
-require_once '../../includes/header.php';
-require_once '../../includes/menu.php';
-require_once 'config.php';
-
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
     exit;
 }
+
+$page_title = 'Visualizar Post';
+require_once '../../includes/header.php';
+require_once '../../includes/menu.php';
+require_once 'config.php';
 
 $id = $_GET['id'];
 
@@ -308,7 +308,7 @@ $status_list = getStatusBlog();
 }
 
 .btn-editar:hover {
-    background: #2563eb;
+    background: #0a4fe0;
     transform: translateY(-2px);
 }
 </style>
@@ -335,7 +335,7 @@ $status_list = getStatusBlog();
             <div class="view-header">
                 <div class="view-meta">
                     <?php if($post['categoria_nome']): ?>
-                    <span class="view-categoria" style="background: <?php echo $post['categoria_cor'] ?? '#3b82f6'; ?>">
+                    <span class="view-categoria" style="background: <?php echo $post['categoria_cor'] ?? '#0b5cff'; ?>">
                         <?php echo $post['categoria_nome']; ?>
                     </span>
                     <?php endif; ?>

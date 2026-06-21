@@ -144,7 +144,7 @@ textarea.form-control {
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #0a4fe0;
     transform: translateY(-2px);
 }
 
@@ -296,7 +296,7 @@ textarea.form-control {
                     <div class="form-group">
                         <label><i class="fas fa-newspaper"></i> Conteúdo HTML *</label>
                         <textarea name="conteudo" class="form-control" required id="conteudo"><?php 
-                            echo $_POST['conteudo'] ?? '<h1 style="color: #0d47a1;">Olá {nome}!</h1>
+                            echo $_POST['conteudo'] ?? '<h1 style="color: #0b5cff;">Olá {nome}!</h1>
 
 <p>Este é um template personalizado. Edite conforme sua necessidade.</p>
 
@@ -306,7 +306,7 @@ textarea.form-control {
 <h2>Seção 2</h2>
 <p>Conteúdo da segunda seção...</p>
 
-<a href="{site_url}" style="background: #0d47a1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Visite nosso site</a>';
+<a href="{site_url}" style="background: #0b5cff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Visite nosso site</a>';
                         ?></textarea>
                         <small style="color: var(--text-muted);">Você pode usar HTML para formatar seu e-mail</small>
                     </div>
@@ -390,15 +390,15 @@ function previewTemplate() {
         </head>
         <body style="margin:0; padding:0; background:#f4f4f4; font-family: Arial, sans-serif;">
             <div style="max-width:600px; margin:20px auto; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-                <div style="background:linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); padding:30px; text-align:center;">
+                <div style="background:linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%); padding:30px; text-align:center;">
                     <img src="<?php echo SITE_URL; ?>/assets/image/logo.png" style="max-width:150px; margin-bottom:10px;">
-                    <h1 style="color:white; margin:0; font-size:24px;">Gestor Arcon Admin</h1>
+                    <h1 style="color:white; margin:0; font-size:24px;">Digital Five</h1>
                 </div>
                 <div style="padding:30px;">
                     ${preview}
                 </div>
                 <div style="background:#f8f8f8; padding:20px; text-align:center; font-size:12px; color:#666;">
-                    <p>&copy; ${new Date().getFullYear()} Gestor Arcon Admin</p>
+                    <p>&copy; ${new Date().getFullYear()} Digital Five</p>
                     <p style="margin:5px 0 0;">
                         <a href="#" style="color:#999;">Cancelar inscrição</a>
                     </p>

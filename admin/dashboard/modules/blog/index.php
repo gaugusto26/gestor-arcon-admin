@@ -113,7 +113,7 @@ $status_list = getStatusBlog();
 }
 
 .btn-filtro:hover {
-    background: #2563eb;
+    background: #0a4fe0;
 }
 
 .btn-limpar {
@@ -330,7 +330,7 @@ $status_list = getStatusBlog();
 }
 
 .btn-card.editar:hover {
-    background: #2563eb;
+    background: #0a4fe0;
 }
 
 .btn-card.visualizar {
@@ -468,7 +468,7 @@ $status_list = getStatusBlog();
                     <div class="post-conteudo">
                         <div class="post-header">
                             <?php if($post['categoria_nome']): ?>
-                            <span class="post-categoria" style="background: <?php echo $post['categoria_cor'] ?? '#3b82f6'; ?>">
+                            <span class="post-categoria" style="background: <?php echo $post['categoria_cor'] ?? '#0b5cff'; ?>">
                                 <?php echo $post['categoria_nome']; ?>
                             </span>
                             <?php endif; ?>

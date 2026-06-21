@@ -19,7 +19,7 @@ if(!$politica) {
 }
 
 // Meta tags
-$meta_title = $politica['meta_title'] ?: 'Política de Privacidade | Gestor Arcon Admin';
+$meta_title = $politica['meta_title'] ?: 'Política de Privacidade | Digital Five';
 $meta_description = $politica['meta_description'] ?: 'Conheça nossa política de privacidade e saiba como protegemos seus dados.';
 ?>
 
@@ -29,7 +29,7 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <link rel="shortcut icon" href="assets/image/logo2.webp" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/image/logo_quadrada.png" type="image/x-icon">
     
     <title><?php echo $meta_title; ?></title>
     <meta name="description" content="<?php echo $meta_description; ?>">
@@ -52,26 +52,26 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
         :root {
             /* Tema Claro (padrão) - Branco com azul */
             --bg-primary: #ffffff;
-            --bg-secondary: #f0f7ff;
-            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f7ff 50%, #e3f2fd 100%);
-            --text-primary: #0d47a1;
-            --text-secondary: #1565c0;
-            --text-tertiary: #1976d2;
-            --accent-primary: #0d47a1;
-            --accent-secondary: #1976d2;
-            --accent-gradient: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            --bg-secondary: #f8fafd;
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafd 58%, #eef4ff 100%);
+            --text-primary: #081b3a;
+            --text-secondary: #31506f;
+            --text-tertiary: #64748b;
+            --accent-primary: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
-            --card-border: rgba(13, 71, 161, 0.1);
-            --card-hover-border: rgba(13, 71, 161, 0.3);
+            --card-border: rgba(8, 27, 58, 0.1);
+            --card-hover-border: rgba(11, 92, 255, 0.3);
             --navbar-bg: rgba(255, 255, 255, 0.95);
-            --navbar-border: rgba(13, 71, 161, 0.2);
+            --navbar-border: rgba(8, 27, 58, 0.1);
             --input-bg: #ffffff;
-            --input-border: rgba(13, 71, 161, 0.2);
-            --input-focus-border: #0d47a1;
+            --input-border: rgba(8, 27, 58, 0.14);
+            --input-focus-border: #0b5cff;
             --footer-bg: rgba(255, 255, 255, 0.95);
-            --footer-border: rgba(13, 71, 161, 0.2);
-            --shadow-color: rgba(13, 71, 161, 0.1);
-            --binary-color: rgba(13, 71, 161, 0.08);
+            --footer-border: rgba(8, 27, 58, 0.1);
+            --shadow-color: rgba(8, 27, 58, 0.1);
+            --binary-color: rgba(11, 92, 255, 0.05);
             --btn-text: #ffffff;
         }
 
@@ -416,23 +416,23 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
             }
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/arcon-identity.css">
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar-modern">
         <div class="navbar-logo">
-            <img src="../assets/image/logo2.png" alt="Gestor Arcon Admin">
-            <span>ARCON ADMIN</span>
+            <img src="../assets/image/logo_quadrada.png" alt="Digital Five">
+            <span>DIGITAL FIVE</span>
         </div>
         
         <div class="navbar-menu" id="navbarMenu">
-            <a href="../index.php#home">Home</a>
-            <a href="../index.php#sobre-nos">Sobre Nós</a>
-            <a href="../index.php#servicos">Serviços</a>
-            <a href="../planos.php">Planos</a>
-            <a href="../index.php#contato">Contato</a>
-            <a href="../index.php#faqs">FAQ</a>
+            <a href="https://digitalfive.com.br/#produtos">Produtos</a>
+            <a href="https://digitalfive.com.br/#solucoes">Soluções</a>
+            <a href="https://digitalfive.com.br/#integracoes">Integrações</a>
+            <a href="../planos.php">Preços</a>
+            <a href="https://digitalfive.com.br/#contato">Contato</a>
             <a href="../blog/blog.php">Blog</a>
             <a href="../index.php#contato" class="btn btn-primary" style="padding: 10px 24px; color: #ffff;">Começar</a>
         </div>
@@ -473,69 +473,14 @@ $meta_description = $politica['meta_description'] ?: 'Conheça nossa política d
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../assets/image/logo.png" alt="Arcon">
-                    <h3>Gestor Arcon Admin</h3>
-                    <p style="color: var(--text-tertiary);">A tecnologia é a nossa paixão. Junte-se a nós e vamos revolucionar o mundo digital!</p>
+                    <img src="../assets/image/logo_quadrada.png" alt="Digital Five">
+                    <h3>DIGITAL FIVE</h3>
+                    <p style="color: var(--text-tertiary);">O ecossistema SaaS completo para a sua empresa crescer sem bagunça.</p>
                 </div>
-                
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="../index.php#home">Home</a></li>
-                        <li><a href="../index.php#sobre-nos">Sobre Nós</a></li>
-                        <li><a href="../index.php#servicos">Serviços</a></li>
-                        <li><a href="../index.php#planos">Planos</a></li>
-                        <li><a href="../index.php#contato">Contato</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="../planos.php">Sites Profissionais</a></li>
-                        <li><a href="../planos.php">Sistemas Personalizados</a></li>
-                        <li><a href="../planos.php">Bots com IA</a></li>
-                        <li><a href="../planos.php">Suporte Técnico</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="index.php">Política de Privacidade</a></li>
-                        
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-    <h4>Redes Sociais</h4>
-
-    <div class="social-links" style="margin-top: 20px; display: flex; justify-content: center;">
-        
-        <a href="https://instagram.com/arcon.digitalfive" target="_blank"
-           style="
-                width: 55px;
-                height: 55px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-                text-decoration: none;
-                transition: 0.3s ease;
-           "
-           onmouseover="this.style.transform='scale(1.1)'"
-           onmouseout="this.style.transform='scale(1)'"
-        >
-            <i class="fa-brands fa-instagram" style="color: white; font-size: 24px;"></i>
-        </a>
-
-    </div>
-</div>
             </div>
             
             <div class="footer-bottom">
-                <p>Copyright © 2025 Gestor Arcon Admin. Todos os direitos reservados.</p>
-                <p style="margin-top: 10px;">Founded By Renan.</p>
+                <p>Copyright © <?php echo date('Y'); ?> Digital Five. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

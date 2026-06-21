@@ -339,12 +339,12 @@ textarea.form-control {
 
                     <div class="form-group">
                         <label><i class="fas fa-heading"></i> Meta Title</label>
-                        <input type="text" name="meta_title" class="form-control" value="<?php echo $_POST['meta_title'] ?? 'Política de Privacidade | Gestor Arcon Admin'; ?>">
+                        <input type="text" name="meta_title" class="form-control" value="<?php echo $_POST['meta_title'] ?? 'Política de Privacidade | Digital Five'; ?>">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fas fa-paragraph"></i> Meta Description</label>
-                        <textarea name="meta_description" class="form-control" rows="3"><?php echo $_POST['meta_description'] ?? 'Conheça nossa política de privacidade e saiba como protegemos seus dados na Gestor Arcon Admin.'; ?></textarea>
+                        <textarea name="meta_description" class="form-control" rows="3"><?php echo $_POST['meta_description'] ?? 'Conheça nossa política de privacidade e saiba como protegemos seus dados na Digital Five.'; ?></textarea>
                     </div>
 
                     <div class="form-group">

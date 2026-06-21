@@ -45,8 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin | Arcon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Login Admin | Digital Five</title>
+    <link rel="icon" type="image/png" href="/assets/image/logo_quadrada.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
@@ -60,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --bg-secondary: #f8fafc;
             --text-primary: #1e293b;
             --text-secondary: #64748b;
-            --accent: #3b82f6;
-            --accent-light: #dbeafe;
+            --accent: #0b5cff;
+            --accent-light: #e8f0ff;
             --border: #e2e8f0;
             --card-bg: #ffffff;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
@@ -73,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --bg-secondary: #1e293b;
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
-            --accent: #3b82f6;
+            --accent: #0b5cff;
             --accent-light: #1e293b;
             --border: #334155;
             --card-bg: #1e293b;
@@ -82,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Manrope', 'Plus Jakarta Sans', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
@@ -155,10 +156,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            margin-bottom: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            object-fit: cover;
         }
 
         .login-header h1 {
@@ -264,13 +266,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: var(--text-primary);
             font-size: 0.95rem;
             transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(11, 92, 255, 0.1);
         }
 
         .form-control::placeholder {
@@ -298,9 +300,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .btn-login:hover {
-            background: #2563eb;
+            background: #0a4fe0;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(11, 92, 255, 0.3);
         }
 
         .btn-login:active {
@@ -353,6 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/arcon-identity.css">
 </head>
 <body data-theme="light">
     <!-- Theme Toggle -->
@@ -364,9 +367,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="login-card">
             <!-- Header -->
             <div class="login-header">
-                <img src="../assets/image/logo.png" alt="Arcon" class="logo">
+                <img src="/assets/image/logo_quadrada.png" alt="Digital Five" class="logo">
                 <h1>Acesso Administrativo</h1>
-                <p>Gestor Arcon Admin</p>
+                <p>Digital Five</p>
             </div>
 
             <!-- IP Info -->
@@ -466,7 +469,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         const inputs = document.querySelectorAll('.form-control');
         inputs.forEach(input => {
             input.addEventListener('focus', () => {
-                input.parentElement.querySelector('i').style.color = '#3b82f6';
+                input.parentElement.querySelector('i').style.color = '#0b5cff';
             });
 
             input.addEventListener('blur', () => {

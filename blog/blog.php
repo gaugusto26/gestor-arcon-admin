@@ -82,9 +82,6 @@ while($tag_row = $tags_populares->fetch_assoc()) {
 arsort($tags_array);
 $tags_populares = array_slice($tags_array, 0, 15, true);
 
-// Configuração do WhatsApp
-$whatsapp = getWhatsAppConfig($conn);
-
 // Nome da categoria ativa para exibir no filtro
 $cat_nome_filtro = '';
 if($categoria_filtro > 0) {
@@ -101,14 +98,11 @@ if($categoria_filtro > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <link rel="shortcut icon" href="../assets/image/logo2.png" type="image/x-icon">
-    <meta name="description" content="Blog da Gestor Arcon Admin | Artigos sobre tecnologia, programação, marketing digital e negócios">
-    <title>Blog | Gestor Arcon Admin</title>
+    <link rel="shortcut icon" href="/assets/image/logo_quadrada.png" type="image/x-icon">
+    <meta name="description" content="Blog da Digital Five | Artigos sobre tecnologia, programação, marketing digital e negócios">
+    <title>Blog | Digital Five</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -123,28 +117,27 @@ if($categoria_filtro > 0) {
 
         :root {
             --bg-primary: #ffffff;
-            --bg-secondary: #f0f7ff;
-            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f7ff 50%, #e3f2fd 100%);
-            --text-primary: #0d47a1;
-            --text-secondary: #1565c0;
-            --text-tertiary: #1976d2;
-            --accent-primary: #0d47a1;
-            --accent-secondary: #1976d2;
-            --accent-gradient: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            --bg-secondary: #f8fafd;
+            --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafd 58%, #eef4ff 100%);
+            --text-primary: #081b3a;
+            --text-secondary: #31506f;
+            --text-tertiary: #64748b;
+            --accent-primary: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
-            --card-border: rgba(13, 71, 161, 0.1);
-            --card-hover-border: rgba(13, 71, 161, 0.3);
+            --card-border: rgba(8, 27, 58, 0.1);
+            --card-hover-border: rgba(11, 92, 255, 0.3);
             --navbar-bg: rgba(255, 255, 255, 0.95);
-            --navbar-border: rgba(13, 71, 161, 0.2);
+            --navbar-border: rgba(8, 27, 58, 0.1);
             --input-bg: #ffffff;
-            --input-border: rgba(13, 71, 161, 0.2);
-            --input-focus-border: #0d47a1;
+            --input-border: rgba(8, 27, 58, 0.14);
+            --input-focus-border: #0b5cff;
             --footer-bg: rgba(255, 255, 255, 0.95);
-            --footer-border: rgba(13, 71, 161, 0.2);
-            --shadow-color: rgba(13, 71, 161, 0.1);
-            --binary-color: rgba(13, 71, 161, 0.08);
+            --footer-border: rgba(8, 27, 58, 0.1);
+            --shadow-color: rgba(8, 27, 58, 0.1);
             --btn-text: #ffffff;
-            --text-muted: #5c85c7;
+            --text-muted: #64748b;
         }
 
         [data-theme="dark"] {
@@ -153,22 +146,21 @@ if($categoria_filtro > 0) {
             --bg-gradient: linear-gradient(135deg, #0a0f1c 0%, #0f1a2b 50%, #1a2639 100%);
             --text-primary: #ffffff;
             --text-secondary: #90caf9;
-            --text-tertiary: #64b5f6;
-            --accent-primary: #42a5f5;
-            --accent-secondary: #64b5f6;
-            --accent-gradient: linear-gradient(135deg, #42a5f5 0%, #64b5f6 100%);
+            --text-tertiary: #6c5ce7;
+            --accent-primary: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --card-bg: rgba(15, 26, 43, 0.9);
-            --card-border: rgba(66, 165, 245, 0.2);
-            --card-hover-border: rgba(66, 165, 245, 0.5);
+            --card-border: rgba(11, 92, 255, 0.2);
+            --card-hover-border: rgba(11, 92, 255, 0.5);
             --navbar-bg: rgba(10, 15, 28, 0.95);
-            --navbar-border: rgba(66, 165, 245, 0.3);
+            --navbar-border: rgba(11, 92, 255, 0.3);
             --input-bg: rgba(15, 26, 43, 0.9);
-            --input-border: rgba(66, 165, 245, 0.2);
-            --input-focus-border: #42a5f5;
+            --input-border: rgba(11, 92, 255, 0.2);
+            --input-focus-border: #0b5cff;
             --footer-bg: rgba(10, 15, 28, 0.95);
-            --footer-border: rgba(66, 165, 245, 0.3);
+            --footer-border: rgba(11, 92, 255, 0.3);
             --shadow-color: rgba(0, 0, 0, 0.3);
-            --binary-color: rgba(66, 165, 245, 0.06);
             --btn-text: #ffffff;
             --text-muted: #7ab3e0;
         }
@@ -180,162 +172,129 @@ if($categoria_filtro > 0) {
             min-height: 100vh;
         }
 
-        #binary-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        /* ===== Theme Toggle ===== */
-        .theme-toggle {
-            position: fixed;
-            top: 100px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--card-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1001;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(180deg);
-            border-color: var(--accent-primary);
-        }
-
-        .theme-toggle i {
-            font-size: 1.3rem;
-            color: var(--accent-primary);
-        }
-
         /* ===== Navbar ===== */
         .navbar-modern {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 48px);
-            max-width: 1280px;
-            background: var(--navbar-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 100px;
-            padding: 12px 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            border: 1px solid var(--navbar-border);
-            box-shadow: 0 10px 30px var(--shadow-color);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(8, 27, 58, .08);
+            transition: all .3s ease;
+        }
+
+        .navbar-inner {
+            max-width: 1280px;
+            height: 64px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .navbar-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
         }
 
         .navbar-logo img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
             object-fit: cover;
-            border: 2px solid var(--accent-primary);
+            border: 0;
         }
 
         .navbar-logo span {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--text-primary);
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--arcon-navy, #081b3a);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .navbar-logo span strong {
+            color: var(--accent-primary);
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
         }
 
         .navbar-menu {
             display: flex;
-            gap: 32px;
             align-items: center;
+            gap: 28px;
         }
 
-        .navbar-menu a {
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .navbar-nav a,
+        .navbar-actions a:not(.btn-primary) {
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            position: relative;
+            font-size: 0.875rem;
+            transition: color .2s ease;
             white-space: nowrap;
         }
 
-        .navbar-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gradient);
-            transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .navbar-menu a:hover {
+        .navbar-nav a:hover,
+        .navbar-actions a:not(.btn-primary):hover {
             color: var(--accent-primary);
-            transform: translateY(-2px);
         }
 
-        .navbar-menu a:hover::after {
-            width: 100%;
-        }
-
-        .navbar-menu a.active {
+        .navbar-nav a.active {
             color: var(--accent-primary);
-            font-weight: 600;
-        }
-
-        .navbar-menu a.active::after {
-            width: 100%;
+            font-weight: 700;
         }
 
         .btn-primary {
             background: var(--accent-gradient);
             color: white !important;
-            padding: 10px 24px !important;
+            padding: 10px 20px;
             border-radius: 50px !important;
-            box-shadow: 0 10px 20px var(--shadow-color);
+            box-shadow: 0 12px 24px rgba(11, 92, 255, .18);
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 15px 30px var(--shadow-color);
-        }
-
-        .btn-primary::after {
-            display: none !important;
+            transform: translateY(-1px);
+            box-shadow: 0 16px 32px rgba(11, 92, 255, .24);
         }
 
         .navbar-toggle {
             display: none;
-            flex-direction: column;
-            gap: 6px;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--arcon-navy, #081b3a);
             cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: background .2s ease;
         }
 
-        .navbar-toggle span {
-            width: 30px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 3px;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        .navbar-toggle:hover {
+            background: rgba(8, 27, 58, .06);
         }
 
         /* ===== Container ===== */
@@ -363,22 +322,42 @@ if($categoria_filtro > 0) {
 
         /* ===== Hero do Blog ===== */
         .blog-hero {
-            padding-top: 140px;
-            padding-bottom: 40px;
+            padding-top: 128px;
+            padding-bottom: 56px;
             text-align: center;
+            background: linear-gradient(180deg, #f8fafd 0%, #ffffff 100%);
         }
 
         .blog-hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4.75rem);
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            color: var(--arcon-navy, #081b3a);
+            letter-spacing: -0.02em;
+            line-height: .98;
         }
 
         .blog-hero p {
-            font-size: 1.2rem;
-            max-width: 650px;
+            font-size: 1.125rem;
+            max-width: 680px;
             margin: 0 auto 30px;
-            color: var(--text-secondary);
+            color: var(--arcon-muted);
+            line-height: 1.7;
+        }
+
+        .blog-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(11, 92, 255, .10);
+            color: var(--accent-primary);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
         }
 
         /* ===== Layout do Blog ===== */
@@ -824,7 +803,7 @@ if($categoria_filtro > 0) {
         .newsletter-input:focus {
             outline: none;
             border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+            box-shadow: 0 0 0 3px rgba(11, 92, 255, 0.1);
         }
 
         .btn-newsletter {
@@ -848,30 +827,6 @@ if($categoria_filtro > 0) {
         .btn-newsletter:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px var(--shadow-color);
-        }
-
-        /* ===== WhatsApp ===== */
-        .btn-wa {
-            background: #25D366;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        .btn-wa:hover {
-            background: #1ebe5b;
-            transform: translateY(-3px);
         }
 
         /* ===== Filtro Ativo ===== */
@@ -975,10 +930,9 @@ if($categoria_filtro > 0) {
 
         /* ===== Footer ===== */
         .footer-modern {
-            background: var(--footer-bg);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--footer-border);
-            padding: 60px 0 30px;
+            background: var(--arcon-navy);
+            border-top: 0;
+            padding: 64px 0 32px;
             margin-top: 80px;
             position: relative;
             z-index: 2;
@@ -986,38 +940,34 @@ if($categoria_filtro > 0) {
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1.3fr repeat(3, 1fr);
             gap: 40px;
         }
 
         .footer-logo img {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: 16px;
             margin-bottom: 20px;
-            border: 2px solid var(--accent-primary);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .footer-logo img:hover {
-            transform: rotate(360deg) scale(1.1);
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: #fff;
         }
 
         .footer-logo h3 {
             font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--text-primary);
+            color: #fff;
         }
 
         .footer-logo p {
-            color: var(--text-tertiary);
+            color: rgba(255, 255, 255, .58);
             line-height: 1.6;
         }
 
         .footer-links h4 {
-            font-size: 1.1rem;
+            font-size: .95rem;
             margin-bottom: 20px;
-            color: var(--text-primary);
+            color: #fff;
         }
 
         .footer-links ul {
@@ -1029,15 +979,16 @@ if($categoria_filtro > 0) {
         }
 
         .footer-links a {
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, .58);
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
+            font-size: .92rem;
         }
 
         .footer-links a:hover {
-            color: var(--accent-primary);
-            transform: translateX(10px);
+            color: #fff;
+            transform: translateX(4px);
         }
 
         .social-links {
@@ -1068,7 +1019,7 @@ if($categoria_filtro > 0) {
             padding-top: 30px;
             border-top: 1px solid var(--card-border);
             text-align: center;
-            color: var(--text-tertiary);
+            color: rgba(255, 255, 255, .45);
             font-size: 0.9rem;
         }
 
@@ -1092,6 +1043,57 @@ if($categoria_filtro > 0) {
                 position: static;
                 margin-top: 40px;
             }
+
+            .navbar-menu {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-width: none;
+                height: auto;
+                background: rgba(255, 255, 255, .98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+                padding: 16px 24px 20px;
+                transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+                border-radius: 0;
+                border-top: 1px solid rgba(8, 27, 58, .08);
+                box-shadow: 0 16px 32px rgba(8, 27, 58, .10);
+                gap: 8px;
+                opacity: 0;
+                transform: translateY(-8px);
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            .navbar-menu.active {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .navbar-menu a {
+                width: 100%;
+                text-align: left;
+                white-space: normal;
+                padding: 10px 0;
+            }
+
+            .navbar-nav,
+            .navbar-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1107,61 +1109,9 @@ if($categoria_filtro > 0) {
                 font-size: 2.5rem;
             }
 
-            .navbar-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 350px;
-                height: 100vh;
-                background: var(--navbar-bg);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                justify-content: center;
-                padding: 80px 40px;
-                transition: right 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                border-radius: 30px 0 0 30px;
-                box-shadow: -10px 0 30px var(--shadow-color);
-                gap: 20px;
-                overflow-y: auto;
-            }
-
-            .navbar-menu.active {
-                right: 0;
-            }
-
-            .navbar-menu a {
-                width: 100%;
-                text-align: center;
-                white-space: normal;
-            }
-
-            .navbar-toggle {
-                display: flex;
-            }
-
-            .navbar-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-
-            .navbar-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .navbar-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
-            }
-
-            .theme-toggle {
-                top: 90px;
-                right: 15px;
-                width: 42px;
-                height: 42px;
             }
 
             .post-imagem {
@@ -1205,8 +1155,11 @@ if($categoria_filtro > 0) {
             }
 
             .navbar-modern {
-                padding: 10px 18px;
-                width: calc(100% - 24px);
+                padding: 0;
+            }
+
+            .navbar-inner {
+                padding: 0 18px;
             }
 
             .navbar-logo span {
@@ -1244,38 +1197,36 @@ if($categoria_filtro > 0) {
             }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/arcon-identity.css">
 </head>
 <body data-theme="light">
 
-    <canvas id="binary-canvas"></canvas>
-
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle" title="Alternar tema">
-        <i class="fas fa-sun" id="themeIcon"></i>
-    </div>
-
     <!-- Navbar -->
     <nav class="navbar-modern">
-        <div class="navbar-logo">
-            <img src="../assets/image/logo2.png" alt="Gestor Arcon Admin">
-            <span>ARCON ADMIN</span>
-        </div>
+        <div class="navbar-inner">
+            <a href="https://digitalfive.com.br/" class="navbar-logo" aria-label="Digital Five">
+                <img src="/assets/image/logo_quadrada.png" alt="Digital Five">
+                <span>DIGITAL <strong>FIVE</strong></span>
+            </a>
 
-        <div class="navbar-menu" id="navbarMenu">
-            <a href="../index.php">Home</a>
-            <a href="../index.php#sobre-nos">Sobre Nós</a>
-            <a href="../index.php#servicos">Serviços</a>
-            <a href="../planos.php">Planos</a>
-            <a href="../index.php#contato">Contato</a>
-            <a href="../index.php#faqs">FAQ</a>
-            <a href="blog.php">Blog</a>
-            <a href="../index.php#contato" class="btn btn-primary">Começar</a>
-        </div>
+            <div class="navbar-menu" id="navbarMenu">
+                <nav class="navbar-nav" aria-label="Menu principal">
+                    <a href="https://digitalfive.com.br/#produtos">Produtos</a>
+                    <a href="https://digitalfive.com.br/#solucoes">Soluções</a>
+                    <a href="https://digitalfive.com.br/#integracoes">Integrações</a>
+                    <a href="/planos.php">Preços</a>
+                    <a href="#" class="active" aria-current="page">Blog</a>
+                    <a href="https://digitalfive.com.br/#contato">Contato</a>
+                </nav>
+                <div class="navbar-actions">
+                    <a href="/cliente/login.php">Entrar</a>
+                    <a href="https://wa.me/5517992347622?text=Ol%C3%A1%2C%20quero%20come%C3%A7ar%20a%20usar%20o%20ARCON!" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Começar gratuitamente</a>
+                </div>
+            </div>
 
-        <div class="navbar-toggle" id="navbarToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+            <button class="navbar-toggle" id="navbarToggle" type="button" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -1285,8 +1236,12 @@ if($categoria_filtro > 0) {
         <!-- Hero do Blog -->
         <section class="blog-hero">
             <div class="container">
-                <h1 class="gradient-text">Blog da Arcon</h1>
-                <p>Fique por dentro das últimas tendências em tecnologia, programação, marketing digital e negócios. Artigos escritos por quem entende do assunto.</p>
+                <div class="blog-eyebrow">
+                    <i class="fas fa-newspaper"></i>
+                    Blog
+                </div>
+                <h1>Conteúdo para <span class="gradient-text">técnicos e gestores</span></h1>
+                <p>Dicas, novidades e cases reais para organizar sua operação, vender melhor e crescer com o ecossistema ARCON.</p>
 
                 <?php if($categoria_filtro > 0 && $cat_nome_filtro): ?>
                 <div class="filtro-ativo">
@@ -1327,7 +1282,7 @@ if($categoria_filtro > 0) {
 
                                 <div class="post-imagem" style="<?php echo $post['imagem_destaque'] ? 'background-image: url(\'' . htmlspecialchars($post['imagem_destaque']) . '\');' : ''; ?>">
                                     <?php if($post['categoria_nome']): ?>
-                                    <span class="post-categoria-tag" style="background: <?php echo htmlspecialchars($post['categoria_cor'] ?? '#3b82f6'); ?>">
+                                    <span class="post-categoria-tag" style="background: <?php echo htmlspecialchars($post['categoria_cor'] ?? '#0b5cff'); ?>">
                                         <?php echo htmlspecialchars($post['categoria_nome']); ?>
                                     </span>
                                     <?php endif; ?>
@@ -1340,10 +1295,6 @@ if($categoria_filtro > 0) {
 
                                 <div class="post-conteudo">
                                     <div class="post-meta">
-                                        <span>
-                                            <i class="fas fa-user"></i>
-                                            <?php echo htmlspecialchars($post['autor']); ?>
-                                        </span>
                                         <span>
                                             <i class="fas fa-calendar"></i>
                                             <?php echo date('d/m/Y', strtotime($post['data_publicacao'])); ?>
@@ -1453,7 +1404,7 @@ if($categoria_filtro > 0) {
                                 <li class="categoria-item">
                                     <a href="blog.php?categoria=<?php echo (int)$cat['id']; ?>" class="categoria-link <?php echo $categoria_filtro == $cat['id'] ? 'active' : ''; ?>">
                                         <span class="categoria-nome">
-                                            <i class="fas <?php echo htmlspecialchars($cat['icone'] ?? 'fa-folder'); ?>" style="color: <?php echo htmlspecialchars($cat['cor'] ?? '#3b82f6'); ?>"></i>
+                                            <i class="fas <?php echo htmlspecialchars($cat['icone'] ?? 'fa-folder'); ?>" style="color: <?php echo htmlspecialchars($cat['cor'] ?? '#0b5cff'); ?>"></i>
                                             <span><?php echo htmlspecialchars($cat['nome']); ?></span>
                                         </span>
                                         <span class="categoria-count"><?php echo (int)$cat['total_posts']; ?></span>
@@ -1537,19 +1488,6 @@ if($categoria_filtro > 0) {
                             </form>
                         </div>
 
-                        <!-- Widget WhatsApp -->
-                        <div class="sidebar-widget" style="background: rgba(37, 211, 102, 0.06); border-color: #25D366;">
-                            <h3 class="widget-title" style="color: #25D366; border-color: #25D366;">
-                                <i class="fab fa-whatsapp"></i> Fale Conosco
-                            </h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                                Tem dúvidas sobre nossos serviços? Fale diretamente com nossa equipe.
-                            </p>
-                            <a href="https://wa.me/<?php echo htmlspecialchars($whatsapp['numero']); ?>" target="_blank" rel="noopener noreferrer" class="btn-wa">
-                                <i class="fab fa-whatsapp"></i> Iniciar Conversa
-                            </a>
-                        </div>
-
                     </div><!-- /blog-sidebar -->
 
                 </div><!-- /blog-layout -->
@@ -1563,129 +1501,18 @@ if($categoria_filtro > 0) {
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="../assets/image/logo.png" alt="Arcon">
-                    <h3>Gestor Arcon Admin</h3>
-                    <p>A tecnologia é a nossa paixão. Junte-se a nós e revolucione seu negócio!</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="index.php#sobre-nos">Sobre Nós</a></li>
-                        <li><a href="index.php#servicos">Serviços</a></li>
-                        <li><a href="planos.php">Planos</a></li>
-                        <li><a href="blog.php">Blog</a></li>
-                        <li><a href="index.php#contato">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="planos.php#sites">Sites Profissionais</a></li>
-                        <li><a href="planos.php#sistemas">Sistemas Personalizados</a></li>
-                        <li><a href="planos.php#bots">Bots com IA</a></li>
-                        <li><a href="#">Suporte Técnico</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Redes Sociais</h4>
-                    <div class="social-links" style="display:flex; justify-content:center;">
-                <a href="https://instagram.com/arcon.digitalfive" target="_blank"
-                   style="
-                        width:50px;
-                        height:50px;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        border-radius:50%;
-                        background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-                        text-decoration:none;
-                        transition:0.3s;
-                   "
-                   onmouseover="this.style.transform='scale(1.1)'"
-                   onmouseout="this.style.transform='scale(1)'"
-                >
-                    <i class="fa-brands fa-instagram" style="color:white; font-size:22px;"></i>
-                </a>
-            </div>
+                    <img src="/assets/image/logo_quadrada.png" alt="Digital Five">
+                    <h3>DIGITAL FIVE</h3>
+                    <p>O ecossistema SaaS completo para a sua empresa crescer sem bagunça.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Copyright &copy; <?php echo date('Y'); ?> Gestor Arcon Admin. Todos os direitos reservados.</p>
-                <p style="margin-top: 10px;">Founded By Renan.</p>
+                <p>Copyright &copy; <?php echo date('Y'); ?> Digital Five. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // ===== BINARY CANVAS =====
-        const canvas = document.getElementById('binary-canvas');
-        const ctx = canvas.getContext('2d');
-        let binaryChars = [];
-
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            const count = Math.floor(canvas.width * canvas.height / 15000);
-            binaryChars = [];
-            for (let i = 0; i < count; i++) {
-                binaryChars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    value: Math.random() > 0.5 ? '1' : '0',
-                    speed: 0.1 + Math.random() * 0.3,
-                    size: 10 + Math.floor(Math.random() * 12),
-                });
-            }
-        }
-
-        function drawBinary() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const color = getComputedStyle(document.body).getPropertyValue('--binary-color').trim();
-            binaryChars.forEach(c => {
-                ctx.fillStyle = color;
-                ctx.font = `${c.size}px "Fira Code", monospace`;
-                ctx.fillText(c.value, c.x, c.y);
-                c.y += c.speed;
-                if (c.y > canvas.height + 50) {
-                    c.y = -50;
-                    c.x = Math.random() * canvas.width;
-                    c.value = Math.random() > 0.5 ? '1' : '0';
-                }
-            });
-            requestAnimationFrame(drawBinary);
-        }
-
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(initCanvas, 200);
-        });
-        initCanvas();
-        drawBinary();
-
-        // ===== THEME TOGGLE =====
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon   = document.getElementById('themeIcon');
-        const savedTheme  = localStorage.getItem('theme') || 'light';
-
-        document.body.setAttribute('data-theme', savedTheme);
-        themeIcon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-
-        themeToggle.addEventListener('click', () => {
-            const current = document.body.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.body.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            themeIcon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            if (typeof gsap !== 'undefined') {
-                gsap.fromTo(themeToggle,
-                    { scale: 1, rotation: 0 },
-                    { scale: 1.2, rotation: 180, duration: 0.3, yoyo: true, repeat: 1 }
-                );
-            }
-        });
-
         // ===== MENU MOBILE =====
         const navbarToggle = document.getElementById('navbarToggle');
         const navbarMenu   = document.getElementById('navbarMenu');
@@ -1694,24 +1521,35 @@ if($categoria_filtro > 0) {
             navbarToggle.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navbarMenu.classList.toggle('active');
+                this.innerHTML = navbarMenu.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
                 document.body.style.overflow = navbarMenu.classList.contains('active') ? 'hidden' : '';
             });
         }
 
         document.querySelectorAll('.navbar-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
+            link.addEventListener('click', (event) => {
+                if (link.getAttribute('href') === '#') {
+                    event.preventDefault();
+                }
+
+                if (window.innerWidth <= 1024) {
                     navbarToggle.classList.remove('active');
                     navbarMenu.classList.remove('active');
+                    navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     document.body.style.overflow = '';
                 }
             });
         });
 
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
+            if (window.innerWidth > 1024) {
                 if (navbarMenu)   navbarMenu.classList.remove('active');
-                if (navbarToggle) navbarToggle.classList.remove('active');
+                if (navbarToggle) {
+                    navbarToggle.classList.remove('active');
+                    navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
                 document.body.style.overflow = '';
             }
         });

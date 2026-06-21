@@ -407,7 +407,7 @@ body.dark {
             <a href="historico.php" class="btn btn-secondary">
                 <i class="fas fa-history"></i> Histórico de Alterações
             </a>
-            <a href="preview.php" target="_blank" class="btn btn-secondary">
+            <a href="https://digitalfive.com.br/privacidade" target="_blank" class="btn btn-secondary">
                 <i class="fas fa-external-link-alt"></i> Visualizar Página Pública
             </a>
         </div>

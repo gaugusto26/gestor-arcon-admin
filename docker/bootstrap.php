@@ -1,7 +1,7 @@
 <?php
 
 $host = getenv('MYSQL_HOST') ?: 'gestor-arcon-db';
-$db = getenv('MYSQL_DATABASE') ?: 'newsoftware';
+$db = getenv('MYSQL_DATABASE') ?: 'digitalfive';
 $user = getenv('MYSQL_USER') ?: 'arcon_admin';
 $pass = getenv('MYSQL_PASSWORD') ?: '';
 $rootUser = getenv('MYSQL_ROOT_USER') ?: 'root';
@@ -45,7 +45,7 @@ if (!$hasAdminTable || $hasAdminTable->num_rows === 0) {
     );
     passthru($cmd, $code);
     if ($code !== 0) {
-        fwrite(STDERR, "Falha ao importar schema do Gestor Arcon Admin.\n");
+        fwrite(STDERR, "Falha ao importar schema do Digital Five.\n");
         exit($code);
     }
 }

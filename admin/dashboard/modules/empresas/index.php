@@ -48,10 +48,10 @@ $total_empresas = $total_result->fetch_assoc()['total'];
 $total_paginas = ceil($total_empresas / $por_pagina);
 
 // Busca empresas
-$sql = "SELECT * FROM view_empresas_analise $sql_where ORDER BY 
-        CASE 
-            WHEN status = 'ativo' THEN 1
-            WHEN status = 'inativo' THEN 2
+$sql = "SELECT * FROM view_empresas_analise $sql_where ORDER BY
+        CASE
+            WHEN cliente_status = 'ativo' THEN 1
+            WHEN cliente_status = 'inativo' THEN 2
             ELSE 3
         END,
         created_at DESC
@@ -744,7 +744,7 @@ tr:hover td {
                         $novas[] = $row['novas_empresas'];
                     }
                     
-                    $max = max($totais) ?: 1;
+                    $max = !empty($totais) ? (max($totais) ?: 1) : 1;
                     ?>
                     
                     <div style="display: flex; align-items: flex-end; gap: 10px; height: 150px; margin-top: 20px;">

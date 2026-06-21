@@ -207,7 +207,8 @@ function getStatusBadge($status) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $page_title; ?> | Arcon Admin</title>
+    <title><?php echo $page_title; ?> | Digital Five</title>
+    <link rel="icon" type="image/png" href="/assets/image/logo_quadrada.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -225,8 +226,10 @@ function getStatusBadge($status) {
             --text-primary: #1e293b;
             --text-secondary: #64748b;
             --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-light: #dbeafe;
+            --accent: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
+            --accent-light: #e8f0ff;
             --border: #e2e8f0;
             --hover: #f1f5f9;
             --card-bg: #ffffff;
@@ -235,7 +238,7 @@ function getStatusBadge($status) {
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --info: #3b82f6;
+            --info: #0b5cff;
         }
 
         [data-theme="dark"] {
@@ -245,7 +248,9 @@ function getStatusBadge($status) {
             --text-primary: #f1f5f9;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
-            --accent: #3b82f6;
+            --accent: #0b5cff;
+            --accent-secondary: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%);
             --accent-light: #1e293b;
             --border: #334155;
             --hover: #2d3a4f;
@@ -304,7 +309,7 @@ function getStatusBadge($status) {
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            background: linear-gradient(135deg, #0b5cff, #0a4fe0);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -363,7 +368,7 @@ function getStatusBadge($status) {
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            background: linear-gradient(135deg, #0b5cff, #0a4fe0);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -556,7 +561,7 @@ function getStatusBadge($status) {
 
         /* Welcome Banner */
         .welcome-banner {
-            background: linear-gradient(135deg, var(--accent), #2563eb);
+            background: linear-gradient(135deg, var(--accent), #0a4fe0);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
@@ -754,7 +759,7 @@ function getStatusBadge($status) {
         }
 
         .btn-primary:hover {
-            background: #2563eb;
+            background: #0a4fe0;
         }
 
         .btn-success {
@@ -817,8 +822,8 @@ function getStatusBadge($status) {
         }
 
         .status-info {
-            background: #3b82f620;
-            color: #3b82f6;
+            background: #0b5cff20;
+            color: #0b5cff;
         }
 
         .status-secondary {
@@ -980,6 +985,7 @@ function getStatusBadge($status) {
             }
         }
     </style>
+    <link rel="stylesheet" href="/assets/css/arcon-identity.css">
 </head>
 <body data-theme="light">
     <div class="dashboard">
@@ -1310,8 +1316,8 @@ function getStatusBadge($status) {
                 datasets: [{
                     label: 'Faturamento',
                     data: [<?php foreach ($faturamento_mensal as $m) echo $m['valor'] . ","; ?>],
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderColor: '#0b5cff',
+                    backgroundColor: 'rgba(11, 92, 255, 0.1)',
                     tension: 0.4,
                     fill: true
                 }]
@@ -1359,7 +1365,7 @@ function getStatusBadge($status) {
                     ],
                     backgroundColor: [
                         '#f59e0b',
-                        '#3b82f6',
+                        '#0b5cff',
                         '#8b5cf6',
                         '#10b981'
                     ],

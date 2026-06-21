@@ -101,7 +101,7 @@ $indicacoes = $stmt->get_result();
     background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
 }
 
-.stat-card:nth-child(1)::before { background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%); }
+.stat-card:nth-child(1)::before { background: linear-gradient(135deg, #0b5cff 0%, #6c5ce7 100%); }
 .stat-card:nth-child(2)::before { background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); }
 .stat-card:nth-child(3)::before { background: linear-gradient(135deg, #10b981 0%, #34d399 100%); }
 .stat-card:nth-child(4)::before { background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%); }
@@ -123,8 +123,8 @@ $indicacoes = $stmt->get_result();
 }
 
 .stat-card:nth-child(1) .stat-icon {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
+    background: rgba(11, 92, 255, 0.1);
+    color: #0b5cff;
 }
 
 .stat-card:nth-child(2) .stat-icon {
@@ -504,15 +504,15 @@ tr:hover td {
             <div class="config-info">
                 <div class="config-item">
                     <i class="fas fa-percent"></i>
-                    <span><?php echo $config['percentual_desconto']; ?>% de desconto para indicador e indicado</span>
+                    <span><?php echo $config['percentual_desconto'] ?? 0; ?>% de desconto para indicador e indicado</span>
                 </div>
                 <div class="config-item">
                     <i class="fas fa-clock"></i>
-                    <span>Validade: <?php echo $config['dias_validade']; ?> dias</span>
+                    <span>Validade: <?php echo $config['dias_validade'] ?? 30; ?> dias</span>
                 </div>
                 <div class="config-item">
                     <i class="fas fa-infinity"></i>
-                    <span>Limite: <?php echo $config['limite_indicacoes'] ?: 'Ilimitado'; ?></span>
+                    <span>Limite: <?php echo ($config['limite_indicacoes'] ?? null) ?: 'Ilimitado'; ?></span>
                 </div>
             </div>
             <a href="configurar.php" class="config-badge">

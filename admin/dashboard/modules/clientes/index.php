@@ -499,7 +499,7 @@ tr:hover td {
                 <i class="fas fa-user-plus"></i> Novo Cliente
             </a>
             <a href="gerenciar.php" class="btn-action secondary">
-                <i class="fas fa-user-cog"></i> Gerenciar Usuários
+                <i class="fas fa-user-cog"></i> Usuários
             </a>
             <a href="importar.php" class="btn-action secondary">
                 <i class="fas fa-file-import"></i> Importar

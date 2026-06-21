@@ -11,7 +11,7 @@ function clienteLogado() {
 
 function precisaLoginCliente() {
     if (!clienteLogado()) {
-        header('Location: login.php');
+        header('Location: /cliente/login.php');
         exit;
     }
 }

@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $smtp_pass = 'dcvj lezc qwoc yvim';
         $smtp_secure = 'tls';
         $remetente_email = 'sistemasntw@gmail.com';
-        $remetente_nome = 'Gestor Arcon Admin';
+        $remetente_nome = 'Digital Five';
         
         
         
@@ -343,9 +343,9 @@ function carregarTemplate(tipo) {
     let mensagem = '';
     
     if(tipo == 'boasvindas') {
-        assunto = 'Bem-vindo à Gestor Arcon Admin!';
+        assunto = 'Bem-vindo à Digital Five!';
         mensagem = `<h1 style="color: #4361ee;">Olá {{nome}}!</h1>
-<p>É com grande satisfação que damos as boas-vindas à Gestor Arcon Admin.</p>
+<p>É com grande satisfação que damos as boas-vindas à Digital Five.</p>
 <p>Estamos muito felizes em ter você conosco. Em breve você receberá mais informações sobre nossos serviços e como acessar sua área do cliente.</p>
 <p>Qualquer dúvida, estamos à disposição!</p>
 <p>Atenciosamente,<br>Equipe Arcon</p>`;

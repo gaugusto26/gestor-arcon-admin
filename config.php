@@ -4,7 +4,7 @@ session_start();
 $servername = getenv('MYSQL_HOST') ?: 'localhost';
 $username   = getenv('MYSQL_USER') ?: 'root';
 $password   = getenv('MYSQL_PASSWORD') ?: '';
-$dbname     = getenv('MYSQL_DATABASE') ?: 'newsoftware';
+$dbname     = getenv('MYSQL_DATABASE') ?: 'digitalfive';
 
 // Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 
 
 define('SITE_URL', rtrim(getenv('SITE_URL') ?: 'http://localhost', '/'));
-define('SITE_NAME', getenv('SITE_NAME') ?: 'Gestor Arcon Admin');
+define('SITE_NAME', getenv('SITE_NAME') ?: 'Digital Five');
 
 // Definir charset
 $conn->set_charset("utf8mb4");
@@ -47,7 +47,7 @@ function isLogado() {
 // Redirecionar se não estiver logado
 function precisaLogin() {
     if (!isLogado()) {
-        header('Location: ../admin_login.php');
+        header('Location: /admin/index.php');
         exit();
     }
 }

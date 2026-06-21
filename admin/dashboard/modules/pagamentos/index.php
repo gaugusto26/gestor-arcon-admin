@@ -373,8 +373,8 @@ tr:hover td {
 }
 
 .status-aguardando {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
+    background: rgba(11, 92, 255, 0.1);
+    color: #0b5cff;
 }
 
 .gateway-tag {

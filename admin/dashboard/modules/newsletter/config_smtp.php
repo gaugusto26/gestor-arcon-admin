@@ -151,7 +151,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #0a4fe0;
     transform: translateY(-2px);
 }
 

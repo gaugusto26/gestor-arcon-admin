@@ -531,7 +531,7 @@ $meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto'
                         <span class="info-value"><?php echo htmlspecialchars($contrato['nome_plano'] ?: 'Personalizado'); ?></span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Valor do Desenvolvimento</span>
+                        <span class="info-label">Valor de Implantação/Licenciamento</span>
                         <span class="info-value">R$ <?php echo number_format($contrato['valor_total'] ?? 0, 2, ',', '.'); ?></span>
                     </div>
                     <div class="info-item">
@@ -594,14 +594,14 @@ $meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto'
                         <div class="assinatura-col">
                             <div class="linha-ass" style="margin-top: <?php echo !empty($contrato['assinatura_base64']) ? '100px' : '10px'; ?>;"></div>
                             <p class="ass-nome">CONTRATADA</p>
-                            <p class="ass-sub">GESTOR ARCON ADMIN</p>
+                            <p class="ass-sub">DIGITAL FIVE<br>Produto: ARCON</p>
                             <p class="ass-data">Documento gerado eletronicamente</p>
                         </div>
 
                     </div>
 
                     <p class="ass-rodape">
-                        © - GESTOR ARCON ADMIN, <?php 
+                        DIGITAL FIVE | ARCON, <?php 
                             echo date('d') . ' de ' . $meses[date('n')-1] . ' de ' . date('Y'); 
                         ?>
                     </p>

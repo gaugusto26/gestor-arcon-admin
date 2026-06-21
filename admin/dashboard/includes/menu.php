@@ -6,6 +6,9 @@ $current_url = $_SERVER['REQUEST_URI'];
 $result_planos = $conn->query("SELECT COUNT(*) as total FROM planos WHERE ativo = 1");
 $total_planos = $result_planos->fetch_assoc()['total'];
 
+$result_usuarios = $conn->query("SELECT COUNT(*) as total FROM clientes");
+$total_usuarios = $result_usuarios->fetch_assoc()['total'];
+
 $admin_base = '/admin/dashboard/';
 
 $menu_items = [
@@ -16,7 +19,8 @@ $menu_items = [
             ['nome' => 'Planos',                 'icone' => 'fa-crown',              'link' => $admin_base . 'modules/planos/index.php',     'badge' => $total_planos],
             ['nome' => 'Blog',                   'icone' => 'fa-blog',               'link' => $admin_base . 'modules/blog/index.php',       'badge' => ''],
             ['nome' => 'Newsletter',             'icone' => 'fa-envelope-open-text', 'link' => $admin_base . 'modules/newsletter/index.php', 'badge' => ''],
-            ['nome' => 'Política de privacidade','icone' => 'fa-shield-alt',         'link' => $admin_base . 'modules/politica/index.php',   'badge' => '']
+            ['nome' => 'Política de privacidade','icone' => 'fa-shield-alt',         'link' => $admin_base . 'modules/politica/index.php',   'badge' => ''],
+            ['nome' => 'Termos de uso',          'icone' => 'fa-file-contract',      'link' => $admin_base . 'modules/termos/index.php',     'badge' => '']
         ]
     ],
     'sistema' => [
@@ -24,8 +28,7 @@ $menu_items = [
         'itens' => [
             ['nome' => 'Contratos',               'icone' => 'fa-file-signature',    'link' => $admin_base . 'modules/contratos/index.php', 'badge' => ''],
             ['nome' => 'Gerador de contrato',     'icone' => 'fa-file-contract',     'link' => $admin_base . 'modules/gerador/index.php', 'badge' => ''],
-            ['nome' => 'Usuários',                'icone' => 'fa-users',             'link' => $admin_base . 'modules/clientes/index.php', 'badge' => ''],
-            ['nome' => 'Gerenciar Usuários',      'icone' => 'fa-user-cog',          'link' => $admin_base . 'modules/clientes/gerenciar.php', 'badge' => ''],
+            ['nome' => 'Usuários',                'icone' => 'fa-users',             'link' => $admin_base . 'modules/clientes/gerenciar.php', 'badge' => $total_usuarios],
             ['nome' => 'Visão geral de indicação','icone' => 'fa-chart-line',        'link' => $admin_base . 'modules/indicacoes/index.php', 'badge' => ''],
             ['nome' => 'Empresas',                'icone' => 'fa-building',          'link' => $admin_base . 'modules/empresas/index.php', 'badge' => ''],
             ['nome' => 'Pagamento',               'icone' => 'fa-credit-card',       'link' => $admin_base . 'modules/pagamentos/index.php', 'badge' => ''],
@@ -194,8 +197,8 @@ $menu_items = [
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="logo-area">
-            <div class="logo">A</div>
-            <span class="logo-text">Arcon Admin</span>
+            <img src="/assets/image/logo_quadrada.png" alt="Digital Five" class="logo">
+            <span class="logo-text">Digital Five</span>
         </div>
     </div>
 
@@ -235,6 +238,9 @@ $menu_items = [
                     }
                     elseif(strpos($current_path, '/admin/modules/politica/') !== false) {
                         if($item['nome'] == 'Política de privacidade') $is_active = 'active';
+                    }
+                    elseif(strpos($current_path, '/admin/dashboard/modules/clientes/') !== false) {
+                        if($item['nome'] == 'Usuários') $is_active = 'active';
                     }
                     else {
                         $item_path = parse_url($item['link'], PHP_URL_PATH);

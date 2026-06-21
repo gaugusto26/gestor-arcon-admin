@@ -111,7 +111,7 @@ $perfis = getPerfis();
 }
 
 .btn-filtro:hover {
-    background: #2563eb;
+    background: #0a4fe0;
 }
 
 .btn-limpar {
@@ -321,7 +321,7 @@ $perfis = getPerfis();
 }
 
 .btn-card.editar:hover {
-    background: #2563eb;
+    background: #0a4fe0;
 }
 
 .btn-card.visualizar {

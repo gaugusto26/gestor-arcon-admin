@@ -203,7 +203,7 @@ textarea.form-control {
 }
 
 .contrato-preview strong {
-    color: #0d47a1;
+    color: #0b5cff;
     font-weight: 700;
 }
 
@@ -515,13 +515,13 @@ textarea.form-control {
                             
                             <div class="form-group" id="adesao_plano_outros_group" style="display: none;">
                                 <label><i class="fas fa-pen"></i> Nome do Plano Personalizado</label>
-                                <input type="text" class="form-control" id="adesao_plano_outros_nome" placeholder="Ex: Sistema de Gestão Personalizado">
+                                <input type="text" class="form-control" id="adesao_plano_outros_nome" placeholder="Ex: Plano ARCON Personalizado">
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label><i class="fas fa-dollar-sign"></i> Valor do Desenvolvimento (R$) *</label>
+                                <label><i class="fas fa-dollar-sign"></i> Valor de Implantação/Licenciamento (R$) *</label>
                                 <input type="number" step="0.01" class="form-control" id="adesao_valor_plano" required value="0.00">
                             </div>
                             
@@ -572,7 +572,7 @@ textarea.form-control {
                             </div>
                             
                             <div class="form-group">
-                                <label><i class="fas fa-hourglass-half"></i> Prazo de Desenvolvimento (dias)</label>
+                                <label><i class="fas fa-hourglass-half"></i> Prazo de Ativação/Implantação (dias)</label>
                                 <input type="number" class="form-control" id="adesao_prazo_desenvolvimento" value="30">
                             </div>
                         </div>
@@ -586,8 +586,8 @@ textarea.form-control {
                             <ul>
                                 <li><strong>Multa de cancelamento:</strong> 20% do valor total do contrato, proporcional ao tempo de fidelidade não cumprido</li>
                                 <li><strong>Período de fidelidade:</strong> 12 meses</li>
-                                <li><strong>Manutenção mensal:</strong> Inclui correções, atualizações de segurança e suporte</li>
-                                <li><strong>Alterações complexas:</strong> Serão orçadas separadamente</li>
+                                <li><strong>Mensalidade:</strong> Inclui acesso ao ARCON, atualizações, suporte e manutenção da plataforma</li>
+                                <li><strong>Serviços extras:</strong> Implantações, integrações ou demandas fora do plano serão orçadas separadamente</li>
                             </ul>
                         </div>
                         
@@ -833,7 +833,7 @@ textarea.form-control {
                                 <label><i class="fas fa-user"></i> Responsável pelo Cancelamento</label>
                                 <select class="form-control" id="cancelamento_responsavel" onchange="calcularMultaCancelamento()">
                                     <option value="cliente">Cliente</option>
-                                    <option value="ntw">Arcon</option>
+                                    <option value="digitalfive">Digital Five</option>
                                     <option value="mutuo">Mútuo Acordo</option>
                                 </select>
                             </div>
@@ -979,7 +979,7 @@ function gerarPDF(previewId) {
                 font-style: italic;
             }
             strong {
-                color: #0d47a1;
+                color: #0b5cff;
             }
             .multa-destaque {
                 background: #fff7ed;
@@ -995,7 +995,7 @@ function gerarPDF(previewId) {
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>Contrato Arcon</title>
+            <title>Contrato Digital Five | ARCON</title>
             ${estiloPDF}
         </head>
         <body>
@@ -1137,15 +1137,15 @@ function gerarPreviewAdesao() {
     const dataAtual = new Date();
     
     const previewHTML = `
-        <h1>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE TECNOLOGIA</h1>
+        <h1>CONTRATO DE LICENÇA DE USO E SERVIÇOS DO ARCON</h1>
         
         <p style="text-align: right;">Contrato nº: ${numeroContrato}</p>
         
         <p><strong>CONTRATANTE:</strong> ${clienteNome}, inscrito no CPF/CNPJ sob nº ${documento}, com endereço ${endereco}.</p>
         
-        <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
+        <p><strong>CONTRATADA:</strong> DIGITAL FIVE, responsável pelo produto ARCON, inscrita no CNPJ sob nº [CNPJ DA DIGITAL FIVE], com sede em [ENDEREÇO DA DIGITAL FIVE].</p>
         
-        <p>As partes acima identificadas têm, entre si, justo e acordado o presente Contrato de Prestação de Serviços de Tecnologia, que se regerá pelas cláusulas seguintes e pelas condições descritas no presente instrumento.</p>
+        <p>As partes acima identificadas têm, entre si, justo e acordado o presente Contrato de Licença de Uso do ARCON e Serviços de Implantação, Suporte e Manutenção, que se regerá pelas cláusulas seguintes e pelas condições descritas neste instrumento.</p>
         
         ${clausulasHTML}
         
@@ -1156,12 +1156,12 @@ function gerarPreviewAdesao() {
             </div>
             <div class="assinatura-bloco">
                 <div class="linha-assinatura"></div>
-                <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN</p>
+                <p><strong>CONTRATADA</strong><br>DIGITAL FIVE<br>Produto: ARCON</p>
             </div>
         </div>
         
         <div class="data-local">
-            © - GESTOR ARCON ADMIN, ${dataAtual.getDate()} de ${meses[dataAtual.getMonth()]} de ${dataAtual.getFullYear()}
+            DIGITAL FIVE | ARCON, ${dataAtual.getDate()} de ${meses[dataAtual.getMonth()]} de ${dataAtual.getFullYear()}
         </div>
     `;
     
@@ -1177,7 +1177,7 @@ function salvarContratoAdesao() {
     
     const valorPlano = parseFloat(document.getElementById('adesao_valor_plano').value) || 0;
     if(valorPlano <= 0) {
-        alert('❌ Informe o valor do desenvolvimento');
+        alert('❌ Informe o valor de implantação/licenciamento');
         return;
     }
 
@@ -1194,7 +1194,7 @@ function salvarContratoAdesao() {
     const dados = {
         cliente_id: clienteId,
         tipo_contrato: 'adesao',
-        titulo: 'Contrato de Prestação de Serviços de Tecnologia',
+        titulo: 'Contrato de Licença de Uso e Serviços do ARCON',
         conteudo: document.getElementById('preview-adesao').innerHTML,
         valor_plano: valorPlano,
         valor_mensal: parseFloat(document.getElementById('adesao_valor_mensal').value) || 0,
@@ -1323,7 +1323,7 @@ function gerarPreviewRenovacao() {
         
         <p><strong>CONTRATANTE:</strong> ${clienteNome}, já qualificado no contrato original firmado em ${dataOriginal.toLocaleDateString('pt-BR')}.</p>
         
-        <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
+        <p><strong>CONTRATADA:</strong> DIGITAL FIVE, responsável pelo produto ARCON, inscrita no CNPJ sob nº [CNPJ DA DIGITAL FIVE], com sede em [ENDEREÇO DA DIGITAL FIVE].</p>
         
         <p>As partes acima identificadas resolvem, de comum acordo, RENOVAR o contrato originalmente firmado, mediante as seguintes condições:</p>
         
@@ -1338,12 +1338,12 @@ function gerarPreviewRenovacao() {
             </div>
             <div class="assinatura-bloco">
                 <div class="linha-assinatura"></div>
-                <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN</p>
+                <p><strong>CONTRATADA</strong><br>DIGITAL FIVE<br>Produto: ARCON</p>
             </div>
         </div>
         
         <div class="data-local">
-            [© - GESTOR ARCON ADMIN], ${dataObj.getDate()} de ${meses[dataObj.getMonth()]} de ${dataObj.getFullYear()}
+            DIGITAL FIVE | ARCON, ${dataObj.getDate()} de ${meses[dataObj.getMonth()]} de ${dataObj.getFullYear()}
         </div>
     `;
     
@@ -1409,9 +1409,9 @@ function calcularMultaCancelamento() {
     } else if(responsavel == 'cliente' && mesesCumpridos >= fidelidade) {
         multaFinal = 0;
         detalhe = `Período de fidelidade já cumprido (${mesesCumpridos} meses). Isento de multa.`;
-    } else if(responsavel == 'ntw') {
+    } else if(responsavel == 'digitalfive') {
         multaFinal = 0;
-        detalhe = 'Cancelamento por iniciativa da Arcon. Isento de multa.';
+        detalhe = 'Cancelamento por iniciativa da Digital Five. Isento de multa.';
     } else if(responsavel == 'mutuo') {
         multaFinal = 0;
         detalhe = 'Cancelamento por mútuo acordo. Isento de multa.';
@@ -1440,7 +1440,7 @@ function gerarPreviewCancelamento() {
     
     let responsavelTexto = '';
     if(responsavel == 'cliente') responsavelTexto = 'por iniciativa do CONTRATANTE';
-    else if(responsavel == 'ntw') responsavelTexto = 'por iniciativa da CONTRATADA';
+    else if(responsavel == 'digitalfive') responsavelTexto = 'por iniciativa da CONTRATADA';
     else responsavelTexto = 'por mútuo acordo entre as partes';
     
     let clausulasHTML = '';
@@ -1474,7 +1474,7 @@ function gerarPreviewCancelamento() {
         
         <p><strong>CONTRATANTE:</strong> ${clienteNome}, já qualificado no contrato original firmado em ${dataOriginal.toLocaleDateString('pt-BR')}.</p>
         
-        <p><strong>CONTRATADA:</strong> GESTOR ARCON ADMIN, inscrita no CNPJ sob nº 00.000.000/0001-00, com sede na [ENDEREÇO DA EMPRESA].</p>
+        <p><strong>CONTRATADA:</strong> DIGITAL FIVE, responsável pelo produto ARCON, inscrita no CNPJ sob nº [CNPJ DA DIGITAL FIVE], com sede em [ENDEREÇO DA DIGITAL FIVE].</p>
         
         <p>As partes acima identificadas resolvem, de comum acordo, CANCELAR o contrato originalmente firmado ${responsavelTexto}, mediante as seguintes condições:</p>
         
@@ -1487,12 +1487,12 @@ function gerarPreviewCancelamento() {
             </div>
             <div class="assinatura-bloco">
                 <div class="linha-assinatura"></div>
-                <p><strong>CONTRATADA</strong><br>GESTOR ARCON ADMIN</p>
+                <p><strong>CONTRATADA</strong><br>DIGITAL FIVE<br>Produto: ARCON</p>
             </div>
         </div>
         
         <div class="data-local">
-            [© - GESTOR ARCON ADMIN], ${dataCancelamento.getDate()} de ${meses[dataCancelamento.getMonth()]} de ${dataCancelamento.getFullYear()}
+            DIGITAL FIVE | ARCON, ${dataCancelamento.getDate()} de ${meses[dataCancelamento.getMonth()]} de ${dataCancelamento.getFullYear()}
         </div>
     `;
     
