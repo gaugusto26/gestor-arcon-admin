@@ -46,7 +46,21 @@ function getNewsletterStats() {
 function getNewsletterConfig() {
     global $conn;
     $result = $conn->query("SELECT * FROM newsletter_config WHERE id = 1");
-    return $result->fetch_assoc();
+    $row = $result ? $result->fetch_assoc() : null;
+
+    if (!$row) {
+        $siteName = defined('SITE_NAME') ? $conn->real_escape_string(SITE_NAME) : 'Gestor';
+        $siteUrl  = defined('SITE_URL')  ? $conn->real_escape_string(SITE_URL)  : '';
+        $conn->query("INSERT INTO newsletter_config
+            (id, remetente_nome, remetente_email, limite_por_minuto, limite_por_hora,
+             smtp_host, smtp_port, smtp_secure, logo_url)
+            VALUES (1, '$siteName', '', 30, 500, '', 587, 'tls',
+            '$siteUrl/assets/image/logoarcon_quadrada.png.png')");
+        $result = $conn->query("SELECT * FROM newsletter_config WHERE id = 1");
+        $row    = $result ? $result->fetch_assoc() : [];
+    }
+
+    return $row ?: [];
 }
 
 function salvarConfigSMTP($dados) {

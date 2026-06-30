@@ -37,6 +37,7 @@ $menu_items = [
             ['nome' => 'Lucro (empresa)',          'icone' => 'fa-dollar-sign',       'link' => $admin_base . 'modules/lucro/index.php', 'badge' => ''],
             ['nome' => 'API',                     'icone' => 'fa-code',              'link' => $admin_base . 'modules/api/index.php', 'badge' => 'dev'],
             ['nome' => 'Atualizar status',        'icone' => 'fa-sync-alt',          'link' => $admin_base . 'modules/status/index.php', 'badge' => ''],
+            ['nome' => 'Configurações',           'icone' => 'fa-cog',               'link' => $admin_base . 'modules/configuracoes/index.php', 'badge' => ''],
             ['nome' => 'Avisos',                  'icone' => 'fa-exclamation-triangle','link' => $admin_base . 'modules/avisos/index.php', 'badge' => '']
         ]
     ],
@@ -197,8 +198,8 @@ $menu_items = [
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="logo-area">
-            <img src="/assets/image/logo_quadrada.png" alt="Digital Five" class="logo">
-            <span class="logo-text">Digital Five</span>
+            <img src="/assets/image/logoarcon_quadrada.png.png" alt="<?php echo SITE_NAME; ?>" class="logo">
+            <span class="logo-text"><?php echo SITE_NAME; ?></span>
         </div>
     </div>
 
