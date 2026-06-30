@@ -413,7 +413,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Footer -->
             <div class="login-footer">
-                <a href="index.php">
+                <a href="<?php echo htmlspecialchars(PUBLIC_SITE_URL); ?>">
                     <i class="fas fa-arrow-left"></i>
                     Voltar para o site
                 </a>

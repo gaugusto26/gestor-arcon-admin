@@ -15,7 +15,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MSG_DB_NAME: ${MSG_DB_NAME:-msg}
-      SITE_URL: ${SITE_URL:-https://admin.arcon.digitalfive.com.br}
+      SITE_URL: ${SITE_URL:-https://sistemas.digitalfive.com.br}
+      PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-https://digitalfive.com.br}
       SITE_NAME: ${SITE_NAME:-Gestor Arcon Admin}
       ADMIN_USER: ${ADMIN_USER:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}

@@ -20,6 +20,7 @@ if ($conn->connect_error) {
 
 
 define('SITE_URL', rtrim(getenv('SITE_URL') ?: 'http://localhost', '/'));
+define('PUBLIC_SITE_URL', rtrim(getenv('PUBLIC_SITE_URL') ?: 'https://digitalfive.com.br', '/'));
 define('SITE_NAME', getenv('SITE_NAME') ?: 'Digital Five');
 
 // Definir charset
