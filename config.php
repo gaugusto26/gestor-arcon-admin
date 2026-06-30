@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
 $servername = getenv('MYSQL_HOST') ?: 'localhost';
 $username   = getenv('MYSQL_USER') ?: 'root';
 $password   = getenv('MYSQL_PASSWORD') ?: '';

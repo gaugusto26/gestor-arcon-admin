@@ -21,6 +21,9 @@ services:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       ADMIN_NAME: ${ADMIN_NAME:-Administrador Arcon}
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@arcon.local}
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_KEY}
+      ARCON_SYNC_KEY: ${ARCON_SYNC_KEY:-arcon-sync-dev-2025}
     networks:
       - gestor-internal
       - web

@@ -1,0 +1,11 @@
+{
+    "require": {
+        "mercadopago/dx-php": "^3.11",
+        "pagseguro/pagseguro-php-sdk": "^4.2"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2"
+        }
+    }
+}

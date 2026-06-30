@@ -7,8 +7,10 @@ require_once 'config.php';
 $config = getConfigPagamento();
 
 // Carrega SDKs se existirem
-$sdk_mp_loaded = file_exists('../../../vendor/autoload.php');
-$sdk_pagbank_loaded = class_exists('PagBank\\PagBank');
+$autoload = __DIR__ . '/../../../../vendor/autoload.php';
+if (file_exists($autoload)) require_once $autoload;
+$sdk_mp_loaded = class_exists('MercadoPago\\SDK') || class_exists('MercadoPago\\MercadoPagoConfig');
+$sdk_pagbank_loaded = class_exists('PagBank\\PagBank') || class_exists('PagSeguro\\Library');
 
 $erros = [];
 $sucesso = '';

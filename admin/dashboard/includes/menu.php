@@ -32,20 +32,20 @@ $menu_items = [
             ['nome' => 'Visão geral de indicação','icone' => 'fa-chart-line',        'link' => $admin_base . 'modules/indicacoes/index.php', 'badge' => ''],
             ['nome' => 'Empresas',                'icone' => 'fa-building',          'link' => $admin_base . 'modules/empresas/index.php', 'badge' => ''],
             ['nome' => 'Pagamento',               'icone' => 'fa-credit-card',       'link' => $admin_base . 'modules/pagamentos/index.php', 'badge' => ''],
-            ['nome' => 'Planos (boletos)',         'icone' => 'fa-file-invoice',      'link' => '#', 'badge' => ''],
-            ['nome' => 'Relatório (boletos)',      'icone' => 'fa-chart-bar',         'link' => '#', 'badge' => ''],
-            ['nome' => 'Lucro (empresa)',          'icone' => 'fa-dollar-sign',       'link' => '#', 'badge' => ''],
-            ['nome' => 'API',                     'icone' => 'fa-code',              'link' => '#', 'badge' => 'dev'],
+            ['nome' => 'Planos (boletos)',         'icone' => 'fa-file-invoice',      'link' => $admin_base . 'modules/planos_boletos/index.php', 'badge' => ''],
+            ['nome' => 'Relatório (boletos)',      'icone' => 'fa-chart-bar',         'link' => $admin_base . 'modules/relatorios/index.php', 'badge' => ''],
+            ['nome' => 'Lucro (empresa)',          'icone' => 'fa-dollar-sign',       'link' => $admin_base . 'modules/lucro/index.php', 'badge' => ''],
+            ['nome' => 'API',                     'icone' => 'fa-code',              'link' => $admin_base . 'modules/api/index.php', 'badge' => 'dev'],
             ['nome' => 'Atualizar status',        'icone' => 'fa-sync-alt',          'link' => $admin_base . 'modules/status/index.php', 'badge' => ''],
-            ['nome' => 'Avisos',                  'icone' => 'fa-exclamation-triangle','link' => '#','badge' => '']
+            ['nome' => 'Avisos',                  'icone' => 'fa-exclamation-triangle','link' => $admin_base . 'modules/avisos/index.php', 'badge' => '']
         ]
     ],
     'others' => [
         'titulo' => 'Outros',
         'itens' => [
-            ['nome' => 'Total de usuarios newsletter','icone' => 'fa-users',         'link' => '#', 'badge' => '1.2k'],
-            ['nome' => 'Relatório dos usuarios',      'icone' => 'fa-chart-pie',     'link' => '#', 'badge' => ''],
-            ['nome' => 'Apoiadores',                  'icone' => 'fa-hand-holding-heart','link' => '#','badge' => '']
+            ['nome' => 'Total de usuarios newsletter','icone' => 'fa-users',         'link' => $admin_base . 'modules/newsletter/index.php', 'badge' => ''],
+            ['nome' => 'Relatório dos usuarios',      'icone' => 'fa-chart-pie',     'link' => $admin_base . 'modules/relatorios_usuarios/index.php', 'badge' => ''],
+            ['nome' => 'Apoiadores',                  'icone' => 'fa-hand-holding-heart','link' => $admin_base . 'modules/apoiadores/index.php', 'badge' => '']
         ]
     ]
 ];

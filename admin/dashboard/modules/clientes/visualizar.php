@@ -3,6 +3,17 @@ $page_title = 'Detalhes do Cliente';
 require_once '../../includes/header.php';
 require_once '../../includes/menu.php';
 require_once 'config.php';
+require_once '../../../../admin/api/arcon-push.php';
+
+// Garante colunas de integração Arcon
+$conn->query("ALTER TABLE clientes
+    ADD COLUMN IF NOT EXISTS arcon_empresa_id bigint DEFAULT NULL,
+    ADD COLUMN IF NOT EXISTS arcon_plano_saas varchar(50) DEFAULT 'free',
+    ADD COLUMN IF NOT EXISTS arcon_status     varchar(30) DEFAULT 'pendente',
+    ADD COLUMN IF NOT EXISTS arcon_sync_em    datetime DEFAULT NULL
+");
+
+$arcon = new ArconPush();
 
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
@@ -569,6 +580,128 @@ td {
             <p style="color: var(--text-secondary); line-height: 1.6;"><?php echo nl2br($cliente['observacoes']); ?></p>
         </div>
         <?php endif; ?>
+
+        <!-- ── Integração Arcon ───────────────────────────────── -->
+        <div class="info-card" id="arcon-card">
+            <h3 style="display:flex;align-items:center;justify-content:space-between;">
+                <span><i class="fas fa-plug"></i> Integração Arcon (SaaS)</span>
+                <?php if ($arcon->isEnabled()): ?>
+                <span style="font-size:.75rem;font-weight:600;color:#10b981;background:rgba(16,185,129,.1);padding:3px 10px;border-radius:20px;">
+                    <i class="fas fa-circle" style="font-size:.5rem;"></i> Conectado
+                </span>
+                <?php else: ?>
+                <span style="font-size:.75rem;font-weight:600;color:#f59e0b;background:rgba(245,158,11,.1);padding:3px 10px;border-radius:20px;">
+                    Supabase não configurado
+                </span>
+                <?php endif; ?>
+            </h3>
+
+            <?php
+            $arconStatus  = $cliente['arcon_status']     ?? 'pendente';
+            $arconPlano   = $cliente['arcon_plano_saas'] ?? 'free';
+            $arconEmpId   = $cliente['arcon_empresa_id'] ?? null;
+            $arconSyncEm  = $cliente['arcon_sync_em']    ?? null;
+
+            $statusCores = [
+                'ativo'     => ['#10b981','rgba(16,185,129,.1)','Ativo'],
+                'pendente'  => ['#f59e0b','rgba(245,158,11,.1)','Pendente'],
+                'suspenso'  => ['#ef4444','rgba(239,68,68,.1)','Suspenso'],
+                'cancelado' => ['#64748b','rgba(100,116,139,.1)','Cancelado'],
+            ];
+            [$sc, $sb, $sl] = $statusCores[$arconStatus] ?? ['#64748b','rgba(100,116,139,.1)',$arconStatus];
+            ?>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;">
+                <div style="background:#f8faff;border-radius:12px;padding:14px;">
+                    <div style="font-size:.75rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:4px;">Status Arcon</div>
+                    <span style="font-weight:700;color:<?= $sc ?>;background:<?= $sb ?>;padding:4px 12px;border-radius:20px;font-size:.85rem;"><?= $sl ?></span>
+                </div>
+                <div style="background:#f8faff;border-radius:12px;padding:14px;">
+                    <div style="font-size:.75rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:4px;">Plano SaaS</div>
+                    <div style="font-weight:700;color:#4361ee;text-transform:uppercase;font-size:.9rem;"><?= htmlspecialchars($arconPlano) ?></div>
+                </div>
+                <div style="background:#f8faff;border-radius:12px;padding:14px;">
+                    <div style="font-size:.75rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:4px;">Empresa ID Supabase</div>
+                    <div style="font-weight:700;color:var(--text-primary);font-size:.9rem;"><?= $arconEmpId ? '#'.$arconEmpId : '—' ?></div>
+                </div>
+            </div>
+            <?php if ($arconSyncEm): ?>
+            <p style="font-size:.78rem;color:var(--text-muted);margin:0 0 16px;">Última sincronização: <?= date('d/m/Y H:i', strtotime($arconSyncEm)) ?></p>
+            <?php endif; ?>
+
+            <!-- Seletor de plano SaaS -->
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+                <label style="font-weight:600;font-size:.88rem;white-space:nowrap;">Plano SaaS:</label>
+                <select id="arcon-plano-select" style="padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:#f8faff;font-size:.9rem;">
+                    <?php foreach(['free','basico','profissional','empresarial','enterprise'] as $p): ?>
+                    <option value="<?= $p ?>" <?= $arconPlano===$p?'selected':'' ?>><?= ucfirst($p) ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button onclick="arconAction('atualizar_plano')" style="padding:8px 16px;background:#e0e7ff;color:#4361ee;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.85rem;">
+                    <i class="fas fa-save"></i> Salvar plano
+                </button>
+            </div>
+
+            <!-- Ações rápidas -->
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <?php if (!$arconEmpId): ?>
+                <button onclick="arconAction('vincular')" style="padding:10px 18px;background:linear-gradient(135deg,#4361ee,#667eea);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.88rem;">
+                    <i class="fas fa-link"></i> Vincular ao Arcon
+                </button>
+                <?php endif; ?>
+                <button onclick="arconAction('ativar')" style="padding:10px 18px;background:#d1fae5;color:#059669;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.88rem;">
+                    <i class="fas fa-check-circle"></i> Ativar Assinatura
+                </button>
+                <button onclick="arconAction('suspender')" style="padding:10px 18px;background:#fef3c7;color:#d97706;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.88rem;">
+                    <i class="fas fa-pause-circle"></i> Suspender
+                </button>
+                <button onclick="arconAction('cancelar')" style="padding:10px 18px;background:#fee2e2;color:#ef4444;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.88rem;"
+                    onclick="return confirm('Confirmar cancelamento no Arcon?')">
+                    <i class="fas fa-times-circle"></i> Cancelar
+                </button>
+                <button onclick="arconAction('sync')" style="padding:10px 18px;background:#f8faff;color:#64748b;border:1px solid var(--border);border-radius:10px;font-weight:600;cursor:pointer;font-size:.88rem;">
+                    <i class="fas fa-sync-alt"></i> Sincronizar
+                </button>
+            </div>
+
+            <div id="arcon-msg" style="margin-top:14px;display:none;padding:12px 16px;border-radius:10px;font-size:.88rem;font-weight:600;"></div>
+        </div>
+
+        <script>
+        function arconAction(acao) {
+            const btn = event.currentTarget;
+            if (acao === 'cancelar' && !confirm('Confirmar cancelamento no Arcon?')) return;
+            const plano = document.getElementById('arcon-plano-select')?.value || 'free';
+            const msg   = document.getElementById('arcon-msg');
+            msg.style.display = 'none';
+            btn.disabled = true;
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Aguarde...';
+
+            fetch('/admin/api/arcon-action.php', {
+                method: 'POST',
+                headers: {'Content-Type':'application/x-www-form-urlencoded'},
+                body: `acao=${acao}&cliente_id=<?= $id ?>&plano_saas=${plano}&status=${acao==='vincular'?'ativo':'pendente'}`,
+            })
+            .then(r => r.json())
+            .then(d => {
+                msg.style.display = 'block';
+                msg.style.background = d.ok ? 'rgba(16,185,129,.1)' : 'rgba(239,68,68,.1)';
+                msg.style.color      = d.ok ? '#059669' : '#ef4444';
+                msg.style.border     = '1px solid ' + (d.ok ? '#10b981' : '#ef4444');
+                msg.innerHTML        = (d.ok ? '✅ ' : '❌ ') + d.msg;
+                if (d.ok) setTimeout(() => location.reload(), 1500);
+            })
+            .catch(e => {
+                msg.style.display = 'block';
+                msg.style.background = 'rgba(239,68,68,.1)';
+                msg.style.color      = '#ef4444';
+                msg.style.border     = '1px solid #ef4444';
+                msg.innerHTML        = '❌ Erro: ' + e.message;
+            })
+            .finally(() => { btn.disabled = false; btn.innerHTML = orig; });
+        }
+        </script>
 
         <!-- Logs de Atividade -->
         <div class="info-card">
