@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+
 $page_title = 'Configurações do Sistema';
 require_once '../../includes/header.php';
 require_once '../../includes/menu.php';
@@ -8,7 +10,7 @@ $conn->query("CREATE TABLE IF NOT EXISTS config_sistema (
     id         int NOT NULL DEFAULT 1,
     site_nome  varchar(200) DEFAULT 'Gestor Arcon Admin',
     site_url   varchar(255) DEFAULT '',
-    logo_url   varchar(255) DEFAULT '/assets/image/logoarcon_quadrada.png.png',
+    logo_url   varchar(255) DEFAULT '/assets/image/logo_quadrada.png',
     smtp_host  varchar(150) DEFAULT '',
     smtp_port  int          DEFAULT 587,
     smtp_user  varchar(150) DEFAULT '',
@@ -57,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($acao === 'testar_smtp') {
         require_once '../../../../vendor/autoload.php';
-        use PHPMailer\PHPMailer\PHPMailer;
 
         $cfg = $conn->query("SELECT * FROM config_sistema WHERE id=1")->fetch_assoc();
         $mail = new PHPMailer(true);
@@ -143,7 +144,7 @@ $config = $conn->query("SELECT * FROM config_sistema WHERE id=1")->fetch_assoc()
                         <img src="<?= htmlspecialchars($config['logo_url']) ?>" alt="Logo" style="height:44px;width:44px;object-fit:contain;border:1px solid var(--border);border-radius:8px;padding:4px;background:#fff;">
                         <?php endif; ?>
                     </div>
-                    <p style="font-size:.78rem;color:var(--text-muted);margin-top:6px;">Logos disponíveis: <code>/assets/image/logoarcon_quadrada.png.png</code> · <code>/assets/image/logo_horizontal.png</code></p>
+                    <p style="font-size:.78rem;color:var(--text-muted);margin-top:6px;">Logos disponíveis: <code>/assets/image/logo_quadrada.png</code> · <code>/assets/image/logo_horizontal.png</code></p>
                 </div>
             </div>
 

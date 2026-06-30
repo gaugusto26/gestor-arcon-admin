@@ -3,6 +3,7 @@ $page_title = 'Detalhes do Cliente';
 require_once '../../includes/header.php';
 require_once '../../includes/menu.php';
 require_once 'config.php';
+require_once '../../../../admin/api/saas-core.php';
 require_once '../../../../admin/api/arcon-push.php';
 
 // Garante colunas de integração Arcon
@@ -14,6 +15,7 @@ $conn->query("ALTER TABLE clientes
 ");
 
 $arcon = new ArconPush();
+saasBoot($conn);
 
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
@@ -597,10 +599,11 @@ td {
             </h3>
 
             <?php
-            $arconStatus  = $cliente['arcon_status']     ?? 'pendente';
-            $arconPlano   = $cliente['arcon_plano_saas'] ?? 'free';
-            $arconEmpId   = $cliente['arcon_empresa_id'] ?? null;
-            $arconSyncEm  = $cliente['arcon_sync_em']    ?? null;
+            $assinaturaArcon = saasGetAssinaturaClienteProduto($conn, (int)$id, 'arcon');
+            $arconStatus  = $assinaturaArcon['status'] ?? $cliente['arcon_status'] ?? 'pendente';
+            $arconPlano   = $assinaturaArcon['plano_slug'] ?? $cliente['arcon_plano_saas'] ?? 'free';
+            $arconEmpId   = $assinaturaArcon['external_empresa_id'] ?? $cliente['arcon_empresa_id'] ?? null;
+            $arconSyncEm  = $assinaturaArcon['sincronizado_em'] ?? $cliente['arcon_sync_em'] ?? null;
 
             $statusCores = [
                 'ativo'     => ['#10b981','rgba(16,185,129,.1)','Ativo'],

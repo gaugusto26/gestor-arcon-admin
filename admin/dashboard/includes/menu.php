@@ -198,8 +198,8 @@ $menu_items = [
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="logo-area">
-            <img src="/assets/image/logoarcon_quadrada.png.png" alt="<?php echo SITE_NAME; ?>" class="logo">
-            <span class="logo-text"><?php echo SITE_NAME; ?></span>
+            <img src="/assets/image/logo_quadrada.png" alt="Digital Five" class="logo">
+            <span class="logo-text">Digital Five</span>
         </div>
     </div>
 

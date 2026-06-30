@@ -6,6 +6,7 @@
  */
 header('Content-Type: application/json; charset=utf-8');
 require_once '../../../config.php';
+require_once 'saas-core.php';
 require_once 'arcon-push.php';
 
 if (!isLogado()) {
@@ -23,6 +24,7 @@ $conn->query("ALTER TABLE clientes
 ");
 
 $arcon   = new ArconPush();
+saasBoot($conn);
 $acao    = $_POST['acao'] ?? '';
 $clienteId = (int)($_POST['cliente_id'] ?? 0);
 
@@ -74,8 +76,22 @@ if ($acao === 'vincular') {
         // Captura id da empresa no Supabase
         $sbRes = $arcon->buscarEmpresaPorEmail($clienteRow['email']);
         $empId = $sbRes['ok'] && !empty($sbRes['data'][0]['id']) ? $sbRes['data'][0]['id'] : null;
+        if (!$empId) {
+            echo json_encode(['ok' => false, 'msg' => 'Empresa não encontrada no Arcon para este e-mail.']);
+            exit;
+        }
+
 
         $conn->query("UPDATE clientes SET arcon_empresa_id=$empId, arcon_plano_saas='$planoSaas', arcon_status='$statusAs', arcon_sync_em=NOW() WHERE id=$clienteId");
+        saasUpsertAssinatura($conn, $clienteId, 'arcon', [
+            'plano_slug' => slugSaas($planoSaas),
+            'status' => $statusAs,
+            'external_empresa_id' => $empId,
+            'external_cliente_id' => $clienteId,
+            'origem' => 'admin',
+            'evento' => 'arcon_vinculado',
+            'resultado' => $res,
+        ]);
         echo json_encode(['ok' => true, 'msg' => "Empresa vinculada no Arcon!", 'empresa_id' => $empId]);
     } else {
         echo json_encode(['ok' => false, 'msg' => 'Erro: ' . $res['msg']]);
@@ -98,6 +114,14 @@ if ($acao === 'ativar') {
 
     if ($res['ok']) {
         $conn->query("UPDATE clientes SET arcon_status='ativo', arcon_plano_saas='$planoSaas', arcon_sync_em=NOW(), status='ativo' WHERE id=$clienteId");
+        saasUpsertAssinatura($conn, $clienteId, 'arcon', [
+            'plano_slug' => slugSaas($planoSaas),
+            'status' => 'ativo',
+            'external_cliente_id' => $clienteId,
+            'origem' => 'admin',
+            'evento' => 'assinatura_ativada',
+            'resultado' => $res,
+        ]);
         echo json_encode(['ok' => true, 'msg' => "Assinatura ativada no Arcon!"]);
     } else {
         echo json_encode(['ok' => false, 'msg' => 'Erro: ' . $res['msg']]);
@@ -112,6 +136,14 @@ if ($acao === 'suspender') {
         $conn->query("UPDATE clientes SET arcon_status='suspenso', arcon_sync_em=NOW() WHERE id=$clienteId");
         // Bloqueia profiles no Arcon
         $arcon->atualizarAtivoEmpresa($clienteId, false);
+        saasUpsertAssinatura($conn, $clienteId, 'arcon', [
+            'plano_slug' => $clienteRow['arcon_plano_saas'] ?? 'free',
+            'status' => 'suspenso',
+            'external_cliente_id' => $clienteId,
+            'origem' => 'admin',
+            'evento' => 'assinatura_suspensa',
+            'resultado' => $res,
+        ]);
         echo json_encode(['ok' => true, 'msg' => "Assinatura suspensa no Arcon."]);
     } else {
         echo json_encode(['ok' => false, 'msg' => 'Erro: ' . $res['msg']]);
@@ -125,6 +157,14 @@ if ($acao === 'cancelar') {
     if ($res['ok']) {
         $conn->query("UPDATE clientes SET arcon_status='cancelado', arcon_plano_saas='free', arcon_sync_em=NOW() WHERE id=$clienteId");
         $arcon->atualizarAtivoEmpresa($clienteId, false);
+        saasUpsertAssinatura($conn, $clienteId, 'arcon', [
+            'plano_slug' => 'free',
+            'status' => 'cancelado',
+            'external_cliente_id' => $clienteId,
+            'origem' => 'admin',
+            'evento' => 'assinatura_cancelada',
+            'resultado' => $res,
+        ]);
         echo json_encode(['ok' => true, 'msg' => "Assinatura cancelada no Arcon."]);
     } else {
         echo json_encode(['ok' => false, 'msg' => 'Erro: ' . $res['msg']]);
@@ -134,7 +174,11 @@ if ($acao === 'cancelar') {
 
 // ── Sync (pull status do Arcon) ───────────────────────────────
 if ($acao === 'sync') {
-    $apiKey = getenv('ARCON_SYNC_KEY') ?: 'arcon-sync-dev-2025';
+    $apiKey = getenv('ARCON_SYNC_KEY') ?: '';
+    if ($apiKey === '') {
+        echo json_encode(['ok' => false, 'msg' => 'ARCON_SYNC_KEY não configurada']);
+        exit;
+    }
     $siteUrl = rtrim(getenv('SITE_URL') ?: 'http://localhost', '/');
     $url = "$siteUrl/admin/api/arcon-sync.php?cliente_id=$clienteId&key=$apiKey";
     $ch = curl_init($url);
@@ -145,6 +189,14 @@ if ($acao === 'sync') {
         $st = $data['assinatura_status'];
         $pl = $data['plano'] ?? 'free';
         $conn->query("UPDATE clientes SET arcon_status='$st', arcon_plano_saas='$pl', arcon_sync_em=NOW() WHERE id=$clienteId");
+        saasUpsertAssinatura($conn, $clienteId, 'arcon', [
+            'plano_slug' => $pl,
+            'status' => $st,
+            'external_cliente_id' => $clienteId,
+            'origem' => 'sync',
+            'evento' => 'assinatura_sincronizada',
+            'resultado' => $data,
+        ]);
         echo json_encode(['ok' => true, 'msg' => "Sincronizado: $st · plano $pl", 'data' => $data]);
     } else {
         echo json_encode(['ok' => false, 'msg' => 'Falha ao buscar status do Arcon', 'raw' => $body]);
@@ -157,6 +209,15 @@ if ($acao === 'atualizar_plano') {
     $planoSaas = limparInput($_POST['plano_saas'] ?? 'free');
     $res = $arcon->atualizarEmpresa($clienteId, ['plano' => slugSaas($planoSaas)]);
     $conn->query("UPDATE clientes SET arcon_plano_saas='$planoSaas', arcon_sync_em=NOW() WHERE id=$clienteId");
+    saasUpsertAssinatura($conn, $clienteId, 'arcon', [
+        'plano_slug' => slugSaas($planoSaas),
+        'status' => $clienteRow['arcon_status'] ?? 'pendente',
+        'external_cliente_id' => $clienteId,
+        'origem' => 'admin',
+        'evento' => $res['ok'] ? 'plano_alterado' : 'plano_alteracao_falhou',
+        'resultado' => $res,
+        'ok' => $res['ok'],
+    ]);
     echo json_encode(['ok' => $res['ok'], 'msg' => $res['ok'] ? "Plano atualizado para $planoSaas no Arcon." : 'Atualizado localmente. ' . $res['msg']]);
     exit;
 }

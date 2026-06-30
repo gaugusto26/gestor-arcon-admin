@@ -34,6 +34,8 @@
 - [x] Card de integração Arcon na tela de visualizar cliente
 - [x] Ações: vincular, ativar, suspender, cancelar, sync, atualizar plano SaaS
 - [x] Avisos publicados em tempo real no Supabase (`avisos_sistema`)
+- [x] Base multi-produto no Gestor (`produtos_saas`, `planos_saas`, `assinaturas_saas`, `eventos_assinatura`)
+- [x] Arcon adaptado como primeiro produto SaaS plugado ao Gestor
 - [x] `SUPABASE_SERVICE_KEY` configurada no `.env`
 
 ---
@@ -52,7 +54,7 @@
     ADD COLUMN IF NOT EXISTS assinatura_cliente          text;
   ```
 - [ ] **Testar integração end-to-end**: criar cliente no Admin → ativar assinatura → verificar no Arcon
-- [ ] **Webhook de pagamento**: `webhook/mercadopago.php` e `webhook/pagbank.php` — ao receber pagamento confirmado, chamar `arcon-action.php` automaticamente
+- [ ] **Webhook de pagamento**: `webhook/mercadopago.php` e `webhook/pagbank.php` — ao receber pagamento confirmado, atualizar `assinaturas_saas` e disparar o adaptador do produto
 
 ### P2 — Importante (próximas 2 semanas)
 
@@ -73,21 +75,31 @@
 - [ ] **Relatório de usuários** — quantos usam o Arcon por empresa, tempo médio de sessão
 - [ ] **Integração WhatsApp** (já tem wuzapi rodando) — cobrar e notificar via WhatsApp
 - [ ] **Módulo Avisos targetado** — aviso para empresa específica (não global)
-- [ ] **Multi-produto** — suporte a mais de um sistema SaaS por cliente
+- [x] **Multi-produto base** — suporte estrutural a mais de um sistema SaaS por cliente
+- [ ] **Módulo Produtos SaaS** — CRUD visual para cadastrar novos sistemas, planos e adaptadores
 
 ---
 
 ## Arquitetura da Integração
 
 ```
-[Admin PHP] ──POST──► [arcon-push.php] ──REST──► [Supabase]
-                                                      │
-[Arcon Vue] ──GET───► [arcon-sync.php] ◄─────────────┘
-                                                      │
-                                              [empresas table]
-                                              [avisos_sistema]
-                                              [profiles]
+[Gestor Admin]
+      │
+      ├── clientes
+      ├── produtos_saas          (Arcon, futuro SaaS 2, futuro SaaS 3...)
+      ├── planos_saas            (planos por produto)
+      ├── assinaturas_saas       (cliente + produto + plano + status)
+      └── eventos_assinatura     (auditoria e falhas de push)
+             │
+             ▼
+      [Adaptador do Produto]
+             │
+             ├── Arcon: Supabase REST (`empresas`, `profiles`, `avisos_sistema`)
+             ├── Produto REST: API HTTP
+             └── Produto manual/webhook: fila/notificação
 ```
+
+O Arcon não deve ser a regra do Gestor; ele é o primeiro adaptador. Webhooks de pagamento, trials e vencimentos devem alterar `assinaturas_saas`; depois o Gestor dispara o adaptador do produto afetado.
 
 ### Fluxo de ativação
 1. Admin cria cliente no Gestor
