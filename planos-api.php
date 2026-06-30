@@ -1,10 +1,35 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: https://digitalfive.com.br');
+
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowed_origins = [
+    'https://digitalfive.com.br',
+    'https://sistemas.digitalfive.com.br',
+    'https://arcon.digitalfive.com.br',
+    'http://localhost:5173',
+];
+if (in_array($origin, $allowed_origins, true)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+} else {
+    header('Access-Control-Allow-Origin: https://digitalfive.com.br');
+}
+header('Vary: Origin');
 header('Access-Control-Allow-Methods: GET');
 header('Cache-Control: public, max-age=300');
 
 require_once 'config.php';
+
+function planApiWhatsappUrl(array $plan, array $whatsapp): string {
+    if (!empty($plan['link_whatsapp'])) {
+        return $plan['link_whatsapp'];
+    }
+
+    $number = preg_replace('/\D+/', '', $whatsapp['numero'] ?? '5517992347622');
+    $message = $plan['mensagem_whatsapp'] ?: ($whatsapp['mensagem_padrao'] ?? 'Olá, quero saber mais sobre o plano {plano_nome}.');
+    $message = str_replace('{plano_nome}', $plan['nome'], $message);
+
+    return 'https://wa.me/' . $number . '?text=' . rawurlencode($message);
+}
 
 $limit = isset($_GET['limit']) ? max(1, min((int)$_GET['limit'], 12)) : 8;
 $perfil = $_GET['perfil'] ?? '';
@@ -39,6 +64,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param($types, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
+$whatsapp = getWhatsAppConfig($conn);
 
 $ids = [];
 $plans = [];
@@ -63,6 +89,8 @@ while ($row = $result->fetch_assoc()) {
         'categoria_icone' => $row['categoria_icone'],
         'link_whatsapp' => $row['link_whatsapp'],
         'mensagem_whatsapp' => $row['mensagem_whatsapp'],
+        'assinar_url' => planApiWhatsappUrl($row, $whatsapp),
+        'detalhes_url' => SITE_URL . '/planos.php',
         'caracteristicas' => [],
     ];
 }
