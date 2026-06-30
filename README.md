@@ -17,8 +17,8 @@
   <img src="https://i.ibb.co/hp1bmj8/vecteezy-coding-3d-rendering-icon-illustration-28587717.png" width="100"/>
 </p>
 
-<b>🇧🇷 Plataforma completa de gestão para empresas de desenvolvimento</b><br>
-<i>Painel administrativo + Portal do cliente + Assinatura digital + Pagamentos automatizados</i>
+<b>🇧🇷 Plataforma de gestão SaaS e assinaturas da Digital Five</b><br>
+<i>Painel administrativo + Portal do cliente + Assinatura digital + Pagamentos automatizados + Hub multi-produto</i>
 
 </div>
 
@@ -34,8 +34,39 @@ A **Digital Five** é uma plataforma SaaS desenvolvida para automatizar todo o c
 - Pagamentos automáticos
 - Acompanhamento de projetos
 - Portal completo do cliente
+- Gestão multi-produto para assinaturas de sistemas como Arcon e futuros SaaS
 
 O sistema possui áreas segregadas para **Administradores** e **Clientes**, integradas ao mesmo banco de dados.
+
+---
+
+## 🔗 Integração Multi-Produto SaaS
+
+O Gestor é a fonte de verdade para planos, contratos, faturas, pagamentos e assinaturas. O Arcon é o primeiro produto SaaS plugado ao Gestor, mas a arquitetura já suporta outros sistemas por meio das tabelas `produtos_saas`, `planos_saas`, `assinaturas_saas` e `eventos_assinatura`.
+
+Fluxo publicado:
+
+- Admin cria ou localiza o cliente no Gestor.
+- Admin vincula o cliente ao produto Arcon pelo card de integração.
+- Admin escolhe o plano SaaS, ativa, suspende ou cancela a assinatura.
+- O Gestor envia o status ao Supabase do Arcon.
+- O Arcon exibe os planos espelhados do Gestor na tela de Configurações.
+- O clique em **Assinar** abre WhatsApp com mensagem pronta para o desenvolvedor e dados do cliente/plano.
+
+Endpoint público de planos:
+
+```text
+GET /planos-api.php?perfil=mei&limit=6
+GET /planos-api.php?perfil=empresa&limit=6
+```
+
+Campos relevantes retornados para os apps:
+
+- `nome`, `slug`, `descricao`, `preco_formatado`, `periodo`
+- `caracteristicas`
+- `assinar_url`
+- `detalhes_url`
+- `link_whatsapp`
 
 ---
 
